@@ -4,6 +4,9 @@ Trabalho da Disciplina de Engenharia de Software 2020/1 - UFLA
 Nomes: Ismael Martins Silva, Caio de Oliveira Lopes, Layse Cristina Silva Garcia.
 
 # DESCRIÇÃO
+O produto será um site para cadastro de treinos em uma academia.
+A empresa 3Developers ficará responsável por implementar o sistema de cadastrar, alterar, excluir e listar instrutores, clientes, treinos, equipamentos e planos; e também, criar uma calculadora IMC para quem visitará o site.
+Os tipos de usuário do sistema são clientes e instrutores.
 
 # TECNOLOGIAS UTILIZADAS
 ## Linguagens
