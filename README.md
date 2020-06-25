@@ -8,9 +8,11 @@ Nomes: Ismael Martins Silva, Caio de Oliveira Lopes, Layse Cristina Silva Garcia
     CSS - Versão: 
     JavaScript - Versão: 
 ## Banco de Dados
-    MySQL - Versão: 
+    MySQL - Versão:
+## Servidor 
+    Apache - Versão: 
 
-# Links: exemplos de readme
+# Links: Exemplos de README
 https://github.com/amphp/amp/blob/master/README.md
 
 https://help.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax
