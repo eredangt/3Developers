@@ -1,9 +1,7 @@
 # 3Developers
 Trabalho da Disciplina de Engenharia de Software 2020/1 - UFLA
 
-Nomes:
-    Ismael Martins Silva.
-    Caio de Oliveira Lopes.
+Nomes: Ismael Martins Silva, Caio de Oliveira Lopes.
 
 # Links: exemplos de readme
 https://github.com/amphp/amp/blob/master/README.md
