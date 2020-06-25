@@ -13,15 +13,17 @@ Os tipos de usuário do sistema são clientes e instrutores.<br />
 # TECNOLOGIAS UTILIZADAS
 ## Linguagens
 ### Linguagens de Folha de Estilo
-    CSS - Versão: 
+    CSS - Versão: 3.0
 ### Linguagens de Marcação
-
+    HTML - Versão: 5.0
+### Linguagens de Script
+    PHP - Versão: 7.4.7
 ### Linguagens de Programação
-    JavaScript - Versão: 
+    JavaScript - Versão: ECMAScript 2018
 ## Banco de Dados
-    MySQL - Versão:
+    phpMyAdmin - Versão: 5.0.2
 ## Servidor 
-    Apache - Versão: 
+    Apache - Versão: 2.4.43
 
 ###### Links: Exemplos de README
 https://github.com/amphp/amp/blob/master/README.md
