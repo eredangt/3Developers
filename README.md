@@ -25,6 +25,23 @@ Os tipos de usuário do sistema são clientes e instrutores.<br />
 ## Servidor 
     Apache - Versão: 2.4.43
 
+# REGRAS E PADRÕES DE USO DO GIT
+## Commits:
+    - Procure ser direto e explicativo em seus commits;
+    - Capitalize o assunto do seu commit.
+
+## Branchs:
+    - A branch master não pode ser modificada, exceto por merge;
+    - Ao finalizar as modificações em uma branch-release, deve ser criada uma nova branch-release a partir desta.
+
+## Definição de pastas:
+    - A documentação deve ser colocada na pasta "Requisitos";
+    - As regras de verificação e analise de requisitos devem ser colocadas na pasta "Padrões Adotados";
+    - As imagens devem ser colocadas na pasta "img";
+    - Arquivos .css devem ser colocados na pasta "CSS";
+    - ...;
+    - Arquivos .js devem ser colocados na pasta "js".
+
 ###### Links: Exemplos de README
 https://github.com/amphp/amp/blob/master/README.md
 
