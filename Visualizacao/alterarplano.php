@@ -6,17 +6,23 @@
 		include_once('../Persistencia/ConexaoBD.php');
 		include_once('../Modelo/Pessoa.php');
 		include_once('../Controle/PessoaDAO.php');
+		include_once('../Modelo/Plano.php');
+		include_once('../Controle/PlanoDAO.php');
 		$conexao = new ConexaoBD();
 		$conexao = $conexao->abreConexao();
+		
 		$pessoaDAO = new PessoaDAO();
 		$pessoaDAO->implementaRestricao();
+		
+		$planoDAO = new PlanoDAO();
+		$codigo = $_GET['codigo'];
 	?>
     <meta charset="UTF-8">
     <meta name="description" content="Gym Template">
     <meta name="keywords" content="Gym, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Gym | Cadastrar Plano</title>
+    <title>Gym | Alterar Plano</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
@@ -132,11 +138,11 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb-text">
-                        <h2>CADASTRAR PLANO</h2>
+                        <h2>ALTERAR PLANO</h2>
                         <div class="bt-option">
                             <a href="./index.php">Início</a>
-                            <a href="./cadastrar.php">Cadastrar</a>
-                            <span>Cadastrar Plano</span>
+                            <a href="./listar.php">Listar</a>
+                            <span>Alterar Plano</span>
                         </div>
                     </div>
                 </div>
@@ -149,7 +155,7 @@
     <section class="contact-section spad">
         <div class="container">
 			<div class="section-title contact-title">
-						<span>Cadastrar Plano</span>
+						<span>Alterar Plano</span>
 						<h2>Cadastre o melhor para seus clientes!</h2>
 					</div>
             <div class="row">
@@ -163,14 +169,15 @@
 
                 <div class="col-lg-6">
                     <div class="leave-comment">
-                        <form action="../Controle/phpCadastrarPlano.php" method="post" name="frmLoginPlano">
+                        <form action="../Controle/phpAlterarPlano.php" method="post" name="frmLoginAlteraPlano">
+							<input type="hidden" name="hddCodigo" value="<?php echo $codigo; ?>">
                             <span id="spanSpecial">Nome do Plano</span>
-                            <input type="text" name="txtPlano" placeholder="Digite um nome para o plano">
+                            <input type="text" name="txtPlano" value="<?php $planoDAO->pegaNomePlano($codigo, $conexao)?>">
                             <span id="spanSpecial">Quantidade de Meses</span>
-                            <input type="number" name="txtMeses" placeholder="Digite por quantos meses o plano será válido">
+                            <input type="number" name="txtMeses" value="<?php $planoDAO->pegaNumMeses($codigo, $conexao)?>">
                             <span id="spanSpecial">Valor do Plano</span>
-                            <input type="text" name="txtValor" placeholder="Defina um preço para o plano a ser cadastrado">
-                            <button type="submit">Cadastrar</button>
+                            <input type="text" name="txtValor" value="<?php $planoDAO->pegaValor($codigo, $conexao)?>">
+                            <button type="submit">Alterar</button>
                         </form>
                     </div>
                 </div>

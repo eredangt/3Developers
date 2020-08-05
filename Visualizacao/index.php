@@ -5,8 +5,13 @@
 
 	<?php
 		session_start();
+		include_once('../Persistencia/ConexaoBD.php');
         include_once('../Controle/PessoaDAO.php');
+		include_once('../Controle/PlanoDAO.php');
+		$conexao = new ConexaoBD();
+		$conexao = $conexao->abreConexao();
         $pessoaDAO = new PessoaDAO();
+        $planoDAO = new PlanoDAO();
     ?>
 
     <meta charset="UTF-8">
@@ -306,7 +311,11 @@
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-8">
+					<?php 
+						$planoDAO->imprimePlanos($conexao);
+					?>
+                <!--<div class="col-lg-4 col-md-8">
+					
                     <div class="ps-item">
                         <h3>Mensal</h3>
                         <div class="pi-price">
@@ -351,7 +360,7 @@
                             <li>Kit Gym Life.</li>
                         </ul>
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
     </section>

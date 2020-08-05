@@ -6,10 +6,16 @@
 		include_once('../Persistencia/ConexaoBD.php');
 		include_once('../Modelo/Pessoa.php');
 		include_once('../Controle/PessoaDAO.php');
+		include_once('../Modelo/Plano.php');
+		include_once('../Controle/PlanoDAO.php');
 		$conexao = new ConexaoBD();
 		$conexao = $conexao->abreConexao();
 		$pessoaDAO = new PessoaDAO();
 		$pessoaDAO->implementaRestricao();
+		
+		$planoDAO = new PlanoDAO();
+		
+		
 	?>
     <meta charset="UTF-8">
     <meta name="description" content="Gym Template">
@@ -202,62 +208,10 @@
 										</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<!--<td class="class-time">Coluna diferente</td>-->
-												<td class="dark-bg hover-dp ts-meta">
-													<h5>Mensal Manual</h5>
-												</td>
-												<td class="hover-dp ts-meta">
-													<h5>1</h5>
-												</td>
-												<td class="dark-bg hover-dp ts-meta">
-													<h5>R$100.00</h5>
-												</td>
-												<td class="hover-dp ts-meta">
-													<h5><a href="#">&#9997;</a></h5>
-												</td>
-												<td class="dark-bg hover-dp ts-meta">
-													<h5><a href="#">&#10006;</a></h5>
-												</td>
-											</tr>
-											<tr>
-												<!--<td class="class-time">Coluna diferente</td>-->
-												<td class="dark-bg hover-dp ts-meta">
-													<h5>Trimestral Manual</h5>
-												</td>
-												<td class="hover-dp ts-meta">
-													<h5>3</h5>
-												</td>
-												<td class="dark-bg hover-dp ts-meta">
-													<h5>R$90.00</h5>
-												</td>
-												<td class="hover-dp ts-meta">
-													<h5><a href="#">&#9997;</a></h5>
-												</td>
-												<td class="dark-bg hover-dp ts-meta">
-													<h5><a href="#">&#10006;</a></h5>
-												</td>
-											</tr>
+											<?php
+												$planoDAO->listarPlanos($conexao);
+											?>
 
-											<!--<tr> PARTE DE QUANDO FOR A BUSCA NO BANCO DE DADOS. EXEMPLO
-												<?php
-													#require('conexao.php');
-													#$sql='SELECT * FROM categoria';
-													#$tabela=mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
-													#$sql='SELECT * FROM produto';
-													#$tabela=mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
-
-												#	while($linha=mysqli_fetch_row($tabela)){
-												#		echo '<tr>
-												#				<td class="hover-dp ts-meta">'.htmlentities($linha[1]).'</td>
-												#				<td class="dark-bg hover-dp ts-meta">'.htmlentities($linha[0]).'</td>
-												#				<td class="hover-dp ts-meta">'.htmlentities($linha[2]).'</td>
-												#				<td class="hover-dp ts-meta"><center><a href="altera.php?codigo='.$linha[0].'"><b>&#9997;</b></a></td>
-												#				<td class="hover-dp ts-meta"><center><a href="exclui.php?codigo='.$linha[0].'"><b>&#10006;</b></a></td>
-												#			</tr>';
-												#	}
-												?>
-											</tr>-->
 										</tbody>
 									</table>
 								</div>
