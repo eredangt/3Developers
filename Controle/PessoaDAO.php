@@ -65,7 +65,7 @@
 		}
 
 
-		public function implementaRestricaoLogar(){
+		/*public function implementaRestricaoLogar(){
 			if(!isset($_SESSION['login'])){
 				echo '<SCRIPT type="text/javascript"> //not showing me this
 	                            alert("Logue para acessar esta página!");
@@ -73,7 +73,7 @@
 	                 </SCRIPT>';
 			}
 
-		}
+		}*/
 
 		public function implementaRestricaoDeslogar(){
 			if(isset($_SESSION['login'])){
@@ -119,36 +119,82 @@
 			}
 		}
 
-		public function implementaMenu(){
-			if (!isset($_SESSION['login']) || !isset($_SESSION['cargo'])) {
-				/*
-				echo "<script type='text/javascript'>alert('".
-							"Erro: implementaMenu".
-					"');</script>";
-				*/
-				echo '<li class="active"><a href="../Visualizacao/entrar.php">Login</a></li>';
+		public function implementaMenu($pagina){
+			if ($pagina == 'inicio') {
+				echo '<li class="active"><a href="../Visualizacao/index.php">Início</a></li>';
 			}
 			else {
+				echo '<li><a href="../Visualizacao/index.php">Início</a></li>';
+			}
+			if ($pagina == 'sobre') {
+				echo '<li class="active"><a href="../Visualizacao/about-us.php">Sobre nós</a></li>';
+			}
+			else {
+				echo '<li><a href="../Visualizacao/about-us.php">Sobre nós</a></li>';
+			}
+			if ($pagina == 'aulas') {
+				echo '<li class="active"><a href="../Visualizacao/aulas.php">Aulas</a></li>';
+			}
+			else {
+				echo '<li><a href="../Visualizacao/aulas.php">Aulas</a></li>';
+			}
+			if ($pagina == 'modalidades') {
+				echo '<li class="active"><a href="../Visualizacao/modalidades.php">Modalidades</a></li>';
+			}
+			else {
+				echo '<li><a href="../Visualizacao/modalidades.php">Modalidades</a></li>';
+			}
+			if ($pagina == 'equipe') {
+				echo '<li class="active"><a href="../Visualizacao/team.php">Nossa equipe</a></li>';
+			}
+			else {
+				echo '<li><a href="../Visualizacao/team.php">Nossa equipe</a></li>';
+			}
+			if ($pagina == 'imc') {
+				echo '<li class="active"><a href="../Visualizacao/imc.php">IMC</a></li>';
+			}
+			else {
+				echo '<li><a href="../Visualizacao/imc.php">IMC</a></li>';
+			}
+			if (!isset($SESSION['login']) and $pagina == 'login') {
+				echo '<li class="active"><a href="../Visualizacao/entrar.php">Login</a></li>';
+			}
+			else if (!isset($SESSION['login']) and $pagina != 'login') {
+				echo '<li><a href="../Visualizacao/entrar.php">Login</a></li>';
+			}
+			else if (isset($SESSION['login']) and $pagina == 'menu') {
 				echo '<li class="active"><a href="../Visualizacao/menu.php">Menu</a></li>';
-
-				if($_SESSION['cargo'] == 'instrutor'){
-					echo '<li><a href="../Visualizacao/cadastrar.php">Cadastrar</a>
-								<ul class="dropdown">
-									<li><a href="../Visualizacao/cadastrarpessoa.php">Pessoa</a></li>
-									<li><a href="../Visualizacao/cadastrartreino.php">Treino</a></li>
-									<li><a href="../Visualizacao/cadastrarequipamento.php">Equipamento</a></li>
-									<li><a href="../Visualizacao/cadastrarplano.php">Plano</a></li>
-								</ul>
-							</li>
-							<li><a href="../Visualizacao/listar.php">Listar</a>
-								<ul class="dropdown">
-									<li><a href="../Visualizacao/listarpessoas.php">Pessoas</a></li>
-									<li><a href="../Visualizacao/listartreinos.php">Treinos</a></li>
-									<li><a href="../Visualizacao/listarequipamentos.php">Equipamentos</a></li>
-									<li><a href="../Visualizacao/listarplanos.php">Planos</a></li>
-								</ul>
-							</li>';
+			}
+			else if (isset($SESSION['login']) and $pagina != 'menu') {
+				echo '<li><a href="../Visualizacao/menu.php">Menu</a></li>';
+			}
+			if(isset($_SESSION['cargo']) == 'instrutor') {
+				if ($pagina == 'cadastrar'){
+					echo '<li class="active"><a href="../Visualizacao/cadastrar.php">Cadastrar</a>';
 				}
+				else {
+					echo '<li><a href="../Visualizacao/cadastrar.php">Cadastrar</a>';
+				}
+				echo '<ul class="dropdown">
+						<li><a href="../Visualizacao/cadastrarpessoa.php">Pessoa</a></li>
+						<li><a href="../Visualizacao/cadastrartreino.php">Treino</a></li>
+						<li><a href="../Visualizacao/cadastrarequipamento.php">Equipamento</a></li>
+						<li><a href="../Visualizacao/cadastrarplano.php">Plano</a></li>
+						</ul>
+					</li>';
+				if($pagina == 'listar'){
+					echo '<li class="active"><a href="../Visualizacao/listar.php">Listar</a>';
+				}
+				else {
+					echo '<li><a href="../Visualizacao/listar.php">Listar</a>';
+				}
+				echo '<ul class="dropdown">
+						<li><a href="../Visualizacao/listarpessoas.php">Pessoas</a></li>
+							<li><a href="../Visualizacao/listartreinos.php">Treinos</a></li>
+							<li><a href="../Visualizacao/listarequipamentos.php">Equipamentos</a></li>
+							<li><a href="../Visualizacao/listarplanos.php">Planos</a></li>
+						</ul>
+					</li>';
 			}
 		}
 

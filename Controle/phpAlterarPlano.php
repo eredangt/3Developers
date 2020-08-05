@@ -7,7 +7,7 @@
 	
 	
 	$codigo = $_POST['hddCodigo'];
-	echo $codigo;
+	//echo $codigo;
 	if($_SESSION['cargo'] == 'instrutor'){
 		
 		$nomePlano = $_POST['txtPlano']; // nome plano
