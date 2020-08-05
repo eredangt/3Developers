@@ -77,7 +77,6 @@
                 <li><a href="./modalidades.php">Modalidades</a></li>
                 <li><a href="./team.php">Nossa equipe</a></li>
                 <li><a href="./imc.php">IMC</a></li>
-                <li><a href="./menu.php">Menu</a></li>
 				<?php
                    $pessoaDAO->implementaMenu();
                ?>
@@ -114,10 +113,9 @@
                             <li><a href="./modalidades.php">Modalidades</a></li>
                             <li><a href="./team.php">Nossa equipe</a></li>
                             <li><a href="./imc.php">IMC</a></li>
-                            <li><a href="./menu.php">Menu</a></li>
 							<?php
 			                   $pessoaDAO->implementaMenu();
-			               ?>
+			               	?>
                         </ul>
                     </nav>
                 </div>

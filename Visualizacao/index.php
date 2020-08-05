@@ -65,7 +65,7 @@
                 <li><a href="./imc.php">IMC</a></li>
 				<?php
                    $pessoaDAO->implementaMenu();
-               ?>
+               	?>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -103,8 +103,7 @@
                             <li><a href="./imc.php">IMC</a></li>
 							<?php
 			                   $pessoaDAO->implementaMenu();
-			               ?>
-
+			               	?>
                         </ul>
                     </nav>
                 </div>
@@ -311,11 +310,11 @@
                 </div>
             </div>
             <div class="row justify-content-center">
-					<?php 
+					<?php
 						$planoDAO->imprimePlanos($conexao);
 					?>
                 <!--<div class="col-lg-4 col-md-8">
-					
+
                     <div class="ps-item">
                         <h3>Mensal</h3>
                         <div class="pi-price">

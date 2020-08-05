@@ -100,7 +100,7 @@
                             <li class="active"><a href="./imc.php">IMC</a></li>
                             <?php
             				   $pessoaDAO->implementaMenu();
-            			   ?>
+                            ?>
                         </ul>
                     </nav>
                 </div>

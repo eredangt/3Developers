@@ -99,7 +99,7 @@
                             <li><a href="./modalidades.php">Modalidades</a></li>
                             <li><a href="./team.php">Nossa equipe</a></li>
                             <li><a href="./imc.php">IMC</a></li>
-                            <li><a href="./entrar.php">Login</a></li>
+                            <li class="active"><a href="./entrar.php">Login</a></li>
                         </ul>
                     </nav>
                 </div>

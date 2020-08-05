@@ -10,10 +10,10 @@
 		include_once('../Controle/PlanoDAO.php');
 		$conexao = new ConexaoBD();
 		$conexao = $conexao->abreConexao();
-		
+
 		$pessoaDAO = new PessoaDAO();
 		$pessoaDAO->implementaRestricao();
-		
+
 		$planoDAO = new PlanoDAO();
 		$codigo = $_GET['codigo'];
 	?>
@@ -66,7 +66,6 @@
                 <li><a href="./modalidades.php">Modalidades</a></li>
                 <li><a href="./team.php">Nossa equipe</a></li>
                 <li><a href="./imc.php">IMC</a></li>
-                <li><a href="./menu.php">Menu</a></li>
 				<?php
 				   $pessoaDAO->implementaMenu();
 			   	?>
@@ -103,7 +102,6 @@
                             <li><a href="./modalidades.php">Modalidades</a></li>
                             <li><a href="./team.php">Nossa equipe</a></li>
                             <li><a href="./imc.php">IMC</a></li>
-                            <li><a href="./menu.php">Menu</a></li>
 							<?php
 			                   $pessoaDAO->implementaMenu();
 			               ?>
