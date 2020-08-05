@@ -11,6 +11,7 @@
 	session_start();
 	$codigo='';
 	$codigo = $_POST['hddCodigo'];
+	
 	if($_SESSION['cargo'] == 'instrutor'){
 
 
