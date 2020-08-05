@@ -4,6 +4,7 @@
 <head>
 
     <?php
+        $pagina = 'modalidades';
 		session_start();
         include_once('../Persistencia/ConexaoBD.php');
         include_once('../Modelo/Pessoa.php');
@@ -56,15 +57,9 @@
         </div>
         <nav class="canvas-menu mobile-menu">
             <ul>
-                <li><a href="./index.php">Início</a></li>
-                <li><a href="./about-us.php">Sobre nós</a></li>
-                <li><a href="./aulas.php">Aulas</a></li>
-                <li><a href="./modalidades.php">Modalidades</a></li>
-                <li><a href="./team.php">Nossa equipe</a></li>
-                <li><a href="./imc.php">IMC</a></li>
                 <?php
-                   $pessoaDAO->implementaMenu();
-               ?>
+				   $pessoaDAO->implementaMenu($pagina);
+			   	?>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -94,15 +89,9 @@
                 <div class="col-lg-6">
                     <nav class="nav-menu">
                         <ul>
-                            <li><a href="./index.php">Início</a></li>
-                            <li><a href="./about-us.php">Sobre nós</a></li>
-                            <li><a href="./aulas.php">Aulas</a></li>
-                            <li class="active"><a href="./modalidades.php">Modalidades</a></li>
-                            <li><a href="./team.php">Nossa equipe</a></li>
-                            <li><a href="./imc.php">IMC</a></li>
                             <?php
-                               $pessoaDAO->implementaMenu();
-                           ?>
+            				   $pessoaDAO->implementaMenu($pagina);
+            			   	?>
                         </ul>
                     </nav>
                 </div>
@@ -288,7 +277,7 @@
         </div>
     </div>
     <!-- Search model end -->
-    
+
     <!-- Js Plugins -->
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/masonry.pkgd.min.js"></script>

@@ -2,6 +2,7 @@
 <html lang="zxx">
 <head>
 	<?php
+		$pagina = 'cadastrar';
 		session_start();
 		include_once('../Persistencia/ConexaoBD.php');
 		include_once('../Modelo/Pessoa.php');
@@ -54,14 +55,8 @@
         </div>
         <nav class="canvas-menu mobile-menu">
             <ul>
-                <li><a href="./index.php">Início</a></li>
-                <li><a href="./about-us.php">Sobre nós</a></li>
-                <li><a href="./aulas.php">Aulas</a></li>
-                <li><a href="./modalidades.php">Modalidades</a></li>
-                <li><a href="./team.php">Nossa equipe</a></li>
-                <li><a href="./imc.php">IMC</a></li>
 				<?php
-				   $pessoaDAO->implementaMenu();
+				   $pessoaDAO->implementaMenu($pagina);
 			   ?>
             </ul>
         </nav>
@@ -90,14 +85,8 @@
                 <div class="col-lg-6">
                     <nav class="nav-menu">
                         <ul>
-                            <li><a href="./index.php">Início</a></li>
-                            <li><a href="./about-us.php">Sobre nós</a></li>
-                            <li><a href="./aulas.php">Aulas</a></li>
-                            <li><a href="./modalidades.php">Modalidades</a></li>
-                            <li><a href="./team.php">Nossa equipe</a></li>
-                            <li><a href="./imc.php">IMC</a></li>
 							<?php
-			                   $pessoaDAO->implementaMenu();
+			                   $pessoaDAO->implementaMenu($pagina);
 			               ?>
                         </ul>
                     </nav>
@@ -158,15 +147,15 @@
 
                 <div class="col-lg-6">
                     <div class="leave-comment">
-                        <form action="#" method="post" name="frmLogin">
+                        <form action="../Controle/phpCadastrarEquipamento.php" method="post" name="frmLoginEquip">
                             <span id="spanSpecial">Nome do Equipamento</span>
-                            <input type="text" name="txtEquiq" placeholder="Digite o nome do equipamento">
+                            <input type="text" name="txtEquipe" placeholder="Digite o nome do equipamento">
                             <span id="spanSpecial">Quantidade do Equipamento</span>
                             <input type="number" name="txtQuant" placeholder="Digite a quantidade em estoque">
                             <span id="spanSpecial">Marca do Equipamento</span>
                             <input type="text" name="txtMarca" placeholder="Digite o nome da marca do equipamento">
                             <span id="spanSpecial">Ano do Equipamento</span>
-                            <input type="date" name="txtData">
+                            <input type="number" name="txtData" min="2000">
                             <button type="submit">Cadastrar</button>
                         </form>
                     </div>

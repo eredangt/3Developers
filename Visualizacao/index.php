@@ -4,6 +4,7 @@
 <head>
 
 	<?php
+		$pagina = 'inicio';
 		session_start();
 		include_once('../Persistencia/ConexaoBD.php');
         include_once('../Controle/PessoaDAO.php');
@@ -57,14 +58,8 @@
         </div>
         <nav class="canvas-menu mobile-menu">
             <ul>
-                <li><a href="./index.php">Início</a></li>
-                <li><a href="./about-us.php">Sobre nós</a></li>
-                <li><a href="./aulas.php">Aulas</a></li>
-                <li><a href="./modalidades.php">Modalidades</a></li>
-                <li><a href="./team.php">Nossa equipe</a></li>
-                <li><a href="./imc.php">IMC</a></li>
 				<?php
-                   $pessoaDAO->implementaMenu();
+                   $pessoaDAO->implementaMenu($pagina);
                	?>
             </ul>
         </nav>
@@ -95,14 +90,8 @@
                 <div class="col-lg-6">
                     <nav class="nav-menu">
                         <ul>
-                            <li class="active"><a href="./index.php">Início</a></li>
-                            <li><a href="./about-us.php">Sobre nós</a></li>
-                            <li><a href="./aulas.php">Aulas</a></li>
-                            <li><a href="./modalidades.php">Modalidades</a></li>
-                            <li><a href="./team.php">Nossa equipe</a></li>
-                            <li><a href="./imc.php">IMC</a></li>
 							<?php
-			                   $pessoaDAO->implementaMenu();
+			                   $pessoaDAO->implementaMenu($pagina);
 			               	?>
                         </ul>
                     </nav>
