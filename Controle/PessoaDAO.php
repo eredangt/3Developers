@@ -129,7 +129,7 @@
 				echo '<li class="active"><a href="../Visualizacao/entrar.php">Login</a></li>';
 			}
 			else {
-				//echo '<li class="active"><a href="../Visualizacao/menu.php">Menu</a></li>';
+				echo '<li class="active"><a href="../Visualizacao/menu.php">Menu</a></li>';
 
 				if($_SESSION['cargo'] == 'instrutor'){
 					echo '<li><a href="../Visualizacao/cadastrar.php">Cadastrar</a>
