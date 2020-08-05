@@ -7,28 +7,31 @@
 		include_once('../Persistencia/ConexaoBD.php');
 		include_once('../Modelo/Pessoa.php');
 		include_once('../Controle/PessoaDAO.php');
+		
 		include_once('../Modelo/Equipamento.php');
 		include_once('../Controle/EquipamentoDAO.php');
+		
 		$conexao = new ConexaoBD();
 		$conexao = $conexao->abreConexao();
 		$pessoaDAO = new PessoaDAO();
+		$pessoaDAO->implementaRestricao();
 		
 		$equipamentoDAO = new EquipamentoDAO();
-		$pessoaDAO->implementaRestricao();
+		$codigo = $_GET['codigo'];
 	?>
     <meta charset="UTF-8">
     <meta name="description" content="Gym Template">
     <meta name="keywords" content="Gym, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Gym | Listar Equipamentos</title>
+    <title>Gym | Alterar Equipamento</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap" rel="stylesheet">
 
-	<!-- Css Styles -->
-    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
+    <!-- Css Styles -->
+	<link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="../css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="../css/flaticon.css" type="text/css">
     <link rel="stylesheet" href="../css/owl.carousel.min.css" type="text/css">
@@ -43,30 +46,6 @@
     <script src="../js/jquery.magnific-popup.min.js"></script>
     <script src="../js/jquery.barfiller.js"></script>
     <script src="../js/jquery.slicknav.js"></script>
-
-    <script>
-		function myFunction() {
-			// Declare variables
-			var input, filter, table, tr, td, i;
-			input = document.getElementById("myInput");
-			filter = input.value.toUpperCase();
-			table = document.getElementById("myTable");
-			tr = table.getElementsByTagName("tr");
-
-			// Loop through all table rows, and hide those who don't match the search query
-			for (i = 0; i < tr.length; i++) {
-				td = tr[i].getElementsByTagName("td")[0];
-				if (td) {
-					if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-						tr[i].style.display = "";
-					} else {
-						tr[i].style.display = "none";
-					}
-				}
-			}
-		}
-	</script>
-
 </head>
 
 <body>
@@ -83,10 +62,15 @@
         </div>
         <nav class="canvas-menu mobile-menu">
             <ul>
-            <li><a href="./index.php">Início</a></li>
+                <li><a href="./index.php">Início</a></li>
+                <li><a href="./about-us.php">Sobre nós</a></li>
+                <li><a href="./aulas.php">Aulas</a></li>
+                <li><a href="./modalidades.php">Modalidades</a></li>
+                <li><a href="./team.php">Nossa equipe</a></li>
+                <li><a href="./imc.php">IMC</a></li>
 				<?php
 				   $pessoaDAO->implementaMenu($pagina);
-			   	?>
+			   ?>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -114,9 +98,15 @@
                 <div class="col-lg-6">
                     <nav class="nav-menu">
                         <ul>
+                            <li><a href="./index.php">Início</a></li>
+                            <li><a href="./about-us.php">Sobre nós</a></li>
+                            <li><a href="./aulas.php">Aulas</a></li>
+                            <li><a href="./modalidades.php">Modalidades</a></li>
+                            <li><a href="./team.php">Nossa equipe</a></li>
+                            <li><a href="./imc.php">IMC</a></li>
 							<?php
-							   $pessoaDAO->implementaMenu($pagina);
-						   	?>
+			                   $pessoaDAO->implementaMenu($pagina);
+			               ?>
                         </ul>
                     </nav>
                 </div>
@@ -145,11 +135,11 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb-text">
-                        <h2>LISTAR EQUIPAMENTOS</h2>
+                        <h2>ALTERAR EQUIPAMENTO</h2>
                         <div class="bt-option">
                             <a href="./index.php">Início</a>
                             <a href="./listar.php">Listar</a>
-                            <span>Listar Equipamentos</span>
+                            <span>Alterar Equipamento</span>
                         </div>
                     </div>
                 </div>
@@ -162,10 +152,11 @@
     <section class="contact-section spad">
         <div class="container">
 			<div class="section-title contact-title">
-						<span>Visualize os equipamentos cadastrados</span>
+						<span>Alterar Equipamento</span>
+						<h2>Altere e seja o melhor para seus clientes!</h2>
 					</div>
             <div class="row">
-				<div class="col-lg-12 col-md-12">
+				<div class="col-lg-6 col-md-6">
                     <div class="class-item">
                         <div class="ci-pic">
                             <img src="../img/clients.jpg" alt="">
@@ -173,39 +164,20 @@
                     </div>
                 </div>
 
-                <div class="col-lg-12">
+                <div class="col-lg-6">
                     <div class="leave-comment">
-                        <form action="#" method="post" name="frmLogin">
-                            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Procurar por nome do Equipamento">
+                        <form action="../Controle/phpAlterarEquipamento.php" method="post" name="frmLoginEquipAltera">
+							<input type="hidden" name="hddCodigo" value="<?php echo $codigo; ?>">
+                            <span id="spanSpecial">Nome do Equipamento</span>
+                            <input type="text" name="txtEquipe" value="<?php echo $equipamentoDAO->pegaNomeEquip($codigo, $conexao); ?>" >
+                            <span id="spanSpecial">Quantidade do Equipamento</span>
+                            <input type="number" name="txtQuant" value="<?php echo $equipamentoDAO->pegaQtdEquip($codigo, $conexao); ?>" >
+                            <span id="spanSpecial">Marca do Equipamento</span>
+                            <input type="text" name="txtMarca" value="<?php echo $equipamentoDAO->pegaMarca($codigo, $conexao); ?>" >
+                            <span id="spanSpecial">Ano do Equipamento</span>
+                            <input type="number" name="txtData" min="2000" value="<?php echo $equipamentoDAO->pegaAno($codigo, $conexao); ?>">
+                            <button type="submit">Alterar</button>
                         </form>
-                        <div class="row">
-							<div class="col-lg-12">
-								<div class="class-timetable">
-									<table id="myTable">
-										<thead>
-										<tr>
-											<!--<th>Para ativar coluna diferente</th>-->
-											<th>Nome</th>
-                                            <th>Identificador</th>
-											<th>Quantidade</th>
-											<th>Marca</th>
-                                            <th>Ano</th>
-											<th>Alterar</th>
-											<th>Excluir</th>
-										</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<?php
-													$equipamentoDAO->listarEquipamentos($conexao);
-												?>
-											</tr>
-
-										</tbody>
-									</table>
-								</div>
-							</div>
-                        </div>
                     </div>
                 </div>
             </div>
