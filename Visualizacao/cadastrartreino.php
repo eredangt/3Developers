@@ -147,7 +147,7 @@
 
                 <div class="col-lg-6">
                     <div class="leave-comment">
-                        <form action="#" method="post" name="frmLogin">
+                        <form action="../Controle/phpCadastrarTreino.php" method="post" name="frmLoginCadTreino">
                             <span id="spanSpecial">Tipo de Treino</span>
                             <select name="selecao" id="selectCadastroTreino" class="meuSelect">
 			                    <option value="A" id="optionCadastro">Treino A</option>
