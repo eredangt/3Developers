@@ -4,12 +4,12 @@
 	class PlanoDAO{
 
 		public function __construct(){}
-		
+
 		public function imprimePlanos($conexao){
 			$sql = 'SELECT * FROM Plano ORDER BY numMeses';
 			$tabela = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
 
-			while($linha=mysqli_fetch_row($tabela)){
+			while($linha = mysqli_fetch_row($tabela)){
 				echo '<div class="col-lg-4 col-md-8">
 							<div class="ps-item">
 							<h3>'.htmlentities($linha[1]).'</h3>
@@ -25,7 +25,7 @@
 							</ul>
 						</div>
 						</div>';
-						
+
 					}else if($linha[2] >= 6 and $linha[2] <= 10){
 						echo '<ul>
 								<li>Utilização do espaço para treino.</li>
@@ -49,12 +49,12 @@
 					}
 			}
 		}
-		
+
 		public function listarPlanos($conexao){
 			$sql = 'SELECT * FROM Plano';
 			$tabela = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
 
-			while($linha=mysqli_fetch_row($tabela)){
+			while($linha = mysqli_fetch_row($tabela)){
 				if($linha[0]%2 == 0){
 					echo '<tr>
 							<td class="hover-dp ts-meta"><h5>'.htmlentities($linha[1]).'</h5></td>
@@ -75,68 +75,76 @@
 				}
 			}
 		}
-		
+
 		public function pegaNomePlano($codigo, $conexao){
 			$sql = "SELECT nome FROM Plano WHERE idPlano = '".$codigo."';";
+
 			$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+
 			$meuNome = '';
+
 			while ($linha = mysqli_fetch_row($tabela)) {
 				$meuNome = $linha[0];
 			}
 			echo $meuNome;
 		}
-		
+
 		public function pegaNumMeses($codigo, $conexao){
 			$sql = "SELECT numMeses FROM Plano WHERE idPlano = '".$codigo."';";
+
 			$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+
 			$numMeses = '';
+
 			while ($linha = mysqli_fetch_row($tabela)) {
 				$numMeses = $linha[0];
 			}
 			echo $numMeses;
 		}
-		
+
 		public function pegaValor($codigo, $conexao){
 			$sql = "SELECT valor FROM Plano WHERE idPlano = '".$codigo."';";
+
 			$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+
 			$valorPlano = '';
+
 			while ($linha = mysqli_fetch_row($tabela)) {
 				$valorPlano = $linha[0];
 			}
 			echo $valorPlano;
 		}
-		
+
 		public function addPlano($plano, $con){
             $sql = "INSERT INTO Plano(nome, numMeses, valor)
                     VALUES('".$plano->getNomePlano()."','".$plano->getNumMeses()."','".$plano->getValor()."');";
 
-            echo $sql;
-            $resultadoP = mysqli_query($con,$sql) or die(mysqli_error($con));
-            if($resultadoP == true){
+            $resultado = mysqli_query($con,$sql) or die(mysqli_error($con));
+
+            if($resultado == true){
                 //echo 'Plano cadastrado.';
                 echo '<SCRIPT type="text/javascript"> //not showing me this
 							alert("Plano cadastrado com sucesso!");
 							window.location.replace("../Visualizacao/listarplanos.php");
-					</SCRIPT>'; 
+					</SCRIPT>';
             }else{
                 echo 'Algo ocorreu: ' . mysqli_error($con);
             }
         }
 
         public function atualizarPlano($nomePlano, $qtdMeses, $valorPlano, $codigo, $con){
-			$sql = "UPDATE Plano SET nome = '".$nomePlano."',
-									 numMeses = '".$qtdMeses."',
-									 valor = '".$valorPlano."'
-					WHERE idPlano = '".$codigo."';
-			";
-			$resultadoP = mysqli_query($con,$sql) or die(mysqli_error($con));
+			$sql = "UPDATE Plano SET nome = '".$nomePlano."', numMeses = '".$qtdMeses."',
+					valor = '".$valorPlano."' WHERE idPlano = '".$codigo."';";
+					
+			$resultado = mysqli_query($con,$sql) or die(mysqli_error($con));
+
 			// VERIFICA SE TUDO DEU CERTO
-			if ($resultadoP == true){
+			if ($resultado == true){
 				//echo 'Plano alterado com sucesso';
 				echo '<SCRIPT type="text/javascript"> //not showing me this
 							alert("Plano alterado com sucesso!");
 							window.location.replace("../Visualizacao/listarplanos.php");
-					</SCRIPT>'; 
+					</SCRIPT>';
 			}else{
 				echo '<script>alert("Problema ao alterar Plano no banco de dados");</script>';
 				echo 'O erro que aconteceu foi este: ' . mysqli_error($con).'<br>';

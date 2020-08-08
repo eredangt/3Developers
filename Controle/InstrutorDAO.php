@@ -7,19 +7,18 @@
 		public function __construct(){}
 
         public function addInstrutor($instrutor, $con, $pegaCPF){
-            $sql="SELECT idPessoa FROM PESSOA WHERE CPF ='".$pegaCPF."';";
-            $tabela=mysqli_query($con,$sql) or die(mysqli_error($con));
+            $sql = "SELECT idPessoa FROM PESSOA WHERE CPF = '".$pegaCPF."';";
+            $tabela = mysqli_query($con,$sql) or die(mysqli_error($con));
 
-            while($linha=mysqli_fetch_row($tabela)){
-                $COD_Instrutor= $linha[0];
+            while($linha = mysqli_fetch_row($tabela)){
+                $COD_Instrutor = $linha[0];
             }
             $sql = "INSERT INTO Instrutor(Pessoa_idPessoa, salario, Carga_horaria, imagem)
-                    VALUES('".$COD_Instrutor."','".$instrutor->getSalario()."','".$instrutor->getCH()."','".$instrutor->getImagem()."');";
+                    VALUES('".$COD_Instrutor."','".$instrutor->getSalario()."',
+					'".$instrutor->getCH()."','".$instrutor->getImagem()."');";
 
-            //echo $sql;
-            $resultadoI = mysqli_query($con,$sql) or die(mysqli_error($con));
-            if($resultadoI == true){
-                //echo 'Instrutor cadastrado.';
+            $resultado = mysqli_query($con,$sql) or die(mysqli_error($con));
+            if($resultado == true){
                 echo '<SCRIPT type="text/javascript"> //not showing me this
 								alert("Instrutor inserido com sucesso!");
 								window.location.replace("../Visualizacao/listarpessoas.php");
@@ -36,9 +35,9 @@
 											imagem = '".$imagem."'
 					WHERE Pessoa_idPessoa = '".$codigo."';
 			";
-			$resultadoC = mysqli_query($con,$sql) or die(mysqli_error($con));
+			$resultado = mysqli_query($con,$sql) or die(mysqli_error($con));
 			// VERIFICA SE TUDO DEU CERTO
-			if ($resultadoC == true){
+			if ($resultado == true){
 				//echo 'Instrutor alterado com sucesso';
 				echo '<SCRIPT type="text/javascript"> //not showing me this
 							alert("Instrutor alterado com sucesso!");

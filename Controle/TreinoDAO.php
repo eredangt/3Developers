@@ -11,10 +11,8 @@
                     VALUES('".$treino->getTreinoIdPessoa()."','".$treino->getTreinoIdFuncionario()."','".$treino->getTreinoIdEquipamento()."',
                     '".$treino->getTipo()."','".$treino->getSerie()."','".$treino->getRepeticoes()."','".$treino->getPeso()."');";
 
-            echo $sql . '<br>';
-            $resultadoT = mysqli_query($con,$sql) or die(mysqli_error($con));
-            if($resultadoT == true){
-                //echo 'Treino cadastrado.';
+            $resultado = mysqli_query($con,$sql) or die(mysqli_error($con));
+            if($resultado == true){
 				echo '<SCRIPT type="text/javascript"> //not showing me this
 								alert("Treino cadastrado com sucesso");
 								window.location.replace("../Visualizacao/listartreinos.php");
@@ -28,16 +26,13 @@
 			$sql = "UPDATE Treino SET Cliente_Pessoa_idPessoa = '".$idPessoaA."',
 									  Funcionario_Pessoa_idPessoa = '".$idFuncionarioA."',
 									  Equipamento_idEquipamento = '".$idEquipamentoA."',
-									  Tipo_treino = '".$tipoA."',
-									  serie = '".$serieA."',
-									  repeticoes = '".$repeticoesA."',
-									  peso = '".$pesoA."'
-					WHERE idTreino = '".$codigo."';
-			";
-			$resultadoT = mysqli_query($con,$sql) or die(mysqli_error($con));
+									  Tipo_treino = '".$tipoA."', serie = '".$serieA."',
+									  repeticoes = '".$repeticoesA."', peso = '".$pesoA."'
+					WHERE idTreino = '".$codigo."';";
+
+			$resultado = mysqli_query($con,$sql) or die(mysqli_error($con));
 			// VERIFICA SE TUDO DEU CERTO
-			if ($resultadoT == true){
-				//echo 'Treino alterado com sucesso';
+			if ($resultado == true){
 				echo '<SCRIPT type="text/javascript"> //not showing me this
 								alert("Treino alterado com sucesso");
 								window.location.replace("../Visualizacao/listartreinos.php");
@@ -49,95 +44,95 @@
 			}
 		}
 
-		public function selecionarPessoa($codigo, $conexao, $tabela) {
-			$sqlP = "SELECT A.Pessoa_idPessoa, P.nome, P.CPF FROM ".$tabela." AS A, Pessoa AS P WHERE A.Pessoa_idPessoa=P.idPessoa";
+		public function selecionarPessoa($codigo, $conexao, $tabelaBD) {
+			$sql = "SELECT '.$tabelaBD.'_Pessoa_idPessoa FROM Treino WHERE idTreino='.$codigo.';";
 
-			$sqlT = "SELECT '.$tabela.'_Pessoa_idPessoa FROM Treino WHERE idTreino='.$codigo.';";
+			$tabela = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
 
-			$tabelaP = mysqli_query($conexao,$sqlP) or die(mysqli_error($conexao));
-
-			$tabelaT = mysqli_query($conexao,$sqlT) or die(mysqli_error($conexao));
-
-			while($linhaT=mysqli_fetch_row($tabelaT)){
-				$meuIdPessoa = $linhaT[0];
+			while($linha = mysqli_fetch_row($tabela)){
+				$meuIdPessoa = $linha[0];
 			}
 
-			while($linhaP=mysqli_fetch_row($tabelaP)){
-				if ($meuIdPessoa == $linhaP[0]){
-					echo '<option value="'.htmlentities($linhaP[0]).' selected >'.htmlentities($linhaP[2]).' - '.htmlentities($linhaP[1]).'</option>';
+			$sql = "SELECT A.Pessoa_idPessoa, P.nome, P.CPF FROM ".$tabelaBD." AS A, Pessoa AS P WHERE A.Pessoa_idPessoa=P.idPessoa";
+
+			$tabela = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+
+			while($linha = mysqli_fetch_row($tabela)){
+				if ($meuIdPessoa == $linha[0]){
+					echo '<option value="'.htmlentities($linha[0]).' selected >'.htmlentities($linha[2]).' - '.htmlentities($linha[1]).'</option>';
 				}
-				echo '<option value="'.htmlentities($linhaP[0]).'">'.htmlentities($linhaP[2]).' - '.htmlentities($linhaP[1]).'</option>';
+				echo '<option value="'.htmlentities($linha[0]).'">'.htmlentities($linha[2]).' - '.htmlentities($linha[1]).'</option>';
 			}
 		}
 
 		// PEGA VALOR SETADO NO BD PRO SELECT
-		public function pegaIdPessoa($codigo, $conexao, $tabela){
-			if($tabela == 'Instrutor'){
-				$sqlE = "SELECT Funcionario_Pessoa_idPessoa FROM Treino WHERE idTreino=".$codigo."";
+		public function pegaIdPessoa($codigo, $conexao, $tabelaBD){
+			if($tabelaBD == 'Instrutor'){
+				$sql = "SELECT Funcionario_Pessoa_idPessoa FROM Treino WHERE idTreino=".$codigo."";
 			}else{
-				$sqlE = "SELECT Cliente_Pessoa_idPessoa FROM Treino WHERE idTreino=".$codigo."";
+				$sql = "SELECT Cliente_Pessoa_idPessoa FROM Treino WHERE idTreino=".$codigo."";
 			}
 
-			// Pego o id cliente do treino passado
-			//$sqlE = "SELECT ".$tabela."_Pessoa_idPessoa FROM Treino WHERE idTreino='".$codigo."';";
-			$tabelaP = mysqli_query($conexao,$sqlE) or die(mysqli_error($conexao));
+			$tabela = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
 
-			while($linhaS=mysqli_fetch_row($tabelaP)){
-				$meuId = $linhaS[0];
+			while($linha = mysqli_fetch_row($tabela)){
+				$meuId = $linha[0];
 			}
 
-			$sqlZ = "SELECT C.Pessoa_idPessoa, P.nome, P.CPF, P.idPessoa FROM ".$tabela." as C, Pessoa as P WHERE
+			$sql = "SELECT C.Pessoa_idPessoa, P.nome, P.CPF, P.idPessoa FROM ".$tabelaBD." as C, Pessoa as P WHERE
 			C.Pessoa_idPessoa=P.idPessoa";
 
-			$tabelaZ = mysqli_query($conexao,$sqlZ) or die(mysqli_error($conexao));
-			while($linhaZ=mysqli_fetch_row($tabelaZ)){
-					if(isset($meuId) && $meuId == $linhaZ[0]){
-						echo '<option value='.$linhaZ[0].' selected >'.$linhaZ[2].' - '.$linhaZ[1].'ID: '.$linhaZ[0].'</option>';
+			$tabela = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+			while($linha = mysqli_fetch_row($tabela)){
+					if($meuId == $linha[0]){
+						echo '<option value='.$linha[0].' selected >'.$linha[2].' - '.$linha[1].'ID: '.$linha[0].'</option>';
 					}else{
-						echo '<option value='.$linhaZ[0].' >'.$linhaZ[2].' - '.$linhaZ[1].'ID: '.$linhaZ[0].'</option>';
+						echo '<option value='.$linha[0].' >'.$linha[2].' - '.$linha[1].'ID: '.$linha[0].'</option>';
 					}
 				}
 
 		}
 
-		public function selecionarIdPessoa($conexao, $tabela){
-			$sqlZ = "SELECT C.Pessoa_idPessoa, P.nome, P.CPF, P.idPessoa FROM ".$tabela." as C, Pessoa as P WHERE
+		public function selecionarIdPessoa($conexao, $tabelaBD){
+			$sql = "SELECT C.Pessoa_idPessoa, P.nome, P.CPF, P.idPessoa FROM ".$tabelaBD." as C, Pessoa as P WHERE
 			C.Pessoa_idPessoa=P.idPessoa";
 
-			$tabelaZ = mysqli_query($conexao,$sqlZ) or die(mysqli_error($conexao));
-			while($linhaZ=mysqli_fetch_row($tabelaZ)){
-				echo '<option value='.$linhaZ[0].' >'.$linhaZ[2].' - '.$linhaZ[1].'</option>';
+			$tabela = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+
+			while($linha = mysqli_fetch_row($tabela)){
+				echo '<option value='.$linha[0].' >'.$linha[2].' - '.$linha[1].'</option>';
 			}
 		}
 
 		public function selecionarIdEquipamento($conexao) {
-			$sqlE = "SELECT idEquipamento, Nome FROM Equipamento";
+			$sql = "SELECT idEquipamento, Nome FROM Equipamento";
 
-			$tabelaE = mysqli_query($conexao,$sqlE) or die(mysqli_error($conexao));
+			$tabela = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
 
-			while($linhaE=mysqli_fetch_row($tabelaE)){
-				echo '<option value="'.htmlentities($linhaE[0]).'">'.htmlentities($linhaE[0]).' - '.htmlentities($linhaE[1]).'</option>';
+			while($linha=mysqli_fetch_row($tabela)){
+				echo '<option value="'.htmlentities($linha[0]).'">'.htmlentities($linha[0]).' - '.htmlentities($linha[1]).'</option>';
 			}
 		}
 
 		//rever
 		public function selecionarEquipamento($conexao, $codigo) {
 
-			$sqlS = "SELECT Equipamento_idEquipamento FROM Treino WHERE idTreino=".$codigo.";";
-			$tabelaS = mysqli_query($conexao,$sqlS) or die(mysqli_error($conexao));
+			$sql = "SELECT Equipamento_idEquipamento FROM Treino WHERE idTreino=".$codigo.";";
+			$tabela = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
 
-			while($linhaS=mysqli_fetch_row($tabelaS)){
-				$meuIdEquipamento = $linhaS[0];
+			while($linha=mysqli_fetch_row($tabela)){
+				$meuIdEquipamento = $linha[0];
 			}
 
-			$sqlE = "SELECT idEquipamento, Nome FROM Equipamento";
-			$tabelaE = mysqli_query($conexao,$sqlE) or die(mysqli_error($conexao));
+			$sql = "SELECT idEquipamento, Nome FROM Equipamento";
 
-			while($linhaE=mysqli_fetch_row($tabelaE)){
-				if ($meuIdEquipamento == $linhaE[0]){
-					echo '<option value="'.htmlentities($linhaE[0]).' selected >'.htmlentities($linhaE[0]).' - '.htmlentities($linhaE[1]).'</option>';
+			$tabela = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+
+			while($linha=mysqli_fetch_row($tabela)){
+				if ($meuIdEquipamento == $linha[0]){
+					echo '<option value="'.htmlentities($linha[0]).' selected >'.htmlentities($linha[0]).' - '.htmlentities($linha[1]).'</option>';
 				}
-				echo '<option value="'.htmlentities($linhaE[0]).'">'.htmlentities($linhaE[0]).' - '.htmlentities($linhaE[1]).'</option>';
+				echo '<option value="'.htmlentities($linha[0]).'">'.htmlentities($linha[0]).' - '.htmlentities($linha[1]).'</option>';
 			}
 		}
 
@@ -149,10 +144,10 @@
 
 			//executa o comando DELETE no banco de dados para o usuario que tem
 			//aquele codigo especifico
-			$resultadoT = mysqli_query($con, $sql) or die(mysqli_error($con));
+			$resultado = mysqli_query($con, $sql) or die(mysqli_error($con));
 
 			//avaliando o resultado
-			if ($resultadoT == true){
+			if ($resultado == true){
 				//echo 'Excluído Treino';
 				echo '<SCRIPT type="text/javascript"> //not showing me this
 								alert("Treino excluído com sucesso");
@@ -173,7 +168,7 @@
 			T.Peso, T.idTreino FROM Treino as T, Pessoa as P WHERE T.Cliente_Pessoa_idPessoa=P.idPessoa';
 			$tabela = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
 
-			while($linha=mysqli_fetch_row($tabela)){
+			while($linha = mysqli_fetch_row($tabela)){
 
 				echo '<tr>
 						<td class="hover-dp ts-meta"><h5>'.htmlentities($linha[2]).'</h5></td>
@@ -190,8 +185,11 @@
 
 		public function pegaTipo($codigo, $conexao){
 			$sql = "SELECT Tipo_treino FROM Treino WHERE idTreino = '".$codigo."';";
+
 			$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+
 			$tipo = '';
+
 			while ($linha = mysqli_fetch_row($tabela)) {
 				$tipo = $linha[0];
 			}
@@ -199,10 +197,12 @@
 		}
 
 		public function pegaSeries($codigo, $conexao) {
-			$sqlS = "SELECT Serie FROM Treino WHERE idTreino=".$codigo.";";
+			$sql = "SELECT Serie FROM Treino WHERE idTreino=".$codigo.";";
 
-			$tabela = mysqli_query($conexao, $sqlS) or die(mysqli_error($conexao));
+			$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+
 			$serie = '';
+
 			while ($linha = mysqli_fetch_row($tabela)) {
 				$serie = $linha[0];
 			}
@@ -211,10 +211,12 @@
 		}
 
 		public function pegaRepeticoes($codigo, $conexao) {
-			$sqlR = "SELECT Repeticoes FROM Treino WHERE idTreino=".$codigo.";";
+			$sql = "SELECT Repeticoes FROM Treino WHERE idTreino=".$codigo.";";
 
-			$tabela = mysqli_query($conexao, $sqlR) or die(mysqli_error($conexao));
+			$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+
 			$rep = '';
+
 			while ($linha = mysqli_fetch_row($tabela)) {
 				$rep = $linha[0];
 			}
@@ -223,10 +225,12 @@
 		}
 
 		public function pegaPeso($codigo, $conexao) {
-			$sqlP = "SELECT Peso FROM Treino WHERE idTreino=".$codigo.";";
+			$sql = "SELECT Peso FROM Treino WHERE idTreino=".$codigo.";";
 
-			$tabela = mysqli_query($conexao, $sqlP) or die(mysqli_error($conexao));
+			$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+
 			$peso = '';
+			
 			while ($linha = mysqli_fetch_row($tabela)) {
 				$peso = $linha[0];
 			}
