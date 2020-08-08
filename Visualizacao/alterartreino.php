@@ -156,7 +156,7 @@
                         <form action="../Controle/phpAlterarTreino.php" method="post" name="frmLoginCadTreino">
                             <input type="hidden" name="hddCodigo" value="<?php echo $codigo; ?>">
                             <span id="spanSpecial">Tipo de Treino</span>
-                            <?php $tipo = $treinoDAO->pegaTipo($codigo, $conexao);  echo 'oi'.$tipo;?>
+                            <?php $tipo = $treinoDAO->pegaTipo($conexao, $codigo);  echo 'oi'.$tipo;?>
                             <select name="selecao" id="selectCadastroTreino" class="meuSelect">
 			                    <option value="A" <?php if($tipo == 'A'){ echo 'selected';}?> id="optionCadastro" >Treino A</option>
 			                    <option value="B" <?php if($tipo == 'B'){ echo 'selected';}?> id="optionCadastro">Treino B</option>
@@ -166,14 +166,14 @@
 							<select name="idCliente" id="idCliente" class="meuSelect" required>
 								<?php
 									//$treinoDAO->selecionarPessoa($codigo, $conexao, "Cliente");
-									$treinoDAO->pegaIdPessoa($codigo, $conexao, "Cliente");
+									$treinoDAO->pegaIdPessoa($conexao, $codigo, "Cliente");
 								?>
 							</select>
                             <span id="spanSpecial">CPF e Nome do Funcionário</span>
 							<select name="idFunc" id="idFunc" class="meuSelect" required>
 								<?php
 									//$treinoDAO->selecionarPessoa($codigo, $conexao, "Instrutor");
-									$treinoDAO->pegaIdPessoa($codigo, $conexao, "Instrutor");
+									$treinoDAO->pegaIdPessoa($conexao, $codigo, "Instrutor");
 								?>
 							</select>
                             <span id="spanSpecial">Identificador do Equipamento | Nome</span>
@@ -183,13 +183,13 @@
 								?>
 							</select>
                             <span id="spanSpecial">Quantidade de Séries</span>
-                            <input type="number" name="txtSerie"  value="<?php echo $treinoDAO->pegaSeries($codigo, $conexao); ?>">
+                            <input type="number" name="txtSerie"  value="<?php echo $treinoDAO->pegaSeries($conexao, $codigo); ?>">
 
                             <span id="spanSpecial">Quantidade de Repetições</span>
-                            <input type="number" name="txtRep"  value="<?php echo $treinoDAO->pegaRepeticoes($codigo, $conexao); ?>">
+                            <input type="number" name="txtRep"  value="<?php echo $treinoDAO->pegaRepeticoes($conexao, $codigo); ?>">
 
                             <span id="spanSpecial">Peso</span>
-                            <input type="number" name="txtPeso"  value="<?php echo $treinoDAO->pegaPeso($codigo, $conexao); ?>">
+                            <input type="number" name="txtPeso"  value="<?php echo $treinoDAO->pegaPeso($conexao, $codigo); ?>">
                             <button type="submit">Alterar</button>
                         </form>
                     </div>

@@ -1,15 +1,10 @@
 <?php
 	include_once('../Persistencia/ConexaoBD.php');
-	// Persistence
 	class PessoaDAO{
 
 		public function __construct(){}
 
-		public function teste($pessoa){
-			echo $pessoa->getNome();
-		}
-
-		public function pegaImagem($codigo, $conexao){
+		public function pegaImagem($conexao, $codigo){
 			$sql = "SELECT imagem FROM Instrutor WHERE Pessoa_idPessoa = '".$codigo."';";
 			$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 			$img = '';
@@ -19,127 +14,160 @@
 			echo $img;
 		}
 
-		public function pegaCH($codigo, $conexao){
+		public function pegaCH($conexao, $codigo){
 			$sql = "SELECT carga_horaria FROM Instrutor WHERE Pessoa_idPessoa = '".$codigo."';";
+
 			$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+
 			$ch = '';
+
 			while ($linha = mysqli_fetch_row($tabela)) {
 				$ch = $linha[0];
 			}
 			echo $ch;
 		}
 
-		public function pegaSalario($codigo, $conexao){
+		public function pegaSalario($conexao, $codigo){
 			$sql = "SELECT salario FROM Instrutor WHERE Pessoa_idPessoa = '".$codigo."';";
-			//$sql = "SELECT salario FROM Instrutor WHERE Pessoa_idPessoa = $codigo";
+
 			$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+
 			$salario = '';
+
 			while ($linha = mysqli_fetch_row($tabela)) {
 				$salario = $linha[0];
 			}
 			echo $salario;
 		}
 
-		public function pegaCargo($codigo, $conexao){
+		public function pegaCargo($conexao, $codigo){
 			$sql = "SELECT Tipo_cargo FROM Pessoa WHERE idPessoa = '".$codigo."';";
+
 			$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+
 			$cargo = '';
+
 			while ($linha = mysqli_fetch_row($tabela)) {
 				$cargo = $linha[0];
 			}
 			return $cargo;
 		}
 
-		public function pegaSenha($codigo, $conexao){
+		public function pegaSenha($conexao, $codigo){
 			$sql = "SELECT senha FROM Pessoa WHERE idPessoa = '".$codigo."';";
+
 			$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+
 			$senha = '';
+
 			while ($linha = mysqli_fetch_row($tabela)) {
 				$senha = $linha[0];
 			}
 			echo $senha;
 		}
 
-		public function pegaEmail($codigo, $conexao){
+		public function pegaEmail($conexao, $codigo){
 			$sql = "SELECT E_MAIL FROM Pessoa WHERE idPessoa = '".$codigo."';";
+
 			$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+
 			$email = '';
+
 			while ($linha = mysqli_fetch_row($tabela)) {
 				$email = $linha[0];
 			}
 			echo $email;
 		}
 
-		public function pegaDataNasc($codigo, $conexao){
+		public function pegaDataNasc($conexao, $codigo){
 			$sql = "SELECT Data_nascimento FROM Pessoa WHERE idPessoa = '".$codigo."';";
+
 			$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+
 			$data = '';
+
 			while ($linha = mysqli_fetch_row($tabela)) {
 				$data = $linha[0];
 			}
 			echo $data;
 		}
 
-		public function pegaNumTelefone($codigo, $conexao){
+		public function pegaNumTelefone($conexao, $codigo){
 			$sql = "SELECT Telefone FROM Pessoa WHERE idPessoa = '".$codigo."';";
+
 			$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+
 			$tel = '';
+
 			while ($linha = mysqli_fetch_row($tabela)) {
 				$tel = $linha[0];
 			}
 			echo $tel;
 		}
 
-		public function pegaNome($codigo, $conexao){
+		public function pegaNome($conexao, $codigo){
 			$sql = "SELECT Nome FROM Pessoa WHERE idPessoa = '".$codigo."';";
+
 			$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+
 			$nome = '';
+
 			while ($linha = mysqli_fetch_row($tabela)) {
 				$nome = $linha[0];
 			}
 			echo $nome;
 		}
 
-		public function pegaCPF($codigo, $conexao){
+		public function pegaCPF($conexao, $codigo){
 			$sql = "SELECT CPF FROM Pessoa WHERE idPessoa = '".$codigo."';";
+
 			$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+
 			$cpf = '';
+
 			while ($linha = mysqli_fetch_row($tabela)) {
 				$cpf = $linha[0];
 			}
 			echo $cpf;
 		}
 
-		public function instrutorFoto($codigo, $conexao){
-			if($_SESSION['cargo'] == 'instrutor'){
-				$img = '';
-				$nome = '';
+		public function instrutorFoto($conexao, $codigo){
+			$img = '';
+			$nome = '';
+			$cargo = '';
 
-				$sql = 'SELECT P.nome, I.imagem FROM Pessoa as P, Instrutor as I WHERE P.idPessoa = '.$codigo.';';
-				$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+			$sql = 'SELECT P.nome, I.imagem, P.Tipo_cargo FROM Pessoa as P, Instrutor as I WHERE I.Pessoa_idPessoa = P.idPessoa AND P.idPessoa = '.$codigo.';';
+			$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
-				while ($linha = mysqli_fetch_row($tabela)) {
-					$nome = $linha[0];
-					$img = $linha[1];
-				}
+			while ($linha = mysqli_fetch_row($tabela)) {
+				$nome = $linha[0];
+				$img = $linha[1];
+				$cargo = $linha[2];
+			}
+			if($cargo == 'I'){
 				echo '<span id="spanSpecial">FOTO DO(A) INSTRUTOR(A) '.$nome.'</span>
 					<div class="ci-pic">
 						<img src="'.$img.'"></img>
 					</div>
 					<small class="smallCadastro">ARQUIVO: '.$img.'</small>';
 			}
+
 		}
 
 		public function selecionarPlano($conexao, $codigo) {
 			$sqlA = 'SELECT Plano_idPlano FROM Cliente WHERE Pessoa_idPessoa="'.$codigo.'";';
 
 			$tabelaA = mysqli_query($conexao,$sqlA) or die(mysqli_error($conexao));
-			while($linhaA=mysqli_fetch_row($tabelaA)){
+
+			while($linhaA = mysqli_fetch_row($tabelaA)){
 				$meuPlano = $linhaA[0];
 			}
+
 			$sqlP = 'SELECT * FROM Plano';
+
 			$tabelaP = mysqli_query($conexao,$sqlP) or die(mysqli_error($conexao));
-			while($linhaP=mysqli_fetch_row($tabelaP)){
+
+			while($linhaP = mysqli_fetch_row($tabelaP)){
 					if(isset($meuPlano) && $meuPlano == $linhaP[0]){
 						//echo "<option value='".$linhaP[0]."' ".$selected.">".$linhaP[1]."</option>";
 						echo '<option value='.$linhaP[0].' selected >'.$linhaP[1].'</option>';
@@ -151,9 +179,11 @@
 
 		public function listarPessoas($conexao){
 			$sql = 'SELECT * FROM Pessoa ORDER BY Nome ASC';
+
 			$tabela = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
 
-			while($linha=mysqli_fetch_row($tabela)){
+			$mensagem = "'Tem certeza que deseja excluir esta Pessoa?'";
+			while($linha = mysqli_fetch_row($tabela)){
 				if($linha[7]=='C'){
 					$cargo = 'Cliente';
 				}else{
@@ -168,7 +198,7 @@
 						<td class="hover-dp ts-meta"><h5>'.htmlentities($linha[4]).'</h5></td>
 						<td class="dark-bg hover-dp ts-meta"><h5>'.htmlentities($linha[5]).'</h5></td>
 						<td class="hover-dp ts-meta"><h5><center><a href="alterarpessoa.php?codigo='.$linha[0].'"><b>&#9997;</b></a></h5></td>
-						<td class="dark-bg hover-dp ts-meta"><h5><center><a href="phpExcluirPessoa.php?codigo='.$linha[0].'"><b>&#10006;</b></a></h5></td>
+						<td class="dark-bg hover-dp ts-meta"><h5><center><a href="../Controle/phpExcluirPessoa.php?codigo='.$linha[0].'" onclick="return confirm('.$mensagem.')"><b>&#10006;</b></a></h5></td>
 					</tr>';
 			}
 		}
@@ -217,11 +247,6 @@
 
 		public function implementaRodape(){
 			if (!isset($_SESSION['login'])) {
-				/*
-				echo "<script type='text/javascript'>alert('".
-							"Erro: implementaMenu".
-					"');</script>";
-				*/
 				echo '<li><a href="../Visualizacao/entrar.php">Login</a></li>';
 			}
 			else {
@@ -231,11 +256,6 @@
 
 		public function implementaBotao(){
 			if (!isset($_SESSION['login'])) {
-				/*
-				echo "<script type='text/javascript'>alert('".
-							"Erro: implementaMenu".
-					"');</script>";
-				*/
 				echo '<a href="../Visualizacao/entrar.php" class="primary-btn">Login</a>';
 			}
 			else {
@@ -292,7 +312,7 @@
 			else if (isset($_SESSION['login']) && $pagina != 'menu') {
 				echo '<li><a href="../Visualizacao/menu.php">Menu</a></li>';
 			}
-			if(isset($_SESSION['cargo']) == 'instrutor') {
+			if(isset($_SESSION['cargo']) && $_SESSION['cargo'] == 'instrutor') {
 				if ($pagina == 'cadastrar'){
 					echo '<li class="active"><a href="../Visualizacao/cadastrar.php">Cadastrar</a>';
 				}
@@ -340,23 +360,18 @@
 					}
 		}
 
-		public function addPessoa($pessoa, $con){
+		public function addPessoa($pessoa, $conexao){
 			$sql = "INSERT INTO Pessoa(CPF,Nome,Telefone,E_MAIL, Data_nascimento, senha, Tipo_cargo)
-			  VALUES('".$pessoa->getCPF()."','".$pessoa->getNome()."','".$pessoa->getTelefone()."','".$pessoa->getEmail()."','".$pessoa->getDataNascimento()."','".$pessoa->getSenha()."','".$pessoa->getCargo()."');";
-			echo $sql;
-			$resultadoP = mysqli_query($con,$sql) or die(mysqli_error($con));
-			if($resultadoP == true){
-				//echo 'Cadastrada pessoa.';
-				/*echo '<SCRIPT type="text/javascript"> //not showing me this
-								alert("Pessoa cadastrada com sucesso!");
-								window.location.replace("../Visualizacao/listarpessoas.php");
-						</SCRIPT>';*/
-			}else{
-				echo 'Algo ocorreu: ' . mysqli_error($con);
+			  VALUES('".$pessoa->getCPF()."','".$pessoa->getNome()."','".$pessoa->getTelefone()."','".$pessoa->getEmail()."','".$pessoa->getDataNascimento()."',
+			  '".$pessoa->getSenha()."','".$pessoa->getCargo()."');";
+
+			$resultado = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+			if($resultado == false){
+				echo 'Algo ocorreu: ' . mysqli_error($conexao);
 			}
 		}
 
-		public function atualizarPessoa($cpf, $nome, $telefone, $email, $dataNasc, $senha, $cargo, $codigo, $con){
+		public function atualizarPessoa($conexao, $codigo, $cpf, $nome, $telefone, $email, $dataNasc, $senha, $cargo){
 			$sql = "UPDATE Pessoa SET 	CPF = '".$cpf."',
 										Nome = '".$nome."',
 										Telefone = '".$telefone."',
@@ -366,25 +381,19 @@
 										Tipo_cargo = '".$cargo."'
 					WHERE idPessoa = '".$codigo."';
 			";
-			$resultado = mysqli_query($con,$sql) or die(mysqli_error($con));
-			if($resultado == true){
-				//echo 'Alterada a pessoa.';
-				/*echo '<SCRIPT type="text/javascript"> //not showing me this
-								alert("Pessoa alterada com sucesso!");
-								window.location.replace("../Visualizacao/listarpessoas.php");
-						</SCRIPT>';*/
-			}else{
-				echo 'Algo ocorreu: ' . mysqli_error($con);
+			$resultado = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+			if($resultado == false){
+				echo 'Algo ocorreu: ' . mysqli_error($conexao);
 			}
 		}
 
-		public function excluirPessoa($codigo, $con){
+		public function excluirPessoa($conexao, $codigo){
 			//criar a string sql que exclui o usuario do banco de dados
 			$sql = "DELETE FROM Pessoa WHERE idPessoa=".$codigo.";";
 
 			//executa o comando DELETE no banco de dados para o usuario que tem
 			//aquele codigo especifico
-			$resultado = mysqli_query($con, $sql) or die(mysqli_error($con));
+			$resultado = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
 			//avaliando o resultado
 			if ($resultado == true){
@@ -395,13 +404,13 @@
 						</SCRIPT>';
 			}else{
 				echo 'Problema ao apagar o registro no banco de dados <br>';
-				echo 'O erro que aconteceu foi este: ' . mysqli_error($con);
+				echo 'O erro que aconteceu foi este: ' . mysqli_error($conexao);
 				echo '<a href="../Visualizacao/menu.php"> MENU </a>';
 			}
 		}
 
 
-	public function implementaFuncionalidadesUsuario(){
+	public function implementaFuncionalidadesUsuario($conexao){
 		$mensagem = '';
 		//if(isset($_SESSION['cargo'])){
 			if((isset($_SESSION['login'])) && ($_SESSION['cargo'] == 'aluno')){
@@ -426,137 +435,110 @@
 										</div>
 									</div>
 									<div class="row">
-										<div class="col-lg-12">
-											<div class="class-timetable">
-												<table>
-													<thead>
-														<tr>
-															<th>Observa&ccedil;&oacute;es</th>
-															<th>Segunda-Feira</th>
-															<th>Ter&ccedil;a-Feira</th>
-															<th>Quarta-Feira</th>
-															<th>Quinta-Feira</th>
-															<th>Sexta-Feira</th>
-															<th>S&aacute;bado</th>
-															<th>Domingo</th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr>
-															<td class="class-time"></td>
-															<td class="dark-bg hover-bg ts-meta" data-tsmeta="a">
-																<h5>WEIGHT LOOSE</h5>
-																<span>RLefew D. Loee</span>
-															</td>
-															<td class="hover-bg ts-meta" data-tsmeta="b">
-																<h5>Cardio</h5>
-																<span>RLefew D. Loee</span>
-															</td>
-															<td class="dark-bg hover-bg ts-meta" data-tsmeta="c">
-																<h5>Yoga</h5>
-																<span>Keaf Shen</span>
-															</td>
-															<td class="hover-bg ts-meta" data-tsmeta="a">
-																<h5>Fitness</h5>
-																<span>Kimberly Stone</span>
-															</td>
-															<td class="dark-bg blank-td"></td>
-															<td class="hover-bg ts-meta" data-tsmeta="c">
-																<h5>Boxing</h5>
-																<span>Rachel Adam</span>
-															</td>
-															<td class="dark-bg hover-bg ts-meta" data-tsmeta="a">
-																<h5>Body Building</h5>
-																<span>Robert Cage</span>
-															</td>
-														</tr>
-														<tr>
-															<td class="class-time"></td>
-															<td class="blank-td"></td>
-															<td class="dark-bg hover-bg ts-meta" data-tsmeta="b">
-																<h5>Fitness</h5>
-																<span>Kimberly Stone</span>
-															</td>
-															<td class="hover-bg ts-meta" data-tsmeta="c">
-																<h5>WEIGHT LOOSE</h5>
-																<span>RLefew D. Loee</span>
-															</td>
-															<td class="dark-bg hover-bg ts-meta" data-tsmeta="a">
-																<h5>Cardio</h5>
-																<span>RLefew D. Loee</span>
-															</td>
-															<td class="hover-bg ts-meta" data-tsmeta="b">
-																<h5>Body Building</h5>
-																<span>Robert Cage</span>
-															</td>
-															<td class="dark-bg hover-bg ts-meta" data-tsmeta="c">
-																<h5>Karate</h5>
-																<span>Donald Grey</span>
-															</td>
-															<td class="blank-td"></td>
-														</tr>
-														<tr>
-															<td class="class-time"></td>
-															<td class="dark-bg hover-bg ts-meta" data-tsmeta="a">
-																<h5>Boxing</h5>
-																<span>Rachel Adam</span>
-															</td>
-															<td class="hover-bg ts-meta" data-tsmeta="b">
-																<h5>Karate</h5>
-																<span>Donald Grey</span>
-															</td>
-															<td class="dark-bg hover-bg ts-meta" data-tsmeta="c">
-																<h5>Body Building</h5>
-																<span>Robert Cage</span>
-															</td>
-															<td class="blank-td"></td>
-															<td class="dark-bg hover-bg ts-meta" data-tsmeta="b">
-																<h5>Yoga</h5>
-																<span>Keaf Shen</span>
-															</td>
-															<td class="hover-bg ts-meta" data-tsmeta="c">
-																<h5>Cardio</h5>
-																<span>RLefew D. Loee</span>
-															</td>
-															<td class="dark-bg hover-bg ts-meta" data-tsmeta="a">
-																<h5>Fitness</h5>
-																<span>Kimberly Stone</span>
-															</td>
-														</tr>
-														<tr>
-															<td class="class-time"></td>
-															<td class="hover-bg ts-meta" data-tsmeta="a">
-																<h5>Cardio</h5>
-																<span>RLefew D. Loee</span>
-															</td>
-															<td class="dark-bg blank-td"></td>
-															<td class="hover-bg ts-meta" data-tsmeta="c">
-																<h5>Boxing</h5>
-																<span>Rachel Adam</span>
-															</td>
-															<td class="dark-bg hover-bg ts-meta" data-tsmeta="a">
-																<h5>Yoga</h5>
-																<span>Keaf Shen</span>
-															</td>
-															<td class="hover-bg ts-meta" data-tsmeta="b">
-																<h5>Karate</h5>
-																<span>Donald Grey</span>
-															</td>
-															<td class="dark-bg hover-bg ts-meta" data-tsmeta="c">
-																<h5>Boxing</h5>
-																<span>Rachel Adam</span>
-															</td>
-															<td class="hover-bg ts-meta" data-tsmeta="a">
-																<h5>WEIGHT LOOSE</h5>
-																<span>RLefew D. Loee</span>
-															</td>
-														</tr>
-													</tbody>
-												</table>
+									  <div class="col-lg-12">
+										<div class="box">
+                							<div class="box-linha">
+												<div class="box-celula">
+													<div class="class-timetable">
+														<table>
+															<thead>
+																<tr>
+																	<th>Instrutor</th>
+																	<th colspan="2">Treino A</th>
+																</tr>
+															</thead>
+															<tbody>';
+																$sql = "SELECT T.Cliente_Pessoa_idPessoa, T.Funcionario_Pessoa_idPessoa, P.idPessoa, P.nome, T.Equipamento_idEquipamento, E.idEquipamento,
+																E.nome, T.Tipo_treino, T.Serie, T.Repeticoes, T.Peso FROM Treino AS T, Equipamento E, Pessoa AS P WHERE T.Equipamento_idEquipamento = E.idEquipamento AND
+																T.Funcionario_Pessoa_idPessoa = P.idPessoa AND	T.Cliente_Pessoa_idPessoa = ".$_SESSION['codigo']." ORDER BY CASE WHEN T.Tipo_treino = 'A' THEN 'B' ELSE 'C' END";
+
+																$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+
+																while ($linha = mysqli_fetch_row($tabela)) {
+																	if($linha[7] == 'A'){
+																		$mensagem.= '<tr>
+																						<td class="class-time">'.$linha[3].'</td>
+																						<td colspan = "2"class="dark-bg hover-bg ts-meta" data-tsmeta="a">
+																							<h5>'.$linha[6].'</h5>
+																							<span>S&eacute;rie: <b>'.$linha[8].'</b> <br> Repeti&ccedil;&otilde;es: <b>'.$linha[9].'</b> <br> Peso: <b>'.$linha[10].'Kg</b></span>
+																						</td>
+																					</tr>';
+																	}
+																}
+																$mensagem.='
+															</tbody>
+														</table>
+													</div>
+												</div>
+												<div class="box-celula">
+													<div class="class-timetable">
+														<table>
+															<thead>
+																<tr>
+																	<th>Instrutor</th>
+																	<th colspan="2">Treino B</th>
+																</tr>
+															</thead>
+															<tbody>';
+																//<tr>
+																$sql = "SELECT T.Cliente_Pessoa_idPessoa, T.Funcionario_Pessoa_idPessoa, P.idPessoa, P.nome, T.Equipamento_idEquipamento, E.idEquipamento,
+																E.nome, T.Tipo_treino, T.Serie, T.Repeticoes, T.Peso FROM Treino AS T, Equipamento E, Pessoa AS P WHERE T.Equipamento_idEquipamento = E.idEquipamento AND
+																T.Funcionario_Pessoa_idPessoa = P.idPessoa AND	T.Cliente_Pessoa_idPessoa = ".$_SESSION['codigo']." ORDER BY CASE WHEN T.Tipo_treino = 'A' THEN 'B' ELSE 'C' END";
+
+																$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+
+																while ($linha = mysqli_fetch_row($tabela)) {
+																	if($linha[7] == 'B'){
+																		$mensagem.= '<tr>
+																						<td class="class-time">'.$linha[3].'</td>
+																						<td colspan = "2"class="dark-bg hover-bg ts-meta" data-tsmeta="b">
+																							<h5>'.$linha[6].'</h5>
+																							<span>S&eacute;rie: <b>'.$linha[8].'</b> <br> Repeti&ccedil;&otilde;es: <b>'.$linha[9].'</b> <br> Peso: <b>'.$linha[10].'Kg</b></span>
+																						</td>
+																					</tr>';
+																	}
+																}
+																$mensagem.='
+															</tbody>
+														</table>
+													</div>
+												</div>
+												<div class="box-celula">
+													<div class="class-timetable">
+														<table>
+															<thead>
+																<tr>
+																	<th>Instrutor</th>
+																	<th colspan="2">Treino C</th>
+																</tr>
+															</thead>
+															<tbody>';
+																$sql = "SELECT T.Cliente_Pessoa_idPessoa, T.Funcionario_Pessoa_idPessoa, P.idPessoa, P.nome, T.Equipamento_idEquipamento, E.idEquipamento,
+																E.nome, T.Tipo_treino, T.Serie, T.Repeticoes, T.Peso FROM Treino AS T, Equipamento E, Pessoa AS P WHERE T.Equipamento_idEquipamento = E.idEquipamento AND
+																T.Funcionario_Pessoa_idPessoa = P.idPessoa AND	T.Cliente_Pessoa_idPessoa = ".$_SESSION['codigo']." ORDER BY CASE WHEN T.Tipo_treino = 'A' THEN 'B' ELSE 'C' END";
+
+																$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+
+																while ($linha = mysqli_fetch_row($tabela)) {
+																	if($linha[7] == 'C'){
+																		$mensagem.= '<tr>
+																						<td class="class-time">'.$linha[3].'</td>
+																						<td colspan = "2"class="dark-bg hover-bg ts-meta" data-tsmeta="c">
+																							<h5>'.$linha[6].'</h5>
+																							<span>S&eacute;rie: <b>'.$linha[8].'</b> <br> Repeti&ccedil;&otilde;es: <b>'.$linha[9].'</b> <br> Peso: <b>'.$linha[10].'Kg</b></span>
+																						</td>
+																					</tr>';
+																	}
+
+																}
+																$mensagem.='
+															</tbody>
+														</table>
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
-								</div>
 							<!-- Class Timetable Section End -->
 				';
 			}else{

@@ -10,7 +10,7 @@
 		$conexao = $conexao->abreConexao();
 
 		$treinoDAO = new TreinoDAO();
-		$treinoDAO->excluirTreino($codigo, $conexao);
+		$treinoDAO->excluirTreino($conexao, $codigo);
 
 	}else{
 		echo '<SCRIPT type="text/javascript"> //not showing me this

@@ -157,13 +157,13 @@
                         <form action="../Controle/phpAlterarEquipamento.php" method="post" name="frmLoginEquipAltera">
 							<input type="hidden" name="hddCodigo" value="<?php echo $codigo; ?>">
                             <span id="spanSpecial">Nome do Equipamento</span>
-                            <input type="text" name="txtEquipe" value="<?php echo $equipamentoDAO->pegaNomeEquip($codigo, $conexao); ?>" >
+                            <input type="text" name="txtEquipe" value="<?php echo $equipamentoDAO->pegaNomeEquip($conexao, $codigo); ?>" >
                             <span id="spanSpecial">Quantidade do Equipamento</span>
-                            <input type="number" name="txtQuant" value="<?php echo $equipamentoDAO->pegaQtdEquip($codigo, $conexao); ?>" >
+                            <input type="number" name="txtQuant" value="<?php echo $equipamentoDAO->pegaQtdEquip($conexao, $codigo); ?>" >
                             <span id="spanSpecial">Marca do Equipamento</span>
-                            <input type="text" name="txtMarca" value="<?php echo $equipamentoDAO->pegaMarca($codigo, $conexao); ?>" >
+                            <input type="text" name="txtMarca" value="<?php echo $equipamentoDAO->pegaMarca($conexao, $codigo); ?>" >
                             <span id="spanSpecial">Ano do Equipamento</span>
-                            <input type="number" name="txtData" min="2000" value="<?php echo $equipamentoDAO->pegaAno($codigo, $conexao); ?>">
+                            <input type="number" name="txtData" min="2000" value="<?php echo $equipamentoDAO->pegaAno($conexao, $codigo); ?>">
                             <button type="submit">Alterar</button>
                         </form>
                     </div>

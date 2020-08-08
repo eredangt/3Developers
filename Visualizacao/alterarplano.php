@@ -156,11 +156,11 @@
                         <form action="../Controle/phpAlterarPlano.php" method="post" name="frmLoginAlteraPlano">
 							<input type="hidden" name="hddCodigo" value="<?php echo $codigo; ?>">
                             <span id="spanSpecial">Nome do Plano</span>
-                            <input type="text" name="txtPlano" value="<?php $planoDAO->pegaNomePlano($codigo, $conexao)?>">
+                            <input type="text" name="txtPlano" value="<?php $planoDAO->pegaNomePlano($conexao, $codigo)?>">
                             <span id="spanSpecial">Quantidade de Meses</span>
-                            <input type="number" name="txtMeses" value="<?php $planoDAO->pegaNumMeses($codigo, $conexao)?>">
+                            <input type="number" name="txtMeses" value="<?php $planoDAO->pegaNumMeses($conexao, $codigo)?>">
                             <span id="spanSpecial">Valor do Plano</span>
-                            <input type="text" name="txtValor" value="<?php $planoDAO->pegaValor($codigo, $conexao)?>">
+                            <input type="text" name="txtValor" value="<?php $planoDAO->pegaValor($conexao, $codigo)?>">
                             <button type="submit">Alterar</button>
                         </form>
                     </div>

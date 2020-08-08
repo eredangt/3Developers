@@ -10,7 +10,7 @@
 		$conexao = $conexao->abreConexao();
 
 		$equipamentoDAO = new EquipamentoDAO();
-		$equipamentoDAO->excluirEquipamento($codigo, $conexao);
+		$equipamentoDAO->excluirEquipamento($conexao, $codigo);
 
 	}else{
 		echo '<SCRIPT type="text/javascript"> //not showing me this

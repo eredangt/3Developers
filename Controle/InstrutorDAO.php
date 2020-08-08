@@ -6,9 +6,9 @@
 
 		public function __construct(){}
 
-        public function addInstrutor($instrutor, $con, $pegaCPF){
+        public function addInstrutor($instrutor, $conexao, $pegaCPF){
             $sql = "SELECT idPessoa FROM PESSOA WHERE CPF = '".$pegaCPF."';";
-            $tabela = mysqli_query($con,$sql) or die(mysqli_error($con));
+            $tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
             while($linha = mysqli_fetch_row($tabela)){
                 $COD_Instrutor = $linha[0];
@@ -17,35 +17,34 @@
                     VALUES('".$COD_Instrutor."','".$instrutor->getSalario()."',
 					'".$instrutor->getCH()."','".$instrutor->getImagem()."');";
 
-            $resultado = mysqli_query($con,$sql) or die(mysqli_error($con));
+            $resultado = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
             if($resultado == true){
                 echo '<SCRIPT type="text/javascript"> //not showing me this
 								alert("Instrutor inserido com sucesso!");
 								window.location.replace("../Visualizacao/listarpessoas.php");
 						</SCRIPT>';
             }else{
-                echo 'Algo ocorreu: ' . mysqli_error($con);
+                echo 'Algo ocorreu: ' . mysqli_error($conexao);
             }
         }
 
-        public function atualizarInstrutor($salario, $cH, $imagem, $codigo, $con){
+        public function atualizarInstrutor($conexao, $codigo, $salario, $cH, $imagem){
 
 			$sql = "UPDATE Instrutor SET	salario = '".$salario."',
 											Carga_horaria = '".$cH."',
 											imagem = '".$imagem."'
 					WHERE Pessoa_idPessoa = '".$codigo."';
 			";
-			$resultado = mysqli_query($con,$sql) or die(mysqli_error($con));
+			$resultado = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
 			// VERIFICA SE TUDO DEU CERTO
 			if ($resultado == true){
-				//echo 'Instrutor alterado com sucesso';
 				echo '<SCRIPT type="text/javascript"> //not showing me this
 							alert("Instrutor alterado com sucesso!");
-							window.location.replace("../Visualizacao/menu.php");
+							window.location.replace("../Visualizacao/listarpessoas.php");
 					</SCRIPT>';
 			}else{
 				echo '<script>alert("Problema ao alterar INSTRUTOR no banco de dados");</script>';
-				echo 'O erro que aconteceu foi este: ' . mysqli_error($con).'<br>';
+				echo 'O erro que aconteceu foi este: ' . mysqli_error($conexao).'<br>';
 				echo '<a href="../Visualizacao/menu.php"> VOLTAR </a>';
 			}
 		}

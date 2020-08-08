@@ -22,7 +22,7 @@
 		$conexao = $conexao->abreConexao();
 
         $treinoDAO = new TreinoDAO();
-		$treinoDAO->atualizarTreino($idCliente, $idFunc, $idEquip, $tipoTreino, $series, $repeticoes, $peso, $codigo, $conexao);
+		$treinoDAO->atualizarTreino($conexao, $codigo, $idCliente, $idFunc, $idEquip, $tipoTreino, $series, $repeticoes, $peso);
 
 
 	}else{

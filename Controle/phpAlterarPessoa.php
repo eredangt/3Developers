@@ -1,17 +1,17 @@
 <?php
 	include_once('../Persistencia/ConexaoBD.php');
 	include_once('../Modelo/Pessoa.php');
-	include_once('Controle/PessoaDAO.php');
+	include_once('PessoaDAO.php');
 	include_once('../Modelo/Cliente.php');
-	include_once('Controle/ClienteDAO.php');
+	include_once('ClienteDAO.php');
 	include_once('../Modelo/Instrutor.php');
-	include_once('Controle/InstrutorDAO.php');
+	include_once('InstrutorDAO.php');
 
 	//require('phpConexaoBD.php');
 	session_start();
 	$codigo='';
 	$codigo = $_POST['hddCodigo'];
-	
+
 	if($_SESSION['cargo'] == 'instrutor'){
 
 
@@ -60,10 +60,10 @@
 			$conexao = $conexao->abreConexao();
 
 			$pessoaDAO = new PessoaDAO();
-			$pessoaDAO->atualizarPessoa($cpfC, $nomeC, $telefoneC, $emailC, $dataNascC, $senhaC, $cargo, $codigo, $conexao);
+			$pessoaDAO->atualizarPessoa($conexao, $codigo, $cpfC, $nomeC, $telefoneC, $emailC, $dataNascC, $senhaC, $cargo);
 
 			$c1 = new ClienteDAO();
-			$c1->atualizarCliente($planoC, $codigo, $conexao);
+			$c1->atualizarCliente($conexao, $codigo, $planoC);
 
 		}
 		if($cargo == 'I'){
@@ -84,7 +84,7 @@
 
 
 			$pessoaDAO = new PessoaDAO();
-			$pessoaDAO->atualizarPessoa($cpfI, $nomeI, $telefoneI, $emailI, $dataNascI, $senhaI, $cargo,  $codigo, $conexao); // INSTRUTOR
+			$pessoaDAO->atualizarPessoa($conexao, $codigo, $cpfI, $nomeI, $telefoneI, $emailI, $dataNascI, $senhaI, $cargo); // INSTRUTOR
 
 			$auxImagem = '';
 			if($imagemI['size'] == 0){ //se a imagem não foi alterada
@@ -102,7 +102,7 @@
 				$uploaddir = '../imgInstrutores/';
 				$uploadfile = $uploaddir . basename($imagemI['name']);
 				if (move_uploaded_file($imagemI['tmp_name'], $uploadfile)){
-					echo "Imagem v&aacute;lido e enviado com sucesso.\n";
+					//echo "Imagem v&aacute;lido e enviado com sucesso.\n";
 				}else{
 					echo "Possível ataque de upload de arquivo!\n";
 					echo 'Aqui está mais informações de debug:';
@@ -112,7 +112,7 @@
 				$auxImagem = $uploadfile;
 			}
 			$i1 = new InstrutorDAO();
-			$i1->atualizarInstrutor($salarioI, $cargaHI, $auxImagem, $codigo, $conexao);
+			$i1->atualizarInstrutor($conexao, $codigo, $salarioI, $cargaHI, $auxImagem);
 
 		}
 

@@ -197,6 +197,7 @@
 										<tbody>
 											<?php
 												$treinoDAO->listarTreinos($conexao);
+												//$aux = $treinoDAO->listarTreinos($conexao,);
 											 ?>
 
 										</tbody>

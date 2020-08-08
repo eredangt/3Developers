@@ -34,14 +34,14 @@
 			$conexao = new ConexaoBD();
 			$conexao = $conexao->abreConexao();
 
-			$p = new Pessoa($cpfC, $nomeC, $telefoneC, $emailC, $dataNascC, $senhaC, $cargo); // PARA CLIENTE
+			$pessoa = new Pessoa($cpfC, $nomeC, $telefoneC, $emailC, $dataNascC, $senhaC, $cargo); // PARA CLIENTE
 
 			$pessoaDAO = new PessoaDAO();
-			$pessoaDAO->addPessoa($p, $conexao);
+			$pessoaDAO->addPessoa($pessoa, $conexao);
 
-			$c = new Cliente($planoC);
-			$c1 = new ClienteDAO();
-			$c1->addCliente($c,$conexao, $p->getCPF());
+			$cliente = new Cliente($planoC);
+			$clienteAux = new ClienteDAO();
+			$clienteAux->addCliente($cliente, $conexao, $pessoa->getCPF());
 
 		}
 		if($cargo == 'I'){
@@ -60,24 +60,24 @@
 			$conexao = new ConexaoBD();
 			$conexao = $conexao->abreConexao();
 
-			$p = new Pessoa($cpfI, $nomeI, $telefoneI, $emailI, $dataNascI, $senhaI, $cargo); // INSTRUTOR
+			$pessoa = new Pessoa($cpfI, $nomeI, $telefoneI, $emailI, $dataNascI, $senhaI, $cargo); // INSTRUTOR
 
 			$pessoaDAO = new PessoaDAO();
-			$pessoaDAO->addPessoa($p, $conexao);
+			$pessoaDAO->addPessoa($pessoa, $conexao);
 
 			$uploaddir = '../imgInstrutores/';
 			$uploadfile = $uploaddir . basename($imagemI['name']);
 			if (move_uploaded_file($imagemI['tmp_name'], $uploadfile)){
-				echo "Imagem v&aacute;lido e enviado com sucesso.\n";
+				//echo "Imagem v&aacute;lido e enviado com sucesso.\n";
 			}else{
 				echo "Possível ataque de upload de arquivo!\n";
 				echo 'Aqui está mais informações de debug:';
 				print_r($_FILES);
 			}
 
-			$i = new Instrutor($salarioI, $cargaHI, $uploadfile);
-			$i1 = new InstrutorDAO();
-			$i1->addInstrutor($i,$conexao, $p->getCPF());
+			$instrutor = new Instrutor($salarioI, $cargaHI, $uploadfile);
+			$instrutorAux = new InstrutorDAO();
+			$instrutorAux->addInstrutor($instrutor, $conexao, $pessoa->getCPF());
 		}
 
 

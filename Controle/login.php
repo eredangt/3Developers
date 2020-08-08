@@ -17,6 +17,7 @@
 	$senha_bd = '';
 
 	while ($linha = mysqli_fetch_row($tabela)){
+		$codigo = $linha[0];
 		$login_bd = $linha[4];
 		$senha_bd = $linha[6];
 		$nome_bd = $linha[2];
@@ -32,6 +33,7 @@
 	if ($login==$login_bd && $senha==$senha_bd){
 		$_SESSION['login'] = $nome_bd;
 		$_SESSION['cargo'] = $cargo;
+		$_SESSION['codigo'] = $codigo;
 		header('location:../Visualizacao/menu.php');
 	}else{
 		echo '<SCRIPT type="text/javascript"> //not showing me this

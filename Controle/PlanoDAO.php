@@ -54,6 +54,7 @@
 			$sql = 'SELECT * FROM Plano';
 			$tabela = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
 
+			$mensagem = "'Tem certeza que deseja excluir este Plano?'";
 			while($linha = mysqli_fetch_row($tabela)){
 				if($linha[0]%2 == 0){
 					echo '<tr>
@@ -61,7 +62,7 @@
 							<td class="dark-bg hover-dp ts-meta"><h5>'.$linha[2].'</h5></td>
 							<td class="hover-dp ts-meta"><h5>'.htmlentities($linha[3]).'</h5></td>
 							<td class="dark-bg hover-dp ts-meta"><h5><center><a href="alterarplano.php?codigo='.$linha[0].'"><b>&#9997;</b></a></h5></td>
-							<td class="hover-dp ts-meta"><h5><center><a href="phpExcluirPlano.php?codigo='.$linha[0].'"><b>&#10006;</b></a></h5></td>
+							<td class="hover-dp ts-meta"><h5><center><a href="../Controle/phpExcluirPlano.php?codigo='.$linha[0].'" onclick="return confirm('.$mensagem.')"><b>&#10006;</b></a></h5></td>
 						</tr>';
 				}else{
 						echo '<tr>
@@ -69,14 +70,14 @@
 							<td class="hover-dp ts-meta" ><h5>'.$linha[2].'</h5></td>
 							<td class="dark-bg hover-dp ts-meta"><h5>'.htmlentities($linha[3]).'</h5></td>
 							<td class="hover-dp ts-meta"><h5><center><a href="alterarplano.php?codigo='.$linha[0].'"><b>&#9997;</b></a></h5></td>
-							<td class="dark-bg hover-dp ts-meta"><h5><center><a href="../Controle/phpExcluirPlano.php?codigo='.$linha[0].'"><b>&#10006;</b></a></h5></td>
+							<td class="dark-bg hover-dp ts-meta"><h5><center><a href="../Controle/phpExcluirPlano.php?codigo='.$linha[0].'" onclick="return confirm('.$mensagem.')" ><b>&#10006;</b></a></h5></td>
 						</tr>';
 
 				}
 			}
 		}
 
-		public function pegaNomePlano($codigo, $conexao){
+		public function pegaNomePlano($conexao, $codigo){
 			$sql = "SELECT nome FROM Plano WHERE idPlano = '".$codigo."';";
 
 			$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
@@ -89,7 +90,7 @@
 			echo $meuNome;
 		}
 
-		public function pegaNumMeses($codigo, $conexao){
+		public function pegaNumMeses($conexao, $codigo){
 			$sql = "SELECT numMeses FROM Plano WHERE idPlano = '".$codigo."';";
 
 			$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
@@ -102,7 +103,7 @@
 			echo $numMeses;
 		}
 
-		public function pegaValor($codigo, $conexao){
+		public function pegaValor($conexao, $codigo){
 			$sql = "SELECT valor FROM Plano WHERE idPlano = '".$codigo."';";
 
 			$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
@@ -115,11 +116,11 @@
 			echo $valorPlano;
 		}
 
-		public function addPlano($plano, $con){
+		public function addPlano($plano, $conexao){
             $sql = "INSERT INTO Plano(nome, numMeses, valor)
                     VALUES('".$plano->getNomePlano()."','".$plano->getNumMeses()."','".$plano->getValor()."');";
 
-            $resultado = mysqli_query($con,$sql) or die(mysqli_error($con));
+            $resultado = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
 
             if($resultado == true){
                 //echo 'Plano cadastrado.';
@@ -128,15 +129,15 @@
 							window.location.replace("../Visualizacao/listarplanos.php");
 					</SCRIPT>';
             }else{
-                echo 'Algo ocorreu: ' . mysqli_error($con);
+                echo 'Algo ocorreu: ' . mysqli_error($conexao);
             }
         }
 
-        public function atualizarPlano($nomePlano, $qtdMeses, $valorPlano, $codigo, $con){
+        public function atualizarPlano($conexao, $codigo, $nomePlano, $qtdMeses, $valorPlano){
 			$sql = "UPDATE Plano SET nome = '".$nomePlano."', numMeses = '".$qtdMeses."',
 					valor = '".$valorPlano."' WHERE idPlano = '".$codigo."';";
-					
-			$resultado = mysqli_query($con,$sql) or die(mysqli_error($con));
+
+			$resultado = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
 
 			// VERIFICA SE TUDO DEU CERTO
 			if ($resultado == true){
@@ -147,18 +148,18 @@
 					</SCRIPT>';
 			}else{
 				echo '<script>alert("Problema ao alterar Plano no banco de dados");</script>';
-				echo 'O erro que aconteceu foi este: ' . mysqli_error($con).'<br>';
+				echo 'O erro que aconteceu foi este: ' . mysqli_error($conexao).'<br>';
 				echo '<a href="../Visualizacao/menu.php"> VOLTAR </a>';
 			}
 		}
 
-		public function excluirPlano($codigo, $con){
+		public function excluirPlano($conexao, $codigo){
 			//criar a string sql que exclui o usuario do banco de dados
 			$sql = "DELETE FROM Plano WHERE idPlano=".$codigo.";";
 
 			//executa o comando DELETE no banco de dados para o usuario que tem
 			//aquele codigo especifico
-			$resultado = mysqli_query($con, $sql) or die(mysqli_error($con));
+			$resultado = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
 			//avaliando o resultado
 			if ($resultado == true){
@@ -169,7 +170,7 @@
 						</SCRIPT>';
 			}else{
 				echo 'Problema ao apagar o registro no banco de dados <br>';
-				echo 'O erro que aconteceu foi este: ' . mysqli_error($con);
+				echo 'O erro que aconteceu foi este: ' . mysqli_error($conexao);
 				echo '<a href="../Visualizacao/menu.php"> MENU </a>';
 			}
 		}

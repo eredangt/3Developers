@@ -5,7 +5,7 @@
 
 		public function __construct(){}
 
-		public function pegaNomeEquip($codigo, $conexao){
+		public function pegaNomeEquip($conexao, $codigo){
 			$sql = "SELECT nome FROM Equipamento WHERE idEquipamento = '".$codigo."';";
 
 			$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
@@ -18,7 +18,7 @@
 			echo $meuNomeEquip;
 		}
 
-		public function pegaQtdEquip($codigo, $conexao){
+		public function pegaQtdEquip($conexao, $codigo){
 			$sql = "SELECT quantidade FROM Equipamento WHERE idEquipamento = '".$codigo."';";
 
 			$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
@@ -31,7 +31,7 @@
 			echo $qtd;
 		}
 
-		public function pegaMarca($codigo, $conexao){
+		public function pegaMarca($conexao, $codigo){
 			$sql = "SELECT marca FROM Equipamento WHERE idEquipamento = '".$codigo."';";
 
 			$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
@@ -44,7 +44,7 @@
 			echo $marca;
 		}
 
-		public function pegaAno($codigo, $conexao){
+		public function pegaAno($conexao, $codigo){
 			$sql = "SELECT ano FROM Equipamento WHERE idEquipamento = '".$codigo."';";
 
 			$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
@@ -61,7 +61,7 @@
 			$sql = 'SELECT * FROM Equipamento ORDER BY Nome ASC';
 
 			$tabela = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
-
+			$mensagem = "'Tem certeza que deseja excluir este Equipamento?'";
 			while($linha = mysqli_fetch_row($tabela)){
 
 				echo '<tr>
@@ -71,66 +71,66 @@
 						<td class="dark-bg hover-dp ts-meta"><h5>'.htmlentities($linha[3]).'</h5></td>
 						<td class="hover-dp ts-meta"><h5>'.htmlentities($linha[4]).'</h5></td>
 						<td class="dark-bg hover-dp ts-meta"><h5><center><a href="../Visualizacao/alterarequipamento.php?codigo='.$linha[0].'"><b>&#9997;</b></a></h5></td>
-						<td class="hover-dp ts-meta"><h5><center><a href="../Controle/phpExcluirEquipamento.php?codigo='.$linha[0].'"><b>&#10006;</b></a></h5></td>
+						<td class="hover-dp ts-meta"><h5><center><a href="../Controle/phpExcluirEquipamento.php?codigo='.$linha[0].'" onclick="return confirm('.$mensagem.')"><b>&#10006;</b></a></h5></td>
 					</tr>';
 			}
 		}
 
-		public function addEquipamento($equipamento, $con){
+		public function addEquipamento($equipamento, $conexao){
             $sql = "INSERT INTO Equipamento(nome, quantidade, marca, ano)
                     VALUES('".$equipamento->getNomeEquipamento()."','".$equipamento->getQuantidade()."',
 					'".$equipamento->getMarca()."','".$equipamento->getAno()."');";
 
-            $resultado = mysqli_query($con,$sql) or die(mysqli_error($con));
+            $resultado = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
 
             if($resultado == true){
                 echo '<SCRIPT type="text/javascript"> //not showing me this
 							alert("Equipamento cadastrado com sucesso!");
-							window.location.replace("../Visualizacao/menu.php");
+							window.location.replace("../Visualizacao/listarEquipamentos.php");
 					</SCRIPT>';
             }else{
-                echo 'Algo ocorreu: ' . mysqli_error($con);
+                echo 'Algo ocorreu: ' . mysqli_error($conexao);
             }
         }
 
-        public function atualizarEquipamento($nomeEquipamento, $qtdEquipamento, $marcaEquipamento,
-																	$anoEquipamento, $codigo, $con){
+        public function atualizarEquipamento($conexao, $codigo, $nomeEquipamento, $qtdEquipamento, $marcaEquipamento,
+																	$anoEquipamento){
 			$sql = "UPDATE Equipamento SET nome = '".$nomeEquipamento."', quantidade = '".$qtdEquipamento."',
 			marca = '".$marcaEquipamento."', ano = '".$anoEquipamento."' WHERE idEquipamento = '".$codigo."';";
 
-			$resultado = mysqli_query($con,$sql) or die(mysqli_error($con));
+			$resultado = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
 
 			// VERIFICA SE TUDO DEU CERTO
 			if ($resultado == true){
 				echo '<SCRIPT type="text/javascript"> //not showing me this
 							alert("Equipamento alterado com sucesso!");
-							window.location.replace("../Visualizacao/menu.php");
+							window.location.replace("../Visualizacao/listarequipamentos.php");
 					</SCRIPT>';
 			}else{
 				echo '<script>alert("Problema ao alterar Equipamento no banco de dados");</script>';
-				echo 'O erro que aconteceu foi este: ' . mysqli_error($con).'<br>';
+				echo 'O erro que aconteceu foi este: ' . mysqli_error($conexao).'<br>';
 				echo '<a href="../Visualizacao/menu.php"> VOLTAR </a>';
 			}
 		}
 
-		public function excluirEquipamento($codigo, $con){
+		public function excluirEquipamento($conexao, $codigo){
 			//criar a string sql que exclui o usuario do banco de dados
 			$sql = "DELETE FROM Equipamento WHERE idEquipamento=".$codigo.";";
 
 			//executa o comando DELETE no banco de dados para o usuario que tem
 			//aquele codigo especifico
-			$resultado = mysqli_query($con, $sql) or die(mysqli_error($con));
+			$resultado = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
 			//avaliando o resultado
 			if ($resultado == true){
 				//echo 'Excluído o Equipamento';
 				echo '<SCRIPT type="text/javascript"> //not showing me this
 								alert("Equipamento excluído com sucesso");
-								window.location.replace("../Visualizacao/listarpessoas.php");
+								window.location.replace("../Visualizacao/listarequipamentos.php");
 						</SCRIPT>';
 			}else{
 				echo 'Problema ao apagar o registro no banco de dados <br>';
-				echo 'O erro que aconteceu foi este: ' . mysqli_error($con);
+				echo 'O erro que aconteceu foi este: ' . mysqli_error($conexao);
 				echo '<a href="../Visualizacao/menu.php"> MENU </a>';
 			}
 		}

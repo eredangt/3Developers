@@ -10,7 +10,7 @@
 		$conexao = $conexao->abreConexao();
 
 		$planoDAO = new PlanoDAO();
-		$planoDAO->excluirPlano($codigo, $conexao);
+		$planoDAO->excluirPlano($conexao, $codigo);
 
 	}else{
 		echo '<SCRIPT type="text/javascript"> //not showing me this
