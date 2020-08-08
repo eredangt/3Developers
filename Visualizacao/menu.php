@@ -134,7 +134,8 @@
         <div class="container">
             <div class="row">
                     <?php
-						$mensagem = '';
+						$pessoaDAO->implementaFuncionalidadesUsuario();
+						/*$mensagem = '';
 						if(isset($_SESSION['cargo']) && $_SESSION['cargo'] == 'aluno'){
 							$mensagem = '
 									<div class="col-lg-12">
@@ -346,7 +347,7 @@
 								</div>
 							';
 						}
-						echo $mensagem;
+						echo $mensagem;*/
                     ?>
 
             </div>

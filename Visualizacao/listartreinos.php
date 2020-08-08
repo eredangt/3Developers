@@ -7,9 +7,11 @@
 		include_once('../Persistencia/ConexaoBD.php');
 		include_once('../Modelo/Pessoa.php');
 		include_once('../Controle/PessoaDAO.php');
+		include_once('../Controle/TreinoDAO.php');
 		$conexao = new ConexaoBD();
 		$conexao = $conexao->abreConexao();
 		$pessoaDAO = new PessoaDAO();
+		$treinoDAO = new TreinoDAO();
 		$pessoaDAO->implementaRestricao();
 	?>
     <meta charset="UTF-8">
@@ -118,7 +120,9 @@
                 <div class="col-lg-3">
                     <div class="top-option">
                         <div class="to-social">
-							<a href="../Controle/logout.php">Log Out</a>
+							<?php
+								$pessoaDAO->implementaLogOut();
+							 ?>
                             <a href="#"><i class="fa fa-facebook"></i></a>
                             <a href="#"><i class="fa fa-twitter"></i></a>
                             <a href="#"><i class="fa fa-youtube-play"></i></a>
@@ -181,6 +185,7 @@
 										<tr>
 											<!--<th>Para ativar coluna diferente</th>-->
 											<th>Cliente</th>
+											<th>Instrutor</th>
 											<th>Tipo do Treino</th>
 											<th>Séries</th>
                                             <th>Repetições</th>
@@ -190,74 +195,10 @@
 										</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<!--<td class="class-time">Coluna diferente</td>-->
-												<td class="dark-bg hover-dp ts-meta">
-													<h5>Cliente manual 1</h5>
-												</td>
-												<td class="hover-dp ts-meta">
-													<h5>Treino A</h5>
-												</td>
-												<td class="dark-bg hover-dp ts-meta">
-													<h5>3</h5>
-												</td>
-                                                <td class="dark-bg hover-dp ts-meta">
-													<h5>15</h5>
-												</td>
-                                                <td class="dark-bg hover-dp ts-meta">
-													<h5>10</h5>
-												</td>
-												<td class="hover-dp ts-meta">
-													<h5><a href="#">&#9997;</a></h5>
-												</td>
-												<td class="dark-bg hover-dp ts-meta">
-													<h5><a href="#">&#10006;</a></h5>
-												</td>
-											</tr>
-											<tr>
-												<!--<td class="class-time">Coluna diferente</td>-->
-												<td class="dark-bg hover-dp ts-meta">
-													<h5>Cliente manual 2</h5>
-												</td>
-												<td class="hover-dp ts-meta">
-													<h5>Treino B</h5>
-												</td>
-												<td class="dark-bg hover-dp ts-meta">
-													<h5>2</h5>
-												</td>
-                                                <td class="dark-bg hover-dp ts-meta">
-													<h5>20</h5>
-												</td>
-                                                <td class="dark-bg hover-dp ts-meta">
-													<h5>15</h5>
-												</td>
-												<td class="hover-dp ts-meta">
-													<h5><a href="#">&#9997;</a></h5>
-												</td>
-												<td class="dark-bg hover-dp ts-meta">
-													<h5><a href="#">&#10006;</a></h5>
-												</td>
-											</tr>
+											<?php
+												$treinoDAO->listarTreinos($conexao);
+											 ?>
 
-											<!--<tr> PARTE DE QUANDO FOR A BUSCA NO BANCO DE DADOS. EXEMPLO
-												<?php
-													#require('conexao.php');
-													#$sql='SELECT * FROM categoria';
-													#$tabela=mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
-													#$sql='SELECT * FROM produto';
-													#$tabela=mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
-
-												#	while($linha=mysqli_fetch_row($tabela)){
-												#		echo '<tr>
-												#				<td class="hover-dp ts-meta">'.htmlentities($linha[1]).'</td>
-												#				<td class="dark-bg hover-dp ts-meta">'.htmlentities($linha[0]).'</td>
-												#				<td class="hover-dp ts-meta">'.htmlentities($linha[2]).'</td>
-												#				<td class="hover-dp ts-meta"><center><a href="altera.php?codigo='.$linha[0].'"><b>&#9997;</b></a></td>
-												#				<td class="hover-dp ts-meta"><center><a href="exclui.php?codigo='.$linha[0].'"><b>&#10006;</b></a></td>
-												#			</tr>';
-												#	}
-												?>
-											</tr>-->
 										</tbody>
 									</table>
 								</div>

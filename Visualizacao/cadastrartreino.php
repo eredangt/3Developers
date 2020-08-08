@@ -7,10 +7,13 @@
 		include_once('../Persistencia/ConexaoBD.php');
 		include_once('../Modelo/Pessoa.php');
 		include_once('../Controle/PessoaDAO.php');
+		include_once('../Modelo/Treino.php');
+		include_once('../Controle/TreinoDAO.php');
 		$conexao = new ConexaoBD();
 		$conexao = $conexao->abreConexao();
 		$pessoaDAO = new PessoaDAO();
 		$pessoaDAO->implementaRestricao();
+		$treinoDAO = new TreinoDAO();
 	?>
     <meta charset="UTF-8">
     <meta name="description" content="Gym Template">
@@ -154,12 +157,24 @@
 			                    <option value="B" id="optionCadastro">Treino B</option>
                                 <option value="C" id="optionCadastro">Treino C</option>
 		                    </select>
-                            <span id="spanSpecial">CPF do Cliente</span>
-                            <input type="text" name="txtCPFCliente" placeholder="Digite o número do CPF">
-                            <span id="spanSpecial">CPF do Funcionário</span>
-                            <input type="text" name="txtCPFFunc" placeholder="Digite o número do CPF">
-                            <span id="spanSpecial">Identificador do Equipamento</span>
-                            <input type="text" name="txtIdEquip" placeholder="Digite o ID do equipamento">
+                            <span id="spanSpecial">CPF e Nome do Cliente</span>
+							<select name="idCliente" id="idCliente" class="meuSelect" required>
+								<?php
+									$treinoDAO->selecionarIdPessoa($conexao, "Cliente");
+								?>
+							</select>
+                            <span id="spanSpecial">CPF e Nome do Funcionário</span>
+							<select name="idFunc" id="idFunc" class="meuSelect" required>
+								<?php
+									$treinoDAO->selecionarIdPessoa($conexao, "Instrutor");
+								?>
+							</select>
+                            <span id="spanSpecial">Identificador do Equipamento | Nome</span>
+							<select name="idEquipamento" id="idEquipamento" class="meuSelect" required>
+								<?php
+									$treinoDAO->selecionarIdEquipamento($conexao);
+								?>
+							</select>
                             <span id="spanSpecial">Quantidade de Séries</span>
                             <input type="number" name="txtSerie" placeholder="Digite o número de séries">
                             <span id="spanSpecial">Quantidade de Repetições</span>

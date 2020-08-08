@@ -9,20 +9,145 @@
 			echo $pessoa->getNome();
 		}
 
-		public function selecionarPlano($conexao) {
-			$sqlP = 'SELECT * FROM plano';
-			$tabelaP = mysqli_query($conexao,$sqlP) or die(mysqli_error($conexao));
-
-			$selecionado = '';
-			while($linhaP=mysqli_fetch_row($tabelaP)){
-				if($planoCliente == $linhaP[0]){
-					$selecionado = 'selected';
-				}
-				echo '<option value="'.htmlentities($linhaP[0]).'" '.$selecionado.'>'.htmlentities($linhaP[1]).'</option>';
+		public function pegaImagem($codigo, $conexao){
+			$sql = "SELECT imagem FROM Instrutor WHERE Pessoa_idPessoa = '".$codigo."';";
+			$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+			$img = '';
+			while ($linha = mysqli_fetch_row($tabela)) {
+				$img = $linha[0];
 			}
-
+			echo $img;
 		}
 
+		public function pegaCH($codigo, $conexao){
+			$sql = "SELECT carga_horaria FROM Instrutor WHERE Pessoa_idPessoa = '".$codigo."';";
+			$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+			$ch = '';
+			while ($linha = mysqli_fetch_row($tabela)) {
+				$ch = $linha[0];
+			}
+			echo $ch;
+		}
+
+		public function pegaSalario($codigo, $conexao){
+			$sql = "SELECT salario FROM Instrutor WHERE Pessoa_idPessoa = '".$codigo."';";
+			//$sql = "SELECT salario FROM Instrutor WHERE Pessoa_idPessoa = $codigo";
+			$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+			$salario = '';
+			while ($linha = mysqli_fetch_row($tabela)) {
+				$salario = $linha[0];
+			}
+			echo $salario;
+		}
+
+		public function pegaCargo($codigo, $conexao){
+			$sql = "SELECT Tipo_cargo FROM Pessoa WHERE idPessoa = '".$codigo."';";
+			$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+			$cargo = '';
+			while ($linha = mysqli_fetch_row($tabela)) {
+				$cargo = $linha[0];
+			}
+			return $cargo;
+		}
+
+		public function pegaSenha($codigo, $conexao){
+			$sql = "SELECT senha FROM Pessoa WHERE idPessoa = '".$codigo."';";
+			$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+			$senha = '';
+			while ($linha = mysqli_fetch_row($tabela)) {
+				$senha = $linha[0];
+			}
+			echo $senha;
+		}
+
+		public function pegaEmail($codigo, $conexao){
+			$sql = "SELECT E_MAIL FROM Pessoa WHERE idPessoa = '".$codigo."';";
+			$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+			$email = '';
+			while ($linha = mysqli_fetch_row($tabela)) {
+				$email = $linha[0];
+			}
+			echo $email;
+		}
+
+		public function pegaDataNasc($codigo, $conexao){
+			$sql = "SELECT Data_nascimento FROM Pessoa WHERE idPessoa = '".$codigo."';";
+			$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+			$data = '';
+			while ($linha = mysqli_fetch_row($tabela)) {
+				$data = $linha[0];
+			}
+			echo $data;
+		}
+
+		public function pegaNumTelefone($codigo, $conexao){
+			$sql = "SELECT Telefone FROM Pessoa WHERE idPessoa = '".$codigo."';";
+			$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+			$tel = '';
+			while ($linha = mysqli_fetch_row($tabela)) {
+				$tel = $linha[0];
+			}
+			echo $tel;
+		}
+
+		public function pegaNome($codigo, $conexao){
+			$sql = "SELECT Nome FROM Pessoa WHERE idPessoa = '".$codigo."';";
+			$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+			$nome = '';
+			while ($linha = mysqli_fetch_row($tabela)) {
+				$nome = $linha[0];
+			}
+			echo $nome;
+		}
+
+		public function pegaCPF($codigo, $conexao){
+			$sql = "SELECT CPF FROM Pessoa WHERE idPessoa = '".$codigo."';";
+			$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+			$cpf = '';
+			while ($linha = mysqli_fetch_row($tabela)) {
+				$cpf = $linha[0];
+			}
+			echo $cpf;
+		}
+
+		public function instrutorFoto($codigo, $conexao){
+			if($_SESSION['cargo'] == 'instrutor'){
+				$img = '';
+				$nome = '';
+
+				$sql = 'SELECT P.nome, I.imagem FROM Pessoa as P, Instrutor as I WHERE P.idPessoa = '.$codigo.';';
+				$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+
+				while ($linha = mysqli_fetch_row($tabela)) {
+					$nome = $linha[0];
+					$img = $linha[1];
+				}
+				echo '<span id="spanSpecial">FOTO DO(A) INSTRUTOR(A) '.$nome.'</span>
+					<div class="ci-pic">
+						<img src="'.$img.'"></img>
+					</div>
+					<small class="smallCadastro">ARQUIVO: '.$img.'</small>';
+			}
+		}
+
+		public function selecionarPlano($conexao, $codigo) {
+			$sqlA = 'SELECT Plano_idPlano FROM Cliente WHERE Pessoa_idPessoa="'.$codigo.'";';
+
+			$tabelaA = mysqli_query($conexao,$sqlA) or die(mysqli_error($conexao));
+			while($linhaA=mysqli_fetch_row($tabelaA)){
+				$meuPlano = $linhaA[0];
+			}
+			$sqlP = 'SELECT * FROM Plano';
+			$tabelaP = mysqli_query($conexao,$sqlP) or die(mysqli_error($conexao));
+			while($linhaP=mysqli_fetch_row($tabelaP)){
+					if(isset($meuPlano) && $meuPlano == $linhaP[0]){
+						//echo "<option value='".$linhaP[0]."' ".$selected.">".$linhaP[1]."</option>";
+						echo '<option value='.$linhaP[0].' selected >'.$linhaP[1].'</option>';
+					}else{
+						echo '<option value='.$linhaP[0].' >'.$linhaP[1].'</option>';
+					}
+				}
+		}
 
 		public function listarPessoas($conexao){
 			$sql = 'SELECT * FROM Pessoa ORDER BY Nome ASC';
@@ -64,8 +189,7 @@
 			}
 		}
 
-
-		/*public function implementaRestricaoLogar(){
+		public function implementaRestricaoLogar(){
 			if(!isset($_SESSION['login'])){
 				echo '<SCRIPT type="text/javascript"> //not showing me this
 	                            alert("Logue para acessar esta página!");
@@ -73,7 +197,7 @@
 	                 </SCRIPT>';
 			}
 
-		}*/
+		}
 
 		public function implementaRestricaoDeslogar(){
 			if(isset($_SESSION['login'])){
@@ -156,16 +280,16 @@
 			else {
 				echo '<li><a href="../Visualizacao/imc.php">IMC</a></li>';
 			}
-			if (!isset($SESSION['login']) and $pagina == 'login') {
+			if (!(isset($_SESSION['login'])) && $pagina == 'login') {
 				echo '<li class="active"><a href="../Visualizacao/entrar.php">Login</a></li>';
 			}
-			else if (!isset($SESSION['login']) and $pagina != 'login') {
+			else if (!(isset($_SESSION['login'])) && $pagina != 'login') {
 				echo '<li><a href="../Visualizacao/entrar.php">Login</a></li>';
 			}
-			else if (isset($SESSION['login']) and $pagina == 'menu') {
+			else if (isset($_SESSION['login']) && $pagina == 'menu') {
 				echo '<li class="active"><a href="../Visualizacao/menu.php">Menu</a></li>';
 			}
-			else if (isset($SESSION['login']) and $pagina != 'menu') {
+			else if (isset($_SESSION['login']) && $pagina != 'menu') {
 				echo '<li><a href="../Visualizacao/menu.php">Menu</a></li>';
 			}
 			if(isset($_SESSION['cargo']) == 'instrutor') {
@@ -276,6 +400,222 @@
 			}
 		}
 
-	}
 
+	public function implementaFuncionalidadesUsuario(){
+		$mensagem = '';
+		//if(isset($_SESSION['cargo'])){
+			if((isset($_SESSION['login'])) && ($_SESSION['cargo'] == 'aluno')){
+				$mensagem = '
+						<div class="col-lg-12">
+							<div class="section-title contact-title">
+								<span>Bem-Vindo(a) aluno(a), '.$_SESSION['login'].'!</span>
+								<h2>Encontre, aqui, tudo que precisa!</h2>
+							</div>
+						<!-- Class Timetable Section Begin -->
+								<div class="container">
+									<div class="row">
+										<div class="col-lg-12">
+											<div class="table-controls">
+												<ul>
+													<li class="active" data-tsfilter="all">TREINOS</li>
+													<li data-tsfilter="a">TREINO A</li>
+													<li data-tsfilter="b">TREINO B</li>
+													<li data-tsfilter="c">TREINO C</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-lg-12">
+											<div class="class-timetable">
+												<table>
+													<thead>
+														<tr>
+															<th>Observa&ccedil;&oacute;es</th>
+															<th>Segunda-Feira</th>
+															<th>Ter&ccedil;a-Feira</th>
+															<th>Quarta-Feira</th>
+															<th>Quinta-Feira</th>
+															<th>Sexta-Feira</th>
+															<th>S&aacute;bado</th>
+															<th>Domingo</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td class="class-time"></td>
+															<td class="dark-bg hover-bg ts-meta" data-tsmeta="a">
+																<h5>WEIGHT LOOSE</h5>
+																<span>RLefew D. Loee</span>
+															</td>
+															<td class="hover-bg ts-meta" data-tsmeta="b">
+																<h5>Cardio</h5>
+																<span>RLefew D. Loee</span>
+															</td>
+															<td class="dark-bg hover-bg ts-meta" data-tsmeta="c">
+																<h5>Yoga</h5>
+																<span>Keaf Shen</span>
+															</td>
+															<td class="hover-bg ts-meta" data-tsmeta="a">
+																<h5>Fitness</h5>
+																<span>Kimberly Stone</span>
+															</td>
+															<td class="dark-bg blank-td"></td>
+															<td class="hover-bg ts-meta" data-tsmeta="c">
+																<h5>Boxing</h5>
+																<span>Rachel Adam</span>
+															</td>
+															<td class="dark-bg hover-bg ts-meta" data-tsmeta="a">
+																<h5>Body Building</h5>
+																<span>Robert Cage</span>
+															</td>
+														</tr>
+														<tr>
+															<td class="class-time"></td>
+															<td class="blank-td"></td>
+															<td class="dark-bg hover-bg ts-meta" data-tsmeta="b">
+																<h5>Fitness</h5>
+																<span>Kimberly Stone</span>
+															</td>
+															<td class="hover-bg ts-meta" data-tsmeta="c">
+																<h5>WEIGHT LOOSE</h5>
+																<span>RLefew D. Loee</span>
+															</td>
+															<td class="dark-bg hover-bg ts-meta" data-tsmeta="a">
+																<h5>Cardio</h5>
+																<span>RLefew D. Loee</span>
+															</td>
+															<td class="hover-bg ts-meta" data-tsmeta="b">
+																<h5>Body Building</h5>
+																<span>Robert Cage</span>
+															</td>
+															<td class="dark-bg hover-bg ts-meta" data-tsmeta="c">
+																<h5>Karate</h5>
+																<span>Donald Grey</span>
+															</td>
+															<td class="blank-td"></td>
+														</tr>
+														<tr>
+															<td class="class-time"></td>
+															<td class="dark-bg hover-bg ts-meta" data-tsmeta="a">
+																<h5>Boxing</h5>
+																<span>Rachel Adam</span>
+															</td>
+															<td class="hover-bg ts-meta" data-tsmeta="b">
+																<h5>Karate</h5>
+																<span>Donald Grey</span>
+															</td>
+															<td class="dark-bg hover-bg ts-meta" data-tsmeta="c">
+																<h5>Body Building</h5>
+																<span>Robert Cage</span>
+															</td>
+															<td class="blank-td"></td>
+															<td class="dark-bg hover-bg ts-meta" data-tsmeta="b">
+																<h5>Yoga</h5>
+																<span>Keaf Shen</span>
+															</td>
+															<td class="hover-bg ts-meta" data-tsmeta="c">
+																<h5>Cardio</h5>
+																<span>RLefew D. Loee</span>
+															</td>
+															<td class="dark-bg hover-bg ts-meta" data-tsmeta="a">
+																<h5>Fitness</h5>
+																<span>Kimberly Stone</span>
+															</td>
+														</tr>
+														<tr>
+															<td class="class-time"></td>
+															<td class="hover-bg ts-meta" data-tsmeta="a">
+																<h5>Cardio</h5>
+																<span>RLefew D. Loee</span>
+															</td>
+															<td class="dark-bg blank-td"></td>
+															<td class="hover-bg ts-meta" data-tsmeta="c">
+																<h5>Boxing</h5>
+																<span>Rachel Adam</span>
+															</td>
+															<td class="dark-bg hover-bg ts-meta" data-tsmeta="a">
+																<h5>Yoga</h5>
+																<span>Keaf Shen</span>
+															</td>
+															<td class="hover-bg ts-meta" data-tsmeta="b">
+																<h5>Karate</h5>
+																<span>Donald Grey</span>
+															</td>
+															<td class="dark-bg hover-bg ts-meta" data-tsmeta="c">
+																<h5>Boxing</h5>
+																<span>Rachel Adam</span>
+															</td>
+															<td class="hover-bg ts-meta" data-tsmeta="a">
+																<h5>WEIGHT LOOSE</h5>
+																<span>RLefew D. Loee</span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							<!-- Class Timetable Section End -->
+				';
+			}else{
+				$mensagem = '
+							<div class="col-lg-6">
+								<div class="section-title contact-title">
+									<span>Bem-Vindo(a) instrutor(a), '.$_SESSION['login'].'!</span>
+									<h2>Encontre, aqui, tudo que precisa!</h2>
+								</div>
+								<div class="contact-widget">
+										<div class="cw-text">
+											<a href="../Visualizacao/cadastrartreino.php"><i class="fa fa-calendar"></i>
+											<p>Cadastrar Treino</p></a>
+										</div>
+										<div class="cw-text">
+											<a href="../Visualizacao/cadastrarpessoa.php"><i class="fa fa-user-plus"></i>
+											<p>Cadastrar Pessoa</p></a>
+										</div>
+										<div class="cw-text">
+											<a href="../Visualizacao/cadastrarequipamento.php"><i class="fa fa-cogs"></i>
+											<p>Cadastrar Equipamento</p></a>
+										</div>
+										<div class="cw-text">
+											<a href="../Visualizacao/cadastrarplano.php"><i class="fa fa-tag"></i></i>
+											<p>Cadastrar Plano</p></a>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-lg-6">
+									<div class="contact-widget">
+										<br><br><br><br>
+										<div class="cw-text">
+											<a href="../Visualizacao/listartreinos.php"><i class="fa fa-calendar"></i>
+											<p>Listar Treinos</p></a>
+										</div>
+										<div class="cw-text">
+											<a href="../Visualizacao/listarpessoas.php"><i class="fa fa-user-plus"></i>
+											<p>Listar Pessoas</p></a>
+										</div>
+										<div class="cw-text">
+											<a href="../Visualizacao/listarequipamentos.php"><i class="fa fa-cogs"></i>
+											<p>Listar Equipamentos</p></a>
+										</div>
+										<div class="cw-text">
+											<a href="../Visualizacao/listarplanos.php"><i class="fa fa-tag"></i></i>
+											<p>Listar Planos</p></a>
+										</div>
+									</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					</div>
+				';
+
+			}
+			echo $mensagem;
+		//}
+	}}
 ?>

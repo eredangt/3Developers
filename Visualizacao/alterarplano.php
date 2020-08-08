@@ -99,9 +99,6 @@
                 </div>
                 <div class="col-lg-3">
                     <div class="top-option">
-                        <!--<div class="to-search search-switch">
-                            <i class="fa fa-search"></i>
-                        </div>-->
                         <div class="to-social">
 							<a href="../Controle/logout.php">Log Out</a>
                             <a href="#"><i class="fa fa-facebook"></i></a>
