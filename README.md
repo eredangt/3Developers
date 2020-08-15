@@ -42,6 +42,19 @@ Os tipos de usuário do sistema são clientes e instrutores.<br />
     - ...;
     - Arquivos .js devem ser colocados na pasta "js".
 
+## Regras durante a programação:
+	- Mantenha o código identado;
+	- Nomear Funções de forma intuitiva;
+	- Sempre comentar o código;
+	- Antes de implementar algo, primeiro realize testes;
+	- Escreva um comentário no início do código, mostrando a data e quem o realizou ou alterou;
+	- Separe os comandos longos em várias linhas, quebrando-as em pontos que façam sentido;
+	- Coloque espaços dos dois lados dos operadores aritméticos;
+	- Digite as chaves, parênteses e colchetes (abrindo e fechando) antes de digitar os comandos ou expressões entre eles, para evitar erros;
+	- Escreva os operadores unários sempre próximos das variáveis (sem espaços);
+	- Teste o código exaustivamente!
+
+
 ###### Links: Exemplos de README
 https://github.com/amphp/amp/blob/master/README.md
 
