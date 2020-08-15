@@ -160,7 +160,7 @@
 		}
 
 		public function nomeInstrutor($conexao, $codFunc){
-			$sql = "SELECT Pessoa_idPessoa, nome FROM Instrutor";
+			$sql = "SELECT I.Pessoa_idPessoa, P.nome FROM Instrutor AS I, Pessoa as P WHERE I.Pessoa_idPessoa=P.idPessoa";
 			$tabela = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
 			$nomeFunc='';
 			while($linha = mysqli_fetch_row($tabela)){
