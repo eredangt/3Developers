@@ -1,4 +1,8 @@
 <?php
+
+	namespace Developers\Acme\Controle;
+    use Developers\Acme\Modelo\Instrutor;
+    use Developers\Acme\Modelo\Pessoa;
 	// Persistence
 	include_once('../Modelo/Instrutor.php');
 	include_once('../Modelo/Pessoa.php');

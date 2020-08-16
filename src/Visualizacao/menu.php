@@ -2,11 +2,16 @@
 <html lang="zxx">
 <head>
 	<?php
+        use Developers\Acme\Persistencia\ConexaoBD;
+        use Developers\Acme\Modelo\Pessoa;
+        use Developers\Acme\Controle\PessoaDAO;
 		$pagina = 'menu';
-		session_start();
+        session_start();
+        
 		include_once('../Persistencia/ConexaoBD.php');
 		include_once('../Modelo/Pessoa.php');
-		include_once('../Controle/PessoaDAO.php');
+        include_once('../Controle/PessoaDAO.php');
+        
 		$conexao = new ConexaoBD();
 		$conexao = $conexao->abreConexao();
 		$pessoaDAO = new PessoaDAO();

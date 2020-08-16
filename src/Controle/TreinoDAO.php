@@ -1,4 +1,8 @@
 <?php
+
+	namespace Developers\Acme\Controle;
+	use Developers\Acme\Modelo\Treino;
+	
 	include_once('../Modelo/Treino.php');
 	class TreinoDAO{
 

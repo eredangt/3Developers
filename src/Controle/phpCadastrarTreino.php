@@ -1,5 +1,10 @@
 <?php
 
+	namespace Developers\Acme\Controle;
+    use Developers\Acme\Persistencia\ConexaoBD;
+    use Developers\Acme\Modelo\Treino;
+    use Developers\Acme\Controle\TreinoDAO;
+	
     include_once('../Persistencia/ConexaoBD.php');
 	include_once('../Modelo/Treino.php');
 	include_once('TreinoDAO.php');

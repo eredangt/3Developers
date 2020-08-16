@@ -1,4 +1,8 @@
 <?php
+
+	namespace Developers\Acme\Controle;
+	use Developers\Acme\Persistencia\ConexaoBD;
+	
 	include_once('../Persistencia/ConexaoBD.php');
 	class PessoaDAO{
 

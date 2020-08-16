@@ -1,4 +1,7 @@
 <?php
+
+	namespace Developers\Acme\Controle;
+    use Developers\Acme\Persistencia\phpConexaoBD;
 	session_start();
 	// Faz a ligação com o arquivo de banco de dados
 	require('../Persistencia/phpConexaoBD.php');

@@ -2,15 +2,21 @@
 <html lang="zxx">
 <head>
 	<?php
+        use Developers\Acme\Persistencia\ConexaoBD;
+        use Developers\Acme\Modelo\Pessoa;
+        use Developers\Acme\Controle\PessoaDAO;
+        use Developers\Acme\Modelo\Equipamento;
+        use Developers\Acme\Controle\EquipamentoDAO;
 		$pagina = 'listar';
-		session_start();
+        session_start();
+        
 		include_once('../Persistencia/ConexaoBD.php');
 		include_once('../Modelo/Pessoa.php');
-		include_once('../Controle/PessoaDAO.php');
-
+        include_once('../Controle/PessoaDAO.php');
+        
 		include_once('../Modelo/Equipamento.php');
-		include_once('../Controle/EquipamentoDAO.php');
-
+        include_once('../Controle/EquipamentoDAO.php');
+        
 		$conexao = new ConexaoBD();
 		$conexao = $conexao->abreConexao();
 		$pessoaDAO = new PessoaDAO();

@@ -1,4 +1,7 @@
 <?php
+
+	namespace Developers\Acme\Controle;
+    use Developers\Acme\Modelo\Equipamento;
 	// Persistence
 	include_once('../Modelo/Equipamento.php');
 	class EquipamentoDAO{

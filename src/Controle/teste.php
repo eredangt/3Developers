@@ -1,4 +1,20 @@
 <?php
+
+	namespace Developers\Acme\Controle;
+    use Developers\Acme\Persistencia\ConexaoBD;
+    use Developers\Acme\Modelo\Pessoa;
+    use Developers\Acme\Controle\PessoaDAO;
+    use Developers\Acme\Modelo\Cliente;
+    use Developers\Acme\Controle\ClienteDAO;
+    use Developers\Acme\Modelo\Instrutor;
+    use Developers\Acme\Controle\InstrutorDAO;
+    use Developers\Acme\Modelo\Plano;
+    use Developers\Acme\Controle\PlanoDAO;
+    use Developers\Acme\Modelo\Equipamento;
+    use Developers\Acme\Controle\EquipamentoDAO;
+    use Developers\Acme\Modelo\Treino;
+    use Developers\Acme\Controle\TreinoDAO;
+	
 	include_once('../Persistencia/ConexaoBD.php');
 	include_once('../Modelo/Pessoa.php');
 	include_once('../Controle/PessoaDAO.php');

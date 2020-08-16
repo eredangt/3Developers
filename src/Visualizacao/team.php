@@ -3,11 +3,16 @@
 <head>
 
     <?php
+        use Developers\Acme\Persistencia\ConexaoBD;
+        use Developers\Acme\Modelo\Pessoa;
+        use Developers\Acme\Controle\PessoaDAO;
         $pagina = 'equipe';
-		session_start();
+        session_start();
+        
         include_once('../Controle/PessoaDAO.php');
         include_once('../Persistencia/ConexaoBD.php');
         include_once('../Modelo/Pessoa.php');
+        
         $conexao = new ConexaoBD();
         $conexao = $conexao->abreConexao();
         $pessoaDAO = new PessoaDAO();

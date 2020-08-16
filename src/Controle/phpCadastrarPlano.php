@@ -1,4 +1,10 @@
 <?php
+
+	namespace Developers\Acme\Controle;
+    use Developers\Acme\Persistencia\ConexaoBD;
+    use Developers\Acme\Modelo\Plano;
+    use Developers\Acme\Controle\PlanoDAO;
+	
 	include_once('../Persistencia/ConexaoBD.php');
 	include_once('../Modelo/Plano.php');
 	include_once('PlanoDAO.php');

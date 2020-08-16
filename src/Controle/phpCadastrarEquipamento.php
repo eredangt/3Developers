@@ -1,4 +1,10 @@
 <?php
+
+	namespace Developers\Acme\Controle;
+    use Developers\Acme\Persistencia\ConexaoBD;
+    use Developers\Acme\Modelo\Equipamento;
+    use Developers\Acme\Controle\EquipamentoDAO;
+	
 	include_once('../Persistencia/ConexaoBD.php');
 	include_once('../Modelo/Equipamento.php');
 	include_once('EquipamentoDAO.php');

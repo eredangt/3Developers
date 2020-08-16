@@ -1,6 +1,8 @@
 <?php
 
     namespace Developers\Acme\Modelo;
+    use Developers\Acme\Modelo\Pessoa;
+    
 	include_once ('Pessoa.php');
     class Instrutor extends Pessoa {
         private $idInstrutor;

@@ -4,11 +4,18 @@
 <head>
 
 	<?php
+        
+        use Developers\Acme\Persistencia\ConexaoBD;
+        use Developers\Acme\Controle\PessoaDAO;
+        use Developers\Acme\Controle\PlanoDAO;
+        
 		$pagina = 'inicio';
-		session_start();
+        session_start();
+        
 		include_once('../Persistencia/ConexaoBD.php');
         include_once('../Controle/PessoaDAO.php');
-		include_once('../Controle/PlanoDAO.php');
+        include_once('../Controle/PlanoDAO.php');
+        
 		$conexao = new ConexaoBD();
 		$conexao = $conexao->abreConexao();
         $pessoaDAO = new PessoaDAO();

@@ -4,6 +4,7 @@
 <head>
 
     <?php
+        use Developers\Acme\Controle\PessoaDAO;
         $pagina = 'sobre';
 		session_start();
         include_once('../Controle/PessoaDAO.php');

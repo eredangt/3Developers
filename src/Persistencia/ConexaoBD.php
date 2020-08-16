@@ -1,4 +1,6 @@
 <?php
+
+	namespace Developers\Acme\Persistencia;
 	// Persistence
 	class ConexaoBD{
 		private $host = "localhost";

@@ -1,4 +1,6 @@
 <?php
+
+    namespace Developers\Acme\Controle;
 	session_start();
 	session_destroy();
 	echo '<SCRIPT type="text/javascript"> //not showing me this

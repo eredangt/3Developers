@@ -1,4 +1,6 @@
 <?php
+
+	namespace Developers\Acme\Persistencia;
 	$host = 'localhost';
 	$user = 'root';
 	$password = '';

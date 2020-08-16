@@ -1,4 +1,7 @@
 <?php
+
+	namespace Developers\Acme\Controle;
+    use Developers\Acme\Modelo\Plano;
 	// Persistence
 	include_once('../Modelo/Plano.php');
 	class PlanoDAO{

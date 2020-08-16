@@ -2,12 +2,18 @@
 <html lang="zxx">
 <head>
 	<?php
+        use Developers\Acme\Persistencia\ConexaoBD;
+        use Developers\Acme\Modelo\Pessoa;
+        use Developers\Acme\Controle\PessoaDAO;
+        use Developers\Acme\Controle\TreinoDAO;
 		$pagina = 'listar';
-		session_start();
+        session_start();
+        
 		include_once('../Persistencia/ConexaoBD.php');
 		include_once('../Modelo/Pessoa.php');
 		include_once('../Controle/PessoaDAO.php');
-		include_once('../Controle/TreinoDAO.php');
+        include_once('../Controle/TreinoDAO.php');
+        
 		$conexao = new ConexaoBD();
 		$conexao = $conexao->abreConexao();
 		$pessoaDAO = new PessoaDAO();
