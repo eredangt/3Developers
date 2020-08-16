@@ -1,0 +1,25 @@
+{
+    "name": "3developers/academia",
+    "description": "Sistema de academia",
+    "type": "project",
+    "require-dev": {
+        "phpunit/phpunit": "^8"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Teste",
+            "email": "teste.teste@teste.teste"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Developers\\Acme\\":"src/"
+        }
+    },
+    "scripts": {
+       
+        "test": "vendor/bin/phpunit"
+	},
+    "require": {}
+}

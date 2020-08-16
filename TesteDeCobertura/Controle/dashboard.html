@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for C:\xampp\htdocs\3Developers\src\Controle</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../_css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="../_css/nv.d3.min.css" rel="stylesheet" type="text/css">
+  <link href="../_css/style.css" rel="stylesheet" type="text/css">
+  <link href="../_css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="../index.html">C:\xampp\htdocs\3Developers\src</a></li>
+         <li class="breadcrumb-item"><a href="index.html">Controle</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="ClienteDAO.php.html#5">ClienteDAO</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="EquipamentoDAO.php.html#4">EquipamentoDAO</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="InstrutorDAO.php.html#5">InstrutorDAO</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#3">PessoaDAO</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PlanoDAO.php.html#4">PlanoDAO</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TreinoDAO.php.html#3">TreinoDAO</a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="PessoaDAO.php.html#3">PessoaDAO</a></td><td class="text-right">10506</td></tr>
+       <tr><td><a href="TreinoDAO.php.html#3">TreinoDAO</a></td><td class="text-right">2970</td></tr>
+       <tr><td><a href="PlanoDAO.php.html#4">PlanoDAO</a></td><td class="text-right">992</td></tr>
+       <tr><td><a href="EquipamentoDAO.php.html#4">EquipamentoDAO</a></td><td class="text-right">650</td></tr>
+       <tr><td><a href="ClienteDAO.php.html#5">ClienteDAO</a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="InstrutorDAO.php.html#5">InstrutorDAO</a></td><td class="text-right">90</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="ClienteDAO.php.html#9"><abbr title="ClienteDAO::addCliente">addCliente</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PlanoDAO.php.html#156"><abbr title="PlanoDAO::excluirPlano">excluirPlano</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#345"><abbr title="PessoaDAO::minhaEquipe">minhaEquipe</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#363"><abbr title="PessoaDAO::addPessoa">addPessoa</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#374"><abbr title="PessoaDAO::atualizarPessoa">atualizarPessoa</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#390"><abbr title="PessoaDAO::excluirPessoa">excluirPessoa</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#413"><abbr title="PessoaDAO::implementaFuncionalidadesUsuario">implementaFuncionalidadesUsuario</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PlanoDAO.php.html#8"><abbr title="PlanoDAO::imprimePlanos">imprimePlanos</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PlanoDAO.php.html#53"><abbr title="PlanoDAO::listarPlanos">listarPlanos</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PlanoDAO.php.html#80"><abbr title="PlanoDAO::pegaNomePlano">pegaNomePlano</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PlanoDAO.php.html#93"><abbr title="PlanoDAO::pegaNumMeses">pegaNumMeses</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PlanoDAO.php.html#106"><abbr title="PlanoDAO::pegaValor">pegaValor</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PlanoDAO.php.html#119"><abbr title="PlanoDAO::addPlano">addPlano</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PlanoDAO.php.html#136"><abbr title="PlanoDAO::atualizarPlano">atualizarPlano</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TreinoDAO.php.html#7"><abbr title="TreinoDAO::addTreino">addTreino</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#257"><abbr title="PessoaDAO::implementaBotao">implementaBotao</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TreinoDAO.php.html#24"><abbr title="TreinoDAO::atualizarTreino">atualizarTreino</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TreinoDAO.php.html#46"><abbr title="TreinoDAO::selecionarPessoa">selecionarPessoa</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TreinoDAO.php.html#68"><abbr title="TreinoDAO::pegaIdPessoa">pegaIdPessoa</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TreinoDAO.php.html#95"><abbr title="TreinoDAO::selecionarIdPessoa">selecionarIdPessoa</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TreinoDAO.php.html#106"><abbr title="TreinoDAO::selecionarIdEquipamento">selecionarIdEquipamento</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TreinoDAO.php.html#117"><abbr title="TreinoDAO::selecionarEquipamento">selecionarEquipamento</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TreinoDAO.php.html#140"><abbr title="TreinoDAO::excluirTreino">excluirTreino</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TreinoDAO.php.html#162"><abbr title="TreinoDAO::nomeInstrutor">nomeInstrutor</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TreinoDAO.php.html#174"><abbr title="TreinoDAO::listarTreinos">listarTreinos</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TreinoDAO.php.html#200"><abbr title="TreinoDAO::pegaTipo">pegaTipo</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TreinoDAO.php.html#213"><abbr title="TreinoDAO::pegaSeries">pegaSeries</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TreinoDAO.php.html#227"><abbr title="TreinoDAO::pegaRepeticoes">pegaRepeticoes</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#266"><abbr title="PessoaDAO::implementaMenu">implementaMenu</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#248"><abbr title="PessoaDAO::implementaRodape">implementaRodape</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ClienteDAO.php.html#33"><abbr title="ClienteDAO::atualizarCliente">atualizarCliente</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#30"><abbr title="PessoaDAO::pegaSalario">pegaSalario</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="EquipamentoDAO.php.html#8"><abbr title="EquipamentoDAO::pegaNomeEquip">pegaNomeEquip</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="EquipamentoDAO.php.html#21"><abbr title="EquipamentoDAO::pegaQtdEquip">pegaQtdEquip</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="EquipamentoDAO.php.html#34"><abbr title="EquipamentoDAO::pegaMarca">pegaMarca</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="EquipamentoDAO.php.html#47"><abbr title="EquipamentoDAO::pegaAno">pegaAno</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="EquipamentoDAO.php.html#60"><abbr title="EquipamentoDAO::listarEquipamentos">listarEquipamentos</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="EquipamentoDAO.php.html#79"><abbr title="EquipamentoDAO::addEquipamento">addEquipamento</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="EquipamentoDAO.php.html#96"><abbr title="EquipamentoDAO::atualizarEquipamento">atualizarEquipamento</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="EquipamentoDAO.php.html#116"><abbr title="EquipamentoDAO::excluirEquipamento">excluirEquipamento</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="InstrutorDAO.php.html#9"><abbr title="InstrutorDAO::addInstrutor">addInstrutor</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="InstrutorDAO.php.html#31"><abbr title="InstrutorDAO::atualizarInstrutor">atualizarInstrutor</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#7"><abbr title="PessoaDAO::pegaImagem">pegaImagem</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#17"><abbr title="PessoaDAO::pegaCH">pegaCH</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#43"><abbr title="PessoaDAO::pegaCargo">pegaCargo</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#242"><abbr title="PessoaDAO::implementaLogOut">implementaLogOut</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#56"><abbr title="PessoaDAO::pegaSenha">pegaSenha</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#69"><abbr title="PessoaDAO::pegaEmail">pegaEmail</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#82"><abbr title="PessoaDAO::pegaDataNasc">pegaDataNasc</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#95"><abbr title="PessoaDAO::pegaNumTelefone">pegaNumTelefone</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#108"><abbr title="PessoaDAO::pegaNome">pegaNome</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#121"><abbr title="PessoaDAO::pegaCPF">pegaCPF</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#134"><abbr title="PessoaDAO::instrutorFoto">instrutorFoto</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#157"><abbr title="PessoaDAO::selecionarPlano">selecionarPlano</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#180"><abbr title="PessoaDAO::listarPessoas">listarPessoas</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#206"><abbr title="PessoaDAO::implementaRestricao">implementaRestricao</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#222"><abbr title="PessoaDAO::implementaRestricaoLogar">implementaRestricaoLogar</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#232"><abbr title="PessoaDAO::implementaRestricaoDeslogar">implementaRestricaoDeslogar</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TreinoDAO.php.html#241"><abbr title="TreinoDAO::pegaPeso">pegaPeso</abbr></a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="PessoaDAO.php.html#266"><abbr title="PessoaDAO::implementaMenu">implementaMenu</abbr></a></td><td class="text-right">380</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#413"><abbr title="PessoaDAO::implementaFuncionalidadesUsuario">implementaFuncionalidadesUsuario</abbr></a></td><td class="text-right">156</td></tr>
+       <tr><td><a href="PlanoDAO.php.html#8"><abbr title="PlanoDAO::imprimePlanos">imprimePlanos</abbr></a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="TreinoDAO.php.html#68"><abbr title="TreinoDAO::pegaIdPessoa">pegaIdPessoa</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#157"><abbr title="PessoaDAO::selecionarPlano">selecionarPlano</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="TreinoDAO.php.html#46"><abbr title="TreinoDAO::selecionarPessoa">selecionarPessoa</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="TreinoDAO.php.html#117"><abbr title="TreinoDAO::selecionarEquipamento">selecionarEquipamento</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="ClienteDAO.php.html#9"><abbr title="ClienteDAO::addCliente">addCliente</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="InstrutorDAO.php.html#9"><abbr title="InstrutorDAO::addInstrutor">addInstrutor</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#134"><abbr title="PessoaDAO::instrutorFoto">instrutorFoto</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#180"><abbr title="PessoaDAO::listarPessoas">listarPessoas</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="PlanoDAO.php.html#53"><abbr title="PlanoDAO::listarPlanos">listarPlanos</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="TreinoDAO.php.html#162"><abbr title="TreinoDAO::nomeInstrutor">nomeInstrutor</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="PlanoDAO.php.html#106"><abbr title="PlanoDAO::pegaValor">pegaValor</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#390"><abbr title="PessoaDAO::excluirPessoa">excluirPessoa</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#374"><abbr title="PessoaDAO::atualizarPessoa">atualizarPessoa</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="PlanoDAO.php.html#80"><abbr title="PlanoDAO::pegaNomePlano">pegaNomePlano</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="PlanoDAO.php.html#93"><abbr title="PlanoDAO::pegaNumMeses">pegaNumMeses</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="TreinoDAO.php.html#7"><abbr title="TreinoDAO::addTreino">addTreino</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="PlanoDAO.php.html#119"><abbr title="PlanoDAO::addPlano">addPlano</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="PlanoDAO.php.html#136"><abbr title="PlanoDAO::atualizarPlano">atualizarPlano</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="PlanoDAO.php.html#156"><abbr title="PlanoDAO::excluirPlano">excluirPlano</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="TreinoDAO.php.html#24"><abbr title="TreinoDAO::atualizarTreino">atualizarTreino</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="TreinoDAO.php.html#95"><abbr title="TreinoDAO::selecionarIdPessoa">selecionarIdPessoa</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="TreinoDAO.php.html#106"><abbr title="TreinoDAO::selecionarIdEquipamento">selecionarIdEquipamento</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="TreinoDAO.php.html#140"><abbr title="TreinoDAO::excluirTreino">excluirTreino</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="TreinoDAO.php.html#174"><abbr title="TreinoDAO::listarTreinos">listarTreinos</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="TreinoDAO.php.html#200"><abbr title="TreinoDAO::pegaTipo">pegaTipo</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="TreinoDAO.php.html#213"><abbr title="TreinoDAO::pegaSeries">pegaSeries</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="TreinoDAO.php.html#227"><abbr title="TreinoDAO::pegaRepeticoes">pegaRepeticoes</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#363"><abbr title="PessoaDAO::addPessoa">addPessoa</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="TreinoDAO.php.html#241"><abbr title="TreinoDAO::pegaPeso">pegaPeso</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#345"><abbr title="PessoaDAO::minhaEquipe">minhaEquipe</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#30"><abbr title="PessoaDAO::pegaSalario">pegaSalario</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="EquipamentoDAO.php.html#8"><abbr title="EquipamentoDAO::pegaNomeEquip">pegaNomeEquip</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="EquipamentoDAO.php.html#21"><abbr title="EquipamentoDAO::pegaQtdEquip">pegaQtdEquip</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="EquipamentoDAO.php.html#34"><abbr title="EquipamentoDAO::pegaMarca">pegaMarca</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="EquipamentoDAO.php.html#47"><abbr title="EquipamentoDAO::pegaAno">pegaAno</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="EquipamentoDAO.php.html#60"><abbr title="EquipamentoDAO::listarEquipamentos">listarEquipamentos</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="EquipamentoDAO.php.html#79"><abbr title="EquipamentoDAO::addEquipamento">addEquipamento</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="EquipamentoDAO.php.html#96"><abbr title="EquipamentoDAO::atualizarEquipamento">atualizarEquipamento</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="EquipamentoDAO.php.html#116"><abbr title="EquipamentoDAO::excluirEquipamento">excluirEquipamento</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="InstrutorDAO.php.html#31"><abbr title="InstrutorDAO::atualizarInstrutor">atualizarInstrutor</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#7"><abbr title="PessoaDAO::pegaImagem">pegaImagem</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#17"><abbr title="PessoaDAO::pegaCH">pegaCH</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#43"><abbr title="PessoaDAO::pegaCargo">pegaCargo</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#56"><abbr title="PessoaDAO::pegaSenha">pegaSenha</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#69"><abbr title="PessoaDAO::pegaEmail">pegaEmail</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#82"><abbr title="PessoaDAO::pegaDataNasc">pegaDataNasc</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#95"><abbr title="PessoaDAO::pegaNumTelefone">pegaNumTelefone</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#108"><abbr title="PessoaDAO::pegaNome">pegaNome</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#121"><abbr title="PessoaDAO::pegaCPF">pegaCPF</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#206"><abbr title="PessoaDAO::implementaRestricao">implementaRestricao</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="ClienteDAO.php.html#33"><abbr title="ClienteDAO::atualizarCliente">atualizarCliente</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#257"><abbr title="PessoaDAO::implementaBotao">implementaBotao</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#222"><abbr title="PessoaDAO::implementaRestricaoLogar">implementaRestricaoLogar</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#232"><abbr title="PessoaDAO::implementaRestricaoDeslogar">implementaRestricaoDeslogar</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#242"><abbr title="PessoaDAO::implementaLogOut">implementaLogOut</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="PessoaDAO.php.html#248"><abbr title="PessoaDAO::implementaRodape">implementaRodape</abbr></a></td><td class="text-right">6</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 7.0.10</a> using <a href="https://secure.php.net/" target="_top">PHP 7.3.20</a> with <a href="https://xdebug.org/">Xdebug 2.9.6</a> and <a href="https://phpunit.de/">PHPUnit 8.5.8</a> at Sun Aug 16 0:18:03 CEST 2020.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="../_js/jquery.min.js" type="text/javascript"></script>
+  <script src="../_js/d3.min.js" type="text/javascript"></script>
+  <script src="../_js/nv.d3.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([6,0,0,0,0,0,0,0,0,0,0,0], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([59,0,0,0,0,0,0,0,0,0,0,6], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[0,9,"<a href=\"ClienteDAO.php.html#5\">ClienteDAO<\/a>"],[0,25,"<a href=\"EquipamentoDAO.php.html#4\">EquipamentoDAO<\/a>"],[0,9,"<a href=\"InstrutorDAO.php.html#5\">InstrutorDAO<\/a>"],[0,102,"<a href=\"PessoaDAO.php.html#3\">PessoaDAO<\/a>"],[0,31,"<a href=\"PlanoDAO.php.html#4\">PlanoDAO<\/a>"],[0,54,"<a href=\"TreinoDAO.php.html#3\">TreinoDAO<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[100,1,"<a href=\"ClienteDAO.php.html#7\">ClienteDAO::__construct<\/a>"],[0,5,"<a href=\"ClienteDAO.php.html#9\">ClienteDAO::addCliente<\/a>"],[0,3,"<a href=\"ClienteDAO.php.html#33\">ClienteDAO::atualizarCliente<\/a>"],[100,1,"<a href=\"EquipamentoDAO.php.html#6\">EquipamentoDAO::__construct<\/a>"],[0,3,"<a href=\"EquipamentoDAO.php.html#8\">EquipamentoDAO::pegaNomeEquip<\/a>"],[0,3,"<a href=\"EquipamentoDAO.php.html#21\">EquipamentoDAO::pegaQtdEquip<\/a>"],[0,3,"<a href=\"EquipamentoDAO.php.html#34\">EquipamentoDAO::pegaMarca<\/a>"],[0,3,"<a href=\"EquipamentoDAO.php.html#47\">EquipamentoDAO::pegaAno<\/a>"],[0,3,"<a href=\"EquipamentoDAO.php.html#60\">EquipamentoDAO::listarEquipamentos<\/a>"],[0,3,"<a href=\"EquipamentoDAO.php.html#79\">EquipamentoDAO::addEquipamento<\/a>"],[0,3,"<a href=\"EquipamentoDAO.php.html#96\">EquipamentoDAO::atualizarEquipamento<\/a>"],[0,3,"<a href=\"EquipamentoDAO.php.html#116\">EquipamentoDAO::excluirEquipamento<\/a>"],[100,1,"<a href=\"InstrutorDAO.php.html#7\">InstrutorDAO::__construct<\/a>"],[0,5,"<a href=\"InstrutorDAO.php.html#9\">InstrutorDAO::addInstrutor<\/a>"],[0,3,"<a href=\"InstrutorDAO.php.html#31\">InstrutorDAO::atualizarInstrutor<\/a>"],[100,1,"<a href=\"PessoaDAO.php.html#5\">PessoaDAO::__construct<\/a>"],[0,3,"<a href=\"PessoaDAO.php.html#7\">PessoaDAO::pegaImagem<\/a>"],[0,3,"<a href=\"PessoaDAO.php.html#17\">PessoaDAO::pegaCH<\/a>"],[0,3,"<a href=\"PessoaDAO.php.html#30\">PessoaDAO::pegaSalario<\/a>"],[0,3,"<a href=\"PessoaDAO.php.html#43\">PessoaDAO::pegaCargo<\/a>"],[0,3,"<a href=\"PessoaDAO.php.html#56\">PessoaDAO::pegaSenha<\/a>"],[0,3,"<a href=\"PessoaDAO.php.html#69\">PessoaDAO::pegaEmail<\/a>"],[0,3,"<a href=\"PessoaDAO.php.html#82\">PessoaDAO::pegaDataNasc<\/a>"],[0,3,"<a href=\"PessoaDAO.php.html#95\">PessoaDAO::pegaNumTelefone<\/a>"],[0,3,"<a href=\"PessoaDAO.php.html#108\">PessoaDAO::pegaNome<\/a>"],[0,3,"<a href=\"PessoaDAO.php.html#121\">PessoaDAO::pegaCPF<\/a>"],[0,4,"<a href=\"PessoaDAO.php.html#134\">PessoaDAO::instrutorFoto<\/a>"],[0,7,"<a href=\"PessoaDAO.php.html#157\">PessoaDAO::selecionarPlano<\/a>"],[0,4,"<a href=\"PessoaDAO.php.html#180\">PessoaDAO::listarPessoas<\/a>"],[0,3,"<a href=\"PessoaDAO.php.html#206\">PessoaDAO::implementaRestricao<\/a>"],[0,2,"<a href=\"PessoaDAO.php.html#222\">PessoaDAO::implementaRestricaoLogar<\/a>"],[0,2,"<a href=\"PessoaDAO.php.html#232\">PessoaDAO::implementaRestricaoDeslogar<\/a>"],[0,2,"<a href=\"PessoaDAO.php.html#242\">PessoaDAO::implementaLogOut<\/a>"],[0,2,"<a href=\"PessoaDAO.php.html#248\">PessoaDAO::implementaRodape<\/a>"],[0,2,"<a href=\"PessoaDAO.php.html#257\">PessoaDAO::implementaBotao<\/a>"],[0,19,"<a href=\"PessoaDAO.php.html#266\">PessoaDAO::implementaMenu<\/a>"],[0,3,"<a href=\"PessoaDAO.php.html#345\">PessoaDAO::minhaEquipe<\/a>"],[0,3,"<a href=\"PessoaDAO.php.html#363\">PessoaDAO::addPessoa<\/a>"],[0,3,"<a href=\"PessoaDAO.php.html#374\">PessoaDAO::atualizarPessoa<\/a>"],[0,3,"<a href=\"PessoaDAO.php.html#390\">PessoaDAO::excluirPessoa<\/a>"],[0,12,"<a href=\"PessoaDAO.php.html#413\">PessoaDAO::implementaFuncionalidadesUsuario<\/a>"],[100,1,"<a href=\"PlanoDAO.php.html#6\">PlanoDAO::__construct<\/a>"],[0,8,"<a href=\"PlanoDAO.php.html#8\">PlanoDAO::imprimePlanos<\/a>"],[0,4,"<a href=\"PlanoDAO.php.html#53\">PlanoDAO::listarPlanos<\/a>"],[0,3,"<a href=\"PlanoDAO.php.html#80\">PlanoDAO::pegaNomePlano<\/a>"],[0,3,"<a href=\"PlanoDAO.php.html#93\">PlanoDAO::pegaNumMeses<\/a>"],[0,3,"<a href=\"PlanoDAO.php.html#106\">PlanoDAO::pegaValor<\/a>"],[0,3,"<a href=\"PlanoDAO.php.html#119\">PlanoDAO::addPlano<\/a>"],[0,3,"<a href=\"PlanoDAO.php.html#136\">PlanoDAO::atualizarPlano<\/a>"],[0,3,"<a href=\"PlanoDAO.php.html#156\">PlanoDAO::excluirPlano<\/a>"],[100,1,"<a href=\"TreinoDAO.php.html#5\">TreinoDAO::__construct<\/a>"],[0,3,"<a href=\"TreinoDAO.php.html#7\">TreinoDAO::addTreino<\/a>"],[0,3,"<a href=\"TreinoDAO.php.html#24\">TreinoDAO::atualizarTreino<\/a>"],[0,6,"<a href=\"TreinoDAO.php.html#46\">TreinoDAO::selecionarPessoa<\/a>"],[0,7,"<a href=\"TreinoDAO.php.html#68\">TreinoDAO::pegaIdPessoa<\/a>"],[0,3,"<a href=\"TreinoDAO.php.html#95\">TreinoDAO::selecionarIdPessoa<\/a>"],[0,3,"<a href=\"TreinoDAO.php.html#106\">TreinoDAO::selecionarIdEquipamento<\/a>"],[0,6,"<a href=\"TreinoDAO.php.html#117\">TreinoDAO::selecionarEquipamento<\/a>"],[0,3,"<a href=\"TreinoDAO.php.html#140\">TreinoDAO::excluirTreino<\/a>"],[0,4,"<a href=\"TreinoDAO.php.html#162\">TreinoDAO::nomeInstrutor<\/a>"],[0,3,"<a href=\"TreinoDAO.php.html#174\">TreinoDAO::listarTreinos<\/a>"],[0,3,"<a href=\"TreinoDAO.php.html#200\">TreinoDAO::pegaTipo<\/a>"],[0,3,"<a href=\"TreinoDAO.php.html#213\">TreinoDAO::pegaSeries<\/a>"],[0,3,"<a href=\"TreinoDAO.php.html#227\">TreinoDAO::pegaRepeticoes<\/a>"],[0,3,"<a href=\"TreinoDAO.php.html#241\">TreinoDAO::pegaPeso<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>
