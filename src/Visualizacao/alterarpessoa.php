@@ -7,11 +7,11 @@
         use Developers\Acme\Controle\PessoaDAO;
 		$pagina = 'listar';
         session_start();
-        
+
 		include_once('../Persistencia/ConexaoBD.php');
 		include_once('../Modelo/Pessoa.php');
         include_once('../Controle/PessoaDAO.php');
-        
+
 		$conexao = new ConexaoBD();
 		$conexao = $conexao->abreConexao();
 		$pessoaDAO = new PessoaDAO();
@@ -183,7 +183,7 @@
 									<small class="smallCadastro">O E-mail deverá também ser utilizado como login.</small>
 									<input type="email" name="txtEmailC" value="<?php echo $pessoaDAO->pegaEmail($conexao,$codigo); ?>" required>
 									<span id="spanSpecial">Senha do Cliente</span>
-									<input type="text" name="senhaPessoaC" value="<?php echo $pessoaDAO->pegaSenha($conexao,$codigo); ?>" required>
+									<input type="password" name="senhaPessoaC" value="<?php echo $pessoaDAO->pegaSenha($conexao,$codigo); ?>" required>
 									<span id="spanSpecial">Plano a ser contratado pelo Cliente</span>
 									<select name="selecaoPlanoC" id="selecaoPlano" class="meuSelect" required>
 										<?php
@@ -212,7 +212,7 @@
 									<small class="smallCadastro">O E-mail deverá também ser utilizado como login.</small>
 									<input type="email" name="txtEmailI" value="<?php echo $pessoaDAO->pegaEmail($conexao,$codigo); ?>" required>
 									<span id="spanSpecial">Senha do Instrutor</span>
-									<input type="text" name="senhaPessoaI" value="<?php echo $pessoaDAO->pegaSenha($conexao,$codigo); ?>" required>
+									<input type="password" name="senhaPessoaI" value="<?php echo $pessoaDAO->pegaSenha($conexao,$codigo); ?>" required>
 									<span id="spanSpecial">Salário do Instrutor</span>
 									<input type="number" name="txtSalarioI" value="<?php echo $pessoaDAO->pegaSalario($conexao,$codigo); ?>" required>
 									<span id="spanSpecial">Carga Horária do Instrutor</span>
