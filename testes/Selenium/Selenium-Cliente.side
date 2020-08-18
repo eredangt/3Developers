@@ -1,0 +1,149 @@
+{
+  "id": "a2d48939-1a54-4f75-8c10-d040a2200f43",
+  "version": "2.0",
+  "name": "Cliente",
+  "url": "http://localhost/es/Visualizacao/listarpessoas.php",
+  "tests": [{
+    "id": "bfa2949b-991c-4853-8225-cf8f786150b9",
+    "name": "Cadastrar Cliente",
+    "commands": [{
+      "id": "1f08de5b-69d2-40ba-a15f-0c952de6b5ec",
+      "comment": "Como a opção \"Nenhum\" está selecionada, então verificaremos se a opção Cliente não está selecionada",
+      "command": "verifyNotSelectedValue",
+      "target": "name=selecao",
+      "targets": [],
+      "value": "C"
+    }, {
+      "id": "80d53475-2694-493d-9a77-4f42be8df77e",
+      "comment": "Para cadastrar uma pessoa, a opção \"Nenhum\" deve estar marcada",
+      "command": "verifySelectedValue",
+      "target": "name=selecao",
+      "targets": [],
+      "value": "Nenhum"
+    }, {
+      "id": "d03150b8-a8a0-4630-8f5f-95883651ad42",
+      "comment": "Fazendo a verificação do campo Nome é editável",
+      "command": "verifyEditable",
+      "target": "name=txtNomeC",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "28bc293c-93fe-4571-abec-89ee2c19853b",
+      "comment": "Plano do Cliente deve estar em branco, ao cadastrar.",
+      "command": "assertSelectedValue",
+      "target": "name=selecaoPlanoC",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "69c2a4d7-5b01-4a0c-820d-8401449741c2",
+      "comment": "TESTE DE ERRO PROPOSITAL: O valor das opções é buscado via SELECT no Banco de Dados",
+      "command": "assertNotSelectedValue",
+      "target": "name=selecaoPlanoC",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "22fad047-cf52-4e3c-aabf-913f693de8d9",
+    "name": "Listar Clientes",
+    "commands": [{
+      "id": "474b73d2-4f44-4cec-b8d5-08b19714fb51",
+      "comment": "Ao Excluir uma Pessoa, clicar no botão de Cancelar",
+      "command": "chooseCancelOnNextConfirmation",
+      "target": "id=excluirPessoaCOD",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "590ceff3-e13d-4f28-b470-a26360cf380a",
+      "comment": "Procurar pelo nome da Pessoa:Escrever Texto",
+      "command": "assertText",
+      "target": "id=myInput",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "94db5f4b-7e38-4ade-9849-bdcb029c506e",
+      "comment": "Ao clicar o botão de alterar de uma pessoa específica, o Instrutor é encaminhado para a página de alterar pessoa",
+      "command": "click",
+      "target": "id=alterarPessoaCOD",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "0af2b430-3cb1-4978-9857-6cb75eb67016",
+    "name": "Alterar Cliente",
+    "commands": [{
+      "id": "28153d03-8d28-416c-beff-fbc7c5c86264",
+      "comment": "O campo select do Tipo de Pessoa deve já possuir o valor C, representando Cliente",
+      "command": "verifySelectedValue",
+      "target": "name=selecao",
+      "targets": [],
+      "value": "C"
+    }, {
+      "id": "72c3c177-6c9c-4d9c-ae13-85281d7f42a2",
+      "comment": "Mensagem de aviso para o Cliente, indicando que o E-mail será utilizado na hora de fazer Login",
+      "command": "verifyElementPresent",
+      "target": "id=spanSpecial",
+      "targets": [],
+      "value": "Endereço Eletrônico"
+    }, {
+      "id": "068cd222-7500-49e1-a449-d08edbd33b99",
+      "comment": "TESTE DE ERRO PROPOSITAL: Ao alterar, o Instrutor não consegue modificar o tipo de Pessoa(Cliente/Instrutor))",
+      "command": "verifyEditable",
+      "target": "name=selecao",
+      "targets": [],
+      "value": "C"
+    }, {
+      "id": "a1aa40cd-155a-4828-b296-db77780bf64f",
+      "comment": "Verifica se o plano do Cliente a ser alterado, pode ser modificado por outro",
+      "command": "verifyEditable",
+      "target": "name=selecaoPlanoC",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "04e03b8a-7771-4ee0-ba8c-36549c77442d",
+      "comment": "Verifica se o campo Data de Nascimento do Cliente está preenchido.",
+      "command": "verifyElementPresent",
+      "target": "name=txtDataC",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b6f860e0-2064-401c-95e2-0e5f5b66b3f4",
+      "comment": "Conclui alteração do Cliente ao apertar o botão Alterar",
+      "command": "submit",
+      "target": "id=botaoAlterar",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "4a12f6c1-d15e-4040-b3dc-a8ee80fb9998",
+    "name": "Ir para Listar Pessoa",
+    "commands": [{
+      "id": "a0b8aab2-7e19-4054-b410-59cde5fa51ea",
+      "comment": "No Menu, o Instrutor tem a opção de Listar Pessoas, visualizando seus clientes",
+      "command": "clickAt",
+      "target": "id=listarPessoas",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "a8a7cf29-89a7-4536-ae77-d27f8b2d5385",
+    "name": "Ir para Cadastrar Pessoa/Cliente",
+    "commands": [{
+      "id": "d94c53ad-7baa-4185-82e2-6504e0a45f8a",
+      "comment": "No Menu, o Instrutor tem a opção de Cadastrar Pessoas, inserindo novos clientes",
+      "command": "clickAt",
+      "target": "id=cadastrarpessoa",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "6fd55c05-31bf-4d5a-a496-13b83bb34dc9",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["bfa2949b-991c-4853-8225-cf8f786150b9"]
+  }],
+  "urls": ["http://localhost/es/src/Visualizacao/listarpessoas.php", "http://localhost/es/src/Visualizacao/cadastrarpessoa.php", "http://localhost/es/src/Visualizacao/alterarpessoa.php?codigo=33", "http://localhost/es/src/Visualizacao/menu.php"],
+  "plugins": []
+}
