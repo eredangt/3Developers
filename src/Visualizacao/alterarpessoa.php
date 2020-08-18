@@ -191,7 +191,7 @@
 											$choro = $pessoaDAO->selecionarPlano($conexao, $codigo);
 										?>
 									</select>
-									<button type="submit">ALTERAR</button>
+									<button type="submit" id="botaoAlterar">ALTERAR</button>
 								</div>
                             </form>
 							<!-- para caixa de dialogo em form onsubmit="return confirm('Você tem certeza que quer alterar?');" -->
@@ -223,7 +223,7 @@
 									<span id="spanSpecial">Imagem Instrutor</span>
 									<input type="file" name="image" value="<?php echo $pessoaDAO->pegaImagem($conexao,$codigo); ?>"/>
 
-									<button type="submit">ALTERAR</button>
+									<button type="submit"´ id="botaoAlterar">ALTERAR</button>
 								</div>
                             </form>
                             <br>

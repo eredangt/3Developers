@@ -201,8 +201,8 @@
 						<td class="dark-bg hover-dp ts-meta"><h5>'.htmlentities($linha[3]).'</h5></td>
 						<td class="hover-dp ts-meta"><h5>'.htmlentities($linha[4]).'</h5></td>
 						<td class="dark-bg hover-dp ts-meta"><h5>'.htmlentities($linha[5]).'</h5></td>
-						<td class="hover-dp ts-meta"><h5><center><a href="alterarpessoa.php?codigo='.$linha[0].'"><b>&#9997;</b></a></h5></td>
-						<td class="dark-bg hover-dp ts-meta"><h5><center><a href="../Controle/phpExcluirPessoa.php?codigo='.$linha[0].'" onclick="return confirm('.$mensagem.')"><b>&#10006;</b></a></h5></td>
+						<td class="hover-dp ts-meta"><h5><center><a id="alterarPessoaCOD" href="alterarpessoa.php?codigo='.$linha[0].'"><b>&#9997;</b></a></h5></td>
+						<td class="dark-bg hover-dp ts-meta"><h5><center><a  id="excluirPessoaCOD" href="../Controle/phpExcluirPessoa.php?codigo='.$linha[0].'" onclick="return confirm('.$mensagem.')"><b>&#10006;</b></a></h5></td>
 					</tr>';
 			}
 		}
@@ -558,7 +558,7 @@
 											<p>Cadastrar Treino</p></a>
 										</div>
 										<div class="cw-text">
-											<a href="../Visualizacao/cadastrarpessoa.php"><i class="fa fa-user-plus"></i>
+											<a id="cadastrarpessoa" href="../Visualizacao/cadastrarpessoa.php"><i class="fa fa-user-plus"></i>
 											<p>Cadastrar Pessoa</p></a>
 										</div>
 										<div class="cw-text">
@@ -580,7 +580,7 @@
 											<p>Listar Treinos</p></a>
 										</div>
 										<div class="cw-text">
-											<a href="../Visualizacao/listarpessoas.php"><i class="fa fa-user-plus"></i>
+											<a href="../Visualizacao/listarpessoas.php" id="listarPessoas"><i class="fa fa-user-plus"></i>
 											<p>Listar Pessoas</p></a>
 										</div>
 										<div class="cw-text">

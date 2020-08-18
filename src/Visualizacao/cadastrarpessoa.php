@@ -189,7 +189,7 @@
 											}
 	                                    ?>
 	                                </select>
-	                                <button type="submit">Cadastrar</button>
+	                                <button type="submit" id="botaoCadastrar">Cadastrar</button>
 	                            </div>
 							</form>
 
@@ -218,7 +218,7 @@
 	                                <input type="number" name="txtHorariaI" placeholder="Digite a carga horária do Instrutor a ser cadastrado" required>
 	                                <span id="spanSpecial">Imagem Instrutor</span>
 	                                <input type="file" name="image" accept="image/png, image/jpeg, image/jpg" required/>
-	                                <button type="submit">Cadastrar</button>
+	                                <button type="submit"´ id="botaoCadastrar">Cadastrar</button>
 	                            </div>
 							</form>
 
