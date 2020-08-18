@@ -1,5 +1,30 @@
+<!--
+---------------------------------------------------------------------------------
+Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
+------------------------ Grupo 1 : 3Developers - GymLife ------------------------
+    Integrantes:
+        Caio de Oliveira (10A - 201820267),
+        Ismael Martins Silva (10A - 201820281),
+        Layse Cristina Silva Garcia (10A - 201811177).
+	Data de Entrega: 25/08/2020.
+	*Alterações(autor/data):
+		-
+		-
+---------------------------------------------------------------------------------
+-->
 <?php
-
+/*
+    - ARQUIVO DO CONTROLE phpCadastrarPessoa.php:
+    O arquivo phpCadastrarPessoa.php armazena as informações passadas via
+	formulário, através de variáveis. É então criado um objeto de Conexao, para
+	conectar o Banco de Dados, e também, é criado um objeto Pessoa.
+	Ao criar o objeto Pessoa, é passado como parâmetro os dados coletados.
+	Por fim, cria se um objeto PessoaDAO para chamar o método addPessoa.
+	Em seguida, caso um Cliente ou Instrutor seja criado, um objeto do mesmo tipo
+	é inserido no código e esse "tipo"DAO chama o método de add"tipo".
+	Caso alguma pessoa que não é instrutor, tente acessar a página, a mesma será
+	redirecionada para o menu.
+*/
 	namespace Developers\Acme\Controle;
     use Developers\Acme\Persistencia\ConexaoBD;
     use Developers\Acme\Modelo\Pessoa;
@@ -8,7 +33,7 @@
     use Developers\Acme\Controle\ClienteDAO;
     use Developers\Acme\Modelo\Instrutor;
     use Developers\Acme\Controle\InstrutorDAO;
-	
+
 	include_once('../Persistencia/ConexaoBD.php');
 	include_once('../Modelo/Pessoa.php');
 	include_once('PessoaDAO.php');

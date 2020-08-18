@@ -1,3 +1,17 @@
+<!--
+---------------------------------------------------------------------------------
+Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
+------------------------ Grupo 1 : 3Developers - GymLife ------------------------
+    Integrantes:
+        Caio de Oliveira (10A - 201820267),
+        Ismael Martins Silva (10A - 201820281),
+        Layse Cristina Silva Garcia (10A - 201811177).
+	Data de Entrega: 25/08/2020.
+	*Alterações(autor/data):
+		-
+		-
+---------------------------------------------------------------------------------
+-->
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -7,11 +21,11 @@
         use Developers\Acme\Controle\PessoaDAO;
 		$pagina = 'cadastrar';
         session_start();
-        
+
 		include_once('../Persistencia/ConexaoBD.php');
 		include_once('../Modelo/Pessoa.php');
         include_once('../Controle/PessoaDAO.php');
-        
+
 		$conexao = new ConexaoBD();
 		$conexao = $conexao->abreConexao();
 		$pessoaDAO = new PessoaDAO();
@@ -155,13 +169,16 @@
 
                 <div class="col-lg-6">
                     <div class="leave-comment">
-                        <form action="../Controle/phpCadastrarPlano.php" method="post" name="frmLoginPlano">
+                        <form action="../Controle/phpCadastrarPlano.php" method="post" name="frmLoginPlano" autocomplete="off">
                             <span id="spanSpecial">Nome do Plano</span>
                             <input type="text" name="txtPlano" placeholder="Digite um nome para o plano">
+
                             <span id="spanSpecial">Quantidade de Meses</span>
                             <input type="number" name="txtMeses" placeholder="Digite por quantos meses o plano será válido">
+
                             <span id="spanSpecial">Valor do Plano</span>
                             <input type="text" name="txtValor" placeholder="Defina um preço para o plano a ser cadastrado">
+							
                             <button type="submit">Cadastrar</button>
                         </form>
                     </div>

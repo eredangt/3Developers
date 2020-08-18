@@ -1,8 +1,33 @@
+<!--
+---------------------------------------------------------------------------------
+Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
+------------------------ Grupo 1 : 3Developers - GymLife ------------------------
+    Integrantes:
+        Caio de Oliveira (10A - 201820267),
+        Ismael Martins Silva (10A - 201820281),
+        Layse Cristina Silva Garcia (10A - 201811177).
+	Data de Entrega: 25/08/2020.
+	*Alterações(autor/data):
+		-
+		-
+---------------------------------------------------------------------------------
+-->
 <?php
-
+/*
+	- ARQUIVO DA CLASSE PessoaDAO:
+	A classe PessoaDAO possui os métodos de adicionar Pessoa, atualizar
+	Pessoa, excluir Pessoa(extendendo para Cliente e Instrutor) e listar as Pessoas
+	do banco de dados de acordo com a tabela. Outros métodos também são utilizados
+	para se obter valores de atributos da Classe. Também é a classe responsável
+	por ter os métodos de restrição de Login(pessoas não logadas, clientes entrando
+	em páginas não permitidas, funcionalidades do menu...). Possui o método que
+	diferencia a Página Inicial(menu) de um Instrutor e de um Aluno. O Cliente
+	consegue ver seus treinos e o Instrutor consegue inserir, cadastrar, listar
+	e excluir.
+*/
 	namespace Developers\Acme\Controle;
 	use Developers\Acme\Persistencia\ConexaoBD;
-	
+
 	include_once('../Persistencia/ConexaoBD.php');
 	class PessoaDAO{
 

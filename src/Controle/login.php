@@ -1,15 +1,34 @@
+<!--
+---------------------------------------------------------------------------------
+Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
+------------------------ Grupo 1 : 3Developers - GymLife ------------------------
+    Integrantes:
+        Caio de Oliveira (10A - 201820267),
+        Ismael Martins Silva (10A - 201820281),
+        Layse Cristina Silva Garcia (10A - 201811177).
+	Data de Entrega: 25/08/2020.
+	*Alterações(autor/data):
+		-
+		-
+---------------------------------------------------------------------------------
+-->
 <?php
-
+/*
+	- ARQUIVO DO CONTROLE login.php:
+	O arquivo login.php incializa a sessão, recebe os campos do formulário de entrada,
+	faz um SELECT comparando se os valores capturados são iguais ao do banco e então
+	cria a SESSÃO. Caso os dados não são iguais ao do Banco de Dados, um alerta é
+	enviado.
+*/
 	namespace Developers\Acme\Controle;
     use Developers\Acme\Persistencia\phpConexaoBD;
 	session_start();
 	// Faz a ligação com o arquivo de banco de dados
 	require('../Persistencia/phpConexaoBD.php');
-	//include_once('../Persistencia/ConexaoBD.php'); //usar esse arrumar aqui
+	//include_once('../Persistencia/ConexaoBD.php');
 
 	$login = $_POST['txtLogin'];
 	$senha = $_POST['txtSenha'];
-
 
 	//Ao conectar no banco de dados, faz o SELECT buscando pelo nome do usuário.
 	$sql="SELECT * FROM Pessoa WHERE E_MAIL='".$login."';";
@@ -40,32 +59,9 @@
 		header('location:../Visualizacao/menu.php');
 	}else{
 		echo '<SCRIPT type="text/javascript"> //not showing me this
-                            alert("Algo deu errado. Tente novamente.");
+                            alert("Login ou senha incorretos.\nTente novamente!");
                             window.location.replace("../Visualizacao/entrar.php");
 			  </SCRIPT>';
 
 	}
-	/*
-	if ($login == 'm' && $senha == 'm'){
-		$_SESSION['login'] = 'Voc&ecirc; est&aacute logado no sistema!';
-		$_SESSION['cargo'] = 'instrutor'; // TESTES (instrutor e aluno) Essa variavel é responsável por determinar a ocupação da pessoa na academia
-		echo '<SCRIPT type="text/javascript"> //not showing me this
-                            alert("Você está logado!!");
-                            window.location.replace("menu.php");
-              </SCRIPT>';
-	}else{
-		echo '<SCRIPT type="text/javascript"> //not showing me this
-                            alert("Login ou senha incorretos. Tente novamente.");
-                            window.location.replace("entrar.php");
-			  </SCRIPT>';*/
-		/*
-		$_SESSION['erro'] = 'Usu&aacute;rio ou senha incorreto!';
-		header('location: entrar.php');
-		*/
-	/*
-	 *  echo '<SCRIPT type="text/javascript"> //not showing me this
-                            alert("Para entrar nesta p&acute;gina, logue primeiro!");
-                            window.location.replace("contact.html");
-                 </SCRIPT>';
-	 * */
 ?>

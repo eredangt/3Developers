@@ -1,3 +1,17 @@
+<!--
+---------------------------------------------------------------------------------
+Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
+------------------------ Grupo 1 : 3Developers - GymLife ------------------------
+    Integrantes:
+        Caio de Oliveira (10A - 201820267),
+        Ismael Martins Silva (10A - 201820281),
+        Layse Cristina Silva Garcia (10A - 201811177).
+	Data de Entrega: 25/08/2020.
+	*Alterações(autor/data):
+		-
+		-
+---------------------------------------------------------------------------------
+-->
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -8,11 +22,11 @@
         use Developers\Acme\Controle\PessoaDAO;
         $pagina = 'login';
         session_start();
-        
+
         include_once('../Persistencia/ConexaoBD.php');
 		include_once('../Modelo/Pessoa.php');
         include_once('../Controle/PessoaDAO.php');
-        
+
 		$conexao = new ConexaoBD();
 		$conexao = $conexao->abreConexao();
 		$pessoaDAO = new PessoaDAO();
@@ -165,11 +179,11 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="leave-comment">
-                        <form action="../Controle/login.php" method="post" name="frmLogin">
+                        <form action="../Controle/login.php" method="post" name="frmLogin" autocomplete="off">
                             <span id="spanSpecial">Login</span>
-                            <input type="text" name="txtLogin" placeholder="Digite seu Login">
+                            <input type="text" name="txtLogin" placeholder="Digite seu Login" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
                             <span id="spanSpecial">Senha</span>
-                            <input type="password" name="txtSenha" placeholder="Digite sua Senha">
+                            <input type="password" name="txtSenha" placeholder="Digite sua Senha" title="A senha deve conter pelo menos 6 caracteres, podendo ser letras minúsculas, maiúsculas, números e símbolos(. _ @ + -)"  pattern="[a-zA-Z0-9._@+-]{6,}$">
                             <button type="submit">Entrar</button>
                         </form>
                     </div>

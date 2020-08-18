@@ -1,3 +1,17 @@
+<!--
+---------------------------------------------------------------------------------
+Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
+------------------------ Grupo 1 : 3Developers - GymLife ------------------------
+    Integrantes:
+        Caio de Oliveira (10A - 201820267),
+        Ismael Martins Silva (10A - 201820281),
+        Layse Cristina Silva Garcia (10A - 201811177).
+	Data de Entrega: 25/08/2020.
+	*Alterações(autor/data):
+		-
+		-
+---------------------------------------------------------------------------------
+-->
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -168,29 +182,42 @@
 							<form action="../Controle/phpAlterarPessoa.php" method="POST" name="frmLogin" enctype="multipart/form-data" autocomplete="off">
 								<div class="Cliente_Selecionado" id="ClienteSel" style="display:none">
 									<input type="hidden" name="hddCodigo" value="<?php echo $codigo; ?>">
+
 									<input type="hidden" name="selecao" value="C">
+
 									<span id="spanSpecial">CPF do Cliente</span>
-									<input type="text" name="txtCPFPessoaC" value="<?php echo $pessoaDAO->pegaCPF($conexao,$codigo); ?>" required>
+									<input type="text" name="txtCPFPessoaC" value="<?php echo $pessoaDAO->pegaCPF($conexao,$codigo); ?>"
+									placeholder="Digite o número do CPF do Cliente" required>
+
 									<span id="spanSpecial">Nome do Cliente</span>
-									<input type="text" name="txtNomeC" value="<?php echo $pessoaDAO->pegaNome($conexao,$codigo); ?>" required>
+									<input type="text" name="txtNomeC" value="<?php echo $pessoaDAO->pegaNome($conexao,$codigo); ?>"
+									placeholder="Digite o nome do Cliente a ser cadastrado" required>
+
 									<span id="spanSpecial">Número de Telefone</span>
-									<input type="text" name="txtTelC" value="<?php echo $pessoaDAO->pegaNumTelefone($conexao,$codigo); ?>" required>
+									<input type="text" name="txtTelC" value="<?php echo $pessoaDAO->pegaNumTelefone($conexao,$codigo); ?>"
+									title="O formato correto: +99 (99) 99999-9999 ou +99 (99) 9999-9999"
+									placeholder = "+99 (99) 99999-9999" pattern="(\+)[0-9]{2} (\()[0-9]{2}(\)) [0-9]{4,5}-[0-9]{4}" required>
+
 									<span id="spanSpecial">Data de Nascimento</span>
 									<input type="date" name="txtDataC" value="<?php echo $pessoaDAO->pegaDataNasc($conexao,$codigo); ?>" required>
 
-									<span id="spanSpecial">Endereço Eletrônico</span>
-									<br>
+									<span id="spanSpecial">Endereço Eletrônico</span><br>
 									<small class="smallCadastro">O E-mail deverá também ser utilizado como login.</small>
-									<input type="email" name="txtEmailC" value="<?php echo $pessoaDAO->pegaEmail($conexao,$codigo); ?>" required>
+									<input type="email" name="txtEmailC" value="<?php echo $pessoaDAO->pegaEmail($conexao,$codigo); ?>"
+									placeholder="Digite um e-mail válido para contato" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+
 									<span id="spanSpecial">Senha do Cliente</span>
-									<input type="password" name="senhaPessoaC" value="<?php echo $pessoaDAO->pegaSenha($conexao,$codigo); ?>" required>
+									<input type="password" name="senhaPessoaC" value="<?php echo $pessoaDAO->pegaSenha($conexao,$codigo); ?>"
+									title="A senha deve conter pelo menos 6 caracteres, podendo ser letras minúsculas, maiúsculas, números e símbolos(. _ @ + -)"
+									placeholder="Digite a senha do Cliente a ser cadastrado" pattern="[a-zA-Z0-9._@+-]{6,}$" required>
+
 									<span id="spanSpecial">Plano a ser contratado pelo Cliente</span>
 									<select name="selecaoPlanoC" id="selecaoPlano" class="meuSelect" required>
 										<?php
-											//require('../Persistencia/phpConexaoBD.php');
-											$choro = $pessoaDAO->selecionarPlano($conexao, $codigo);
+											$pessoaDAO->selecionarPlano($conexao, $codigo);
 										?>
 									</select>
+
 									<button type="submit" id="botaoAlterar">ALTERAR</button>
 								</div>
                             </form>
@@ -198,25 +225,40 @@
                             <form action="../Controle/phpAlterarPessoa.php" method="POST" name="frmLogin1" enctype="multipart/form-data" autocomplete="off">
 								<div class="Instrutor_Selecionado" id="InstrutorSel" style="display:none">
 									<input type="hidden" name="hddCodigo" value="<?php echo $codigo; ?>">
+
 									<input type="hidden" name="selecao" value="I">
+
 									<span id="spanSpecial">CPF do Instrutor</span>
-									<input type="text" name="txtCPFPessoaI" value="<?php echo $pessoaDAO->pegaCPF($conexao,$codigo); ?>" required>
+									<input type="text" name="txtCPFPessoaI" value="<?php echo $pessoaDAO->pegaCPF($conexao,$codigo); ?>"
+									placeholder="Digite o número do CPF do Instrutor" required>
+
 									<span id="spanSpecial">Nome do Instrutor</span>
-									<input type="text" name="txtNomeI" value="<?php echo $pessoaDAO->pegaNome($conexao,$codigo); ?>"required>
+									<input type="text" name="txtNomeI" value="<?php echo $pessoaDAO->pegaNome($conexao,$codigo); ?>"
+									placeholder="Digite o nome do Instrutor a ser cadastrado" required>
+
 									<span id="spanSpecial">Número de Telefone</span>
-									<input type="text" name="txtTelI" value="<?php echo $pessoaDAO->pegaNumTelefone($conexao,$codigo); ?>" required>
+									<input type="text" name="txtTelI" value="<?php echo $pessoaDAO->pegaNumTelefone($conexao,$codigo); ?>"
+									placeholder = "+99 (99) 99999-9999" title="O formato correto: +99 (99) 99999-9999 ou +99 (99) 9999-9999"
+									pattern="(\+)[0-9]{2} (\()[0-9]{2}(\)) [0-9]{4,5}-[0-9]{4}" required>
+
 									<span id="spanSpecial">Data de Nascimento</span>
 									<input type="date" name="txtDataI" value="<?php echo $pessoaDAO->pegaDataNasc($conexao,$codigo); ?>" required>
-									<span id="spanSpecial">Endereço Eletrônico</span>
-									<br>
+
+									<span id="spanSpecial">Endereço Eletrônico</span><br>
 									<small class="smallCadastro">O E-mail deverá também ser utilizado como login.</small>
-									<input type="email" name="txtEmailI" value="<?php echo $pessoaDAO->pegaEmail($conexao,$codigo); ?>" required>
+									<input type="email" name="txtEmailI" value="<?php echo $pessoaDAO->pegaEmail($conexao,$codigo); ?>"
+									placeholder="Digite um e-mail válido para contato" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+
 									<span id="spanSpecial">Senha do Instrutor</span>
-									<input type="password" name="senhaPessoaI" value="<?php echo $pessoaDAO->pegaSenha($conexao,$codigo); ?>" required>
+									<input type="password" name="senhaPessoaI" value="<?php echo $pessoaDAO->pegaSenha($conexao,$codigo); ?>"
+									title="A senha deve conter pelo menos 6 caracteres, podendo ser letras minúsculas, maiúsculas, números e símbolos(. _ @ + -)"
+									placeholder="Digite a senha do Instrutor a ser cadastrado" pattern="[a-zA-Z0-9._@+-]{6,}$" required>
+
 									<span id="spanSpecial">Salário do Instrutor</span>
-									<input type="number" name="txtSalarioI" value="<?php echo $pessoaDAO->pegaSalario($conexao,$codigo); ?>" required>
-									<span id="spanSpecial">Carga Horária do Instrutor</span>
-									<br>
+									<input type="number" name="txtSalarioI" value="<?php echo $pessoaDAO->pegaSalario($conexao,$codigo); ?>"
+									placeholder="Digite o valor do salário do Instrutor a ser cadastrado" required>
+
+									<span id="spanSpecial">Carga Horária do Instrutor</span><br>
 									<small class="smallCadastro">A Carga Horária deverá ser um valor inteiro representando as horas.</small>
 									<input type="number" name="txtHorariaI" value="<?php echo $pessoaDAO->pegaCH($conexao,$codigo); ?>" required>
 

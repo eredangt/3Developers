@@ -1,8 +1,29 @@
+<!--
+---------------------------------------------------------------------------------
+Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
+------------------------ Grupo 1 : 3Developers - GymLife ------------------------
+    Integrantes:
+        Caio de Oliveira (10A - 201820267),
+        Ismael Martins Silva (10A - 201820281),
+        Layse Cristina Silva Garcia (10A - 201811177).
+	Data de Entrega: 25/08/2020.
+	*Alterações(autor/data):
+		-
+		-
+---------------------------------------------------------------------------------
+-->
 <?php
-
+/*
+	- ARQUIVO DA CLASSE TreinoDAO:
+	A classe TreinoDAO possui os métodos de adicionar Treino, atualizar Treino,
+	excluir Treino e listar os Treinos do banco de dados de acordo com a tabela.
+	Outros métodos também são utilizados para se obter valores de atributos da
+	Classe. Também é a classe responsável por ter os métodos de selecionar o nome
+	do Instrutor, capturar os IDs do cliente, instrutor e equipamento.
+*/
 	namespace Developers\Acme\Controle;
 	use Developers\Acme\Modelo\Treino;
-	
+
 	include_once('../Modelo/Treino.php');
 	class TreinoDAO{
 

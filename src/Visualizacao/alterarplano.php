@@ -1,3 +1,17 @@
+<!--
+---------------------------------------------------------------------------------
+Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
+------------------------ Grupo 1 : 3Developers - GymLife ------------------------
+    Integrantes:
+        Caio de Oliveira (10A - 201820267),
+        Ismael Martins Silva (10A - 201820281),
+        Layse Cristina Silva Garcia (10A - 201811177).
+	Data de Entrega: 25/08/2020.
+	*Alterações(autor/data):
+		-
+		-
+---------------------------------------------------------------------------------
+-->
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -9,13 +23,13 @@
         use Developers\Acme\Controle\PlanoDAO;
 		$pagina = 'listar';
         session_start();
-        
+
 		include_once('../Persistencia/ConexaoBD.php');
 		include_once('../Modelo/Pessoa.php');
 		include_once('../Controle/PessoaDAO.php');
 		include_once('../Modelo/Plano.php');
         include_once('../Controle/PlanoDAO.php');
-        
+
 		$conexao = new ConexaoBD();
 		$conexao = $conexao->abreConexao();
 
@@ -160,14 +174,18 @@
 
                 <div class="col-lg-6">
                     <div class="leave-comment">
-                        <form action="../Controle/phpAlterarPlano.php" method="post" name="frmLoginAlteraPlano">
+                        <form action="../Controle/phpAlterarPlano.php" method="post" name="frmLoginAlteraPlano" autocomplete="off">
 							<input type="hidden" name="hddCodigo" value="<?php echo $codigo; ?>">
+
                             <span id="spanSpecial">Nome do Plano</span>
                             <input type="text" name="txtPlano" value="<?php $planoDAO->pegaNomePlano($conexao, $codigo)?>">
+
                             <span id="spanSpecial">Quantidade de Meses</span>
                             <input type="number" name="txtMeses" value="<?php $planoDAO->pegaNumMeses($conexao, $codigo)?>">
+
                             <span id="spanSpecial">Valor do Plano</span>
                             <input type="text" name="txtValor" value="<?php $planoDAO->pegaValor($conexao, $codigo)?>">
+							
                             <button type="submit">Alterar</button>
                         </form>
                     </div>
