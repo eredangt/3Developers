@@ -41,6 +41,9 @@ Os tipos de usuário do sistema são clientes e instrutores.<br />
     - Arquivos .css devem ser colocados na pasta "CSS";
     - ...;
     - Arquivos .js devem ser colocados na pasta "js".
+    
+## Padrão de Notação:
+    - Deve-se utilizar a notação CamelCase(prática de escrever as palavras compostas ou frases, onde cada palavra é iniciada com maiúsculas e unidas sem espaços).
 
 ## Regras durante a programação:
 	- Mantenha o código identado;
