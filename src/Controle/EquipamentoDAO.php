@@ -1,4 +1,5 @@
-<!--
+<?php
+/*
 ---------------------------------------------------------------------------------
 Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 ------------------------ Grupo 1 : 3Developers - GymLife ------------------------
@@ -11,12 +12,11 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 		-
 		-
 ---------------------------------------------------------------------------------
--->
-<?php
+*/
 
-	namespace Developers\Acme\Controle;
-    use Developers\Acme\Modelo\Equipamento;
-	// Persistence
+namespace Developers\Acme\Controle;
+use Developers\Acme\Modelo\Equipamento;
+
 	include_once('../Modelo/Equipamento.php');
 	class EquipamentoDAO{
 
@@ -151,6 +151,5 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 				echo '<a href="../Visualizacao/menu.php"> MENU </a>';
 			}
 		}
-
 	}
 ?>

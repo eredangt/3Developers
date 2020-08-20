@@ -1,4 +1,5 @@
-<!--
+<?php
+/*
 ---------------------------------------------------------------------------------
 Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 ------------------------ Grupo 1 : 3Developers - GymLife ------------------------
@@ -11,18 +12,19 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 		-
 		-
 ---------------------------------------------------------------------------------
--->
-<?php
-/*
-	- ARQUIVO DA CLASSE TreinoDAO:
-	A classe TreinoDAO possui os métodos de adicionar Treino, atualizar Treino,
-	excluir Treino e listar os Treinos do banco de dados de acordo com a tabela.
-	Outros métodos também são utilizados para se obter valores de atributos da
-	Classe. Também é a classe responsável por ter os métodos de selecionar o nome
-	do Instrutor, capturar os IDs do cliente, instrutor e equipamento.
 */
-	namespace Developers\Acme\Controle;
-	use Developers\Acme\Modelo\Treino;
+
+namespace Developers\Acme\Controle;
+use Developers\Acme\Modelo\Treino;
+
+	/*
+		- ARQUIVO DA CLASSE TreinoDAO:
+		A classe TreinoDAO possui os métodos de adicionar Treino, atualizar Treino,
+		excluir Treino e listar os Treinos do banco de dados de acordo com a tabela.
+		Outros métodos também são utilizados para se obter valores de atributos da
+		Classe. Também é a classe responsável por ter os métodos de selecionar o nome
+		do Instrutor, capturar os IDs do cliente, instrutor e equipamento.
+	*/
 
 	include_once('../Modelo/Treino.php');
 	class TreinoDAO{
@@ -276,6 +278,5 @@ SELECT T.Funcionario_Pessoa_idPessoa, P.nome FROM Pessoa as P, Treino as T WHERE
 
 			echo $peso;
 		}
-
 	}
 ?>

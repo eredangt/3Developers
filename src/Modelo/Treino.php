@@ -1,4 +1,5 @@
-<!--
+<?php
+/*
 ---------------------------------------------------------------------------------
 Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 ------------------------ Grupo 1 : 3Developers - GymLife ------------------------
@@ -11,15 +12,16 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 		-
 		-
 ---------------------------------------------------------------------------------
--->
-<?php
-/*
-	- ARQUIVO DA CLASSE Treino:
-	A classe Treino armazena atributos para possibilitar a recuperação
-	e inserção de treinos na tabela Treino do banco de dados.
 */
-	namespace Developers\Acme\Modelo;
-	// Modelo
+
+namespace Developers\Acme\Modelo;
+
+	/*
+		- ARQUIVO DA CLASSE Treino:
+		A classe Treino armazena atributos para possibilitar a recuperação
+		e inserção de treinos na tabela Treino do banco de dados.
+	*/
+	
 	class Treino{
 		private $idPessoa;
 		private $idFuncionario;
@@ -66,6 +68,5 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 		public function getPeso(){
 			return $this->peso;
 		}
-
 	}
 ?>

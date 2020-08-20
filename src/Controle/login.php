@@ -1,4 +1,5 @@
-<!--
+<?php
+/*
 ---------------------------------------------------------------------------------
 Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 ------------------------ Grupo 1 : 3Developers - GymLife ------------------------
@@ -11,17 +12,19 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 		-
 		-
 ---------------------------------------------------------------------------------
--->
-<?php
-/*
-	- ARQUIVO DO CONTROLE login.php:
-	O arquivo login.php incializa a sessão, recebe os campos do formulário de entrada,
-	faz um SELECT comparando se os valores capturados são iguais ao do banco e então
-	cria a SESSÃO. Caso os dados não são iguais ao do Banco de Dados, um alerta é
-	enviado.
 */
-	namespace Developers\Acme\Controle;
-    use Developers\Acme\Persistencia\phpConexaoBD;
+
+namespace Developers\Acme\Controle;
+use Developers\Acme\Persistencia\phpConexaoBD;
+
+	/*
+		- ARQUIVO DO CONTROLE login.php:
+		O arquivo login.php incializa a sessão, recebe os campos do formulário de entrada,
+		faz um SELECT comparando se os valores capturados são iguais ao do banco e então
+		cria a SESSÃO. Caso os dados não são iguais ao do Banco de Dados, um alerta é
+		enviado.
+	*/
+	
 	session_start();
 	// Faz a ligação com o arquivo de banco de dados
 	require('../Persistencia/phpConexaoBD.php');

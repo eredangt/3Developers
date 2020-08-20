@@ -1,4 +1,5 @@
-<!--
+<?php
+/*
 ---------------------------------------------------------------------------------
 Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 ------------------------ Grupo 1 : 3Developers - GymLife ------------------------
@@ -11,22 +12,23 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 		-
 		-
 ---------------------------------------------------------------------------------
--->
-<?php
-/*
-	- ARQUIVO DA CLASSE PessoaDAO:
-	A classe PessoaDAO possui os métodos de adicionar Pessoa, atualizar
-	Pessoa, excluir Pessoa(extendendo para Cliente e Instrutor) e listar as Pessoas
-	do banco de dados de acordo com a tabela. Outros métodos também são utilizados
-	para se obter valores de atributos da Classe. Também é a classe responsável
-	por ter os métodos de restrição de Login(pessoas não logadas, clientes entrando
-	em páginas não permitidas, funcionalidades do menu...). Possui o método que
-	diferencia a Página Inicial(menu) de um Instrutor e de um Aluno. O Cliente
-	consegue ver seus treinos e o Instrutor consegue inserir, cadastrar, listar
-	e excluir.
 */
-	namespace Developers\Acme\Controle;
-	use Developers\Acme\Persistencia\ConexaoBD;
+
+namespace Developers\Acme\Controle;
+use Developers\Acme\Persistencia\ConexaoBD;
+
+	/*
+		- ARQUIVO DA CLASSE PessoaDAO:
+		A classe PessoaDAO possui os métodos de adicionar Pessoa, atualizar
+		Pessoa, excluir Pessoa(extendendo para Cliente e Instrutor) e listar as Pessoas
+		do banco de dados de acordo com a tabela. Outros métodos também são utilizados
+		para se obter valores de atributos da Classe. Também é a classe responsável
+		por ter os métodos de restrição de Login(pessoas não logadas, clientes entrando
+		em páginas não permitidas, funcionalidades do menu...). Possui o método que
+		diferencia a Página Inicial(menu) de um Instrutor e de um Aluno. O Cliente
+		consegue ver seus treinos e o Instrutor consegue inserir, cadastrar, listar
+		e excluir.
+	*/
 
 	include_once('../Persistencia/ConexaoBD.php');
 	class PessoaDAO{

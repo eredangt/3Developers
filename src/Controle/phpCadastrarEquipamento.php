@@ -1,4 +1,5 @@
-<!--
+<?php
+/*
 ---------------------------------------------------------------------------------
 Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 ------------------------ Grupo 1 : 3Developers - GymLife ------------------------
@@ -11,22 +12,23 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 		-
 		-
 ---------------------------------------------------------------------------------
--->
-<?php
-/*
-	- ARQUIVO DO CONTROLE phpCadastrarEquipamento.php:
-	O arquivo phpCadastrarEquipamento.php armazena as informações passadas via
-	formulário, através de variáveis. É então criado um objeto de Conexao, para
-	conectar o Banco de Dados, e também, é criado um objeto Equipamento.
-	Ao criar o objeto Equipamento, é passado como parâmetro os dados coletados.
-	Por fim, cria se um objeto EquipamentoDAO para chamar o método addEquipamento.
-	Caso alguma pessoa que não é instrutor, tente acessar a página, a mesma será
-	redirecionada para o menu.
 */
-	namespace Developers\Acme\Controle;
-    use Developers\Acme\Persistencia\ConexaoBD;
-    use Developers\Acme\Modelo\Equipamento;
-    use Developers\Acme\Controle\EquipamentoDAO;
+
+namespace Developers\Acme\Controle;
+use Developers\Acme\Persistencia\ConexaoBD;
+use Developers\Acme\Modelo\Equipamento;
+use Developers\Acme\Controle\EquipamentoDAO;
+
+	/*
+		- ARQUIVO DO CONTROLE phpCadastrarEquipamento.php:
+		O arquivo phpCadastrarEquipamento.php armazena as informações passadas via
+		formulário, através de variáveis. É então criado um objeto de Conexao, para
+		conectar o Banco de Dados, e também, é criado um objeto Equipamento.
+		Ao criar o objeto Equipamento, é passado como parâmetro os dados coletados.
+		Por fim, cria se um objeto EquipamentoDAO para chamar o método addEquipamento.
+		Caso alguma pessoa que não é instrutor, tente acessar a página, a mesma será
+		redirecionada para o menu.
+	*/
 
 	include_once('../Persistencia/ConexaoBD.php');
 	include_once('../Modelo/Equipamento.php');
@@ -56,5 +58,4 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 						window.location.replace("../Visualizacao/menu.php");
 			  </SCRIPT>';
 	}
-
 ?>

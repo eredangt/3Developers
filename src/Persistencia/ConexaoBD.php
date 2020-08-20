@@ -1,4 +1,5 @@
-<!--
+<?php
+/*
 ---------------------------------------------------------------------------------
 Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 ------------------------ Grupo 1 : 3Developers - GymLife ------------------------
@@ -11,8 +12,10 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 		-
 		-
 ---------------------------------------------------------------------------------
--->
-<?php
+*/
+
+namespace Developers\Acme\Persistencia;
+
 	/*
 		ARQUIVO DE PERSISTÊNCIA ConexaoBD.php
 		Arquivo que cria a classe ConexaoBD utilizando variáveis para armazenar
@@ -21,8 +24,7 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 		Quando utiliza o PHP com o Banco de Dados, utiliza-se o método
 		abreConexao() para gerar a Conexão.
 	*/
-	namespace Developers\Acme\Persistencia;
-	// Persistence
+
 	class ConexaoBD{
 		private $host = "localhost";
 		private $usuario = "root";

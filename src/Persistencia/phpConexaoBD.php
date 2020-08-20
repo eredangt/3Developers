@@ -1,4 +1,5 @@
-<!--
+<?php
+/*
 ---------------------------------------------------------------------------------
 Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 ------------------------ Grupo 1 : 3Developers - GymLife ------------------------
@@ -11,14 +12,16 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 		-
 		-
 ---------------------------------------------------------------------------------
--->
-<?php
+*/
+
+namespace Developers\Acme\Persistencia;
+
 	/*
 		ARQUIVO DE PERSISTÊNCIA phpConexaoBD.php
 		Arquivo que utiliza variáveis para armazenar o nome do host, o usuário que
 		acessa o Banco de Dados, a senha do Banco de Dados, o nome do Banco.
 	*/
-	namespace Developers\Acme\Persistencia;
+	
 	$host = 'localhost';
 	$user = 'root';
 	$password = '';

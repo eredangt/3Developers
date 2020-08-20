@@ -1,4 +1,5 @@
-<!--
+<?php
+/*
 ---------------------------------------------------------------------------------
 Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 ------------------------ Grupo 1 : 3Developers - GymLife ------------------------
@@ -11,18 +12,18 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 		-
 		-
 ---------------------------------------------------------------------------------
--->
-<?php
-/*
-	- ARQUIVO DA CLASSE InstrutorDAO:
-	A classe InstrutorDAO possui os métodos de adicionar e atualizar
-	um instrutor.
 */
 
-	namespace Developers\Acme\Controle;
-    use Developers\Acme\Modelo\Instrutor;
-    use Developers\Acme\Modelo\Pessoa;
-	// Persistence
+namespace Developers\Acme\Controle;
+use Developers\Acme\Modelo\Instrutor;
+use Developers\Acme\Modelo\Pessoa;
+
+	/*
+		- ARQUIVO DA CLASSE InstrutorDAO:
+		A classe InstrutorDAO possui os métodos de adicionar e atualizar
+		um instrutor.
+	*/
+
 	include_once('../Modelo/Instrutor.php');
 	include_once('../Modelo/Pessoa.php');
 	class InstrutorDAO{
@@ -71,6 +72,5 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 				echo '<a href="../Visualizacao/menu.php"> VOLTAR </a>';
 			}
 		}
-
 	}
 ?>

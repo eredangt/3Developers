@@ -1,4 +1,5 @@
-<!--
+<?php
+/*
 ---------------------------------------------------------------------------------
 Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 ------------------------ Grupo 1 : 3Developers - GymLife ------------------------
@@ -11,17 +12,18 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 		-
 		-
 ---------------------------------------------------------------------------------
--->
-<?php
-/*
-	- ARQUIVO DA CLASSE Instrutor:
-	A classe Instrutor armazena atributos para possibilitar a recuperação
-	e inserção de instrutores na tabela Instrutor do banco de dados.
 */
-    namespace Developers\Acme\Modelo;
-    use Developers\Acme\Modelo\Pessoa;
 
-	include_once ('Pessoa.php');
+namespace Developers\Acme\Modelo;
+use Developers\Acme\Modelo\Pessoa;
+
+    /*
+        - ARQUIVO DA CLASSE Instrutor:
+        A classe Instrutor armazena atributos para possibilitar a recuperação
+        e inserção de instrutores na tabela Instrutor do banco de dados.
+    */
+
+	include_once('Pessoa.php');
     class Instrutor extends Pessoa {
         private $idInstrutor;
         private $salario;
@@ -51,6 +53,5 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
         public function getImagem(){
             return $this->imagemInstrutor;
         }
-
     }
 ?>

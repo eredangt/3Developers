@@ -1,4 +1,5 @@
-<!--
+<?php
+/*
 ---------------------------------------------------------------------------------
 Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 ------------------------ Grupo 1 : 3Developers - GymLife ------------------------
@@ -11,19 +12,20 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 		-
 		-
 ---------------------------------------------------------------------------------
--->
-<?php
-/*
-	- ARQUIVO DA CLASSE TreinoDAO:
-	A classe PlanoDAO possui os métodos de adicionar Plano, atualizar Plano,
-	excluir Plano e listar os Planos do banco de dados de acordo com a tabela.
-	Outros métodos também são utilizados para se obter valores de atributos da
-	Classe. Também é a classe responsável por ter o método que cria a caixa de
-	preços na Visualizacao/index.php com suas vantagens.
 */
-	namespace Developers\Acme\Controle;
-    use Developers\Acme\Modelo\Plano;
-	// Persistence
+
+namespace Developers\Acme\Controle;
+use Developers\Acme\Modelo\Plano;
+
+	/*
+		- ARQUIVO DA CLASSE TreinoDAO:
+		A classe PlanoDAO possui os métodos de adicionar Plano, atualizar Plano,
+		excluir Plano e listar os Planos do banco de dados de acordo com a tabela.
+		Outros métodos também são utilizados para se obter valores de atributos da
+		Classe. Também é a classe responsável por ter o método que cria a caixa de
+		preços na Visualizacao/index.php com suas vantagens.
+	*/
+	
 	include_once('../Modelo/Plano.php');
 	class PlanoDAO{
 
@@ -207,6 +209,5 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 				echo '<a href="../Visualizacao/menu.php"> MENU </a>';
 			}
 		}
-
 	}
 ?>

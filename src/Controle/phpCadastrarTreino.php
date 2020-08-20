@@ -1,4 +1,5 @@
-<!--
+<?php
+/*
 ---------------------------------------------------------------------------------
 Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 ------------------------ Grupo 1 : 3Developers - GymLife ------------------------
@@ -11,22 +12,23 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 		-
 		-
 ---------------------------------------------------------------------------------
--->
-<?php
-/*
-	- ARQUIVO DO CONTROLE phpCadastrarTreino.php:
-	O arquivo phpCadastrarTreino.php armazena as informações passadas via
-	formulário, através de variáveis. É então criado um objeto de Conexao, para
-	conectar o Banco de Dados, e também, é criado um objeto Treino.
-	Ao criar o objeto Treino, é passado como parâmetro os dados coletados.
-	Por fim, cria se um objetoTreinoDAO para chamar o método addTreino.
-	Caso alguma pessoa que não é instrutor, tente acessar a página, a mesma será
-	redirecionada para o menu.
 */
-	namespace Developers\Acme\Controle;
-    use Developers\Acme\Persistencia\ConexaoBD;
-    use Developers\Acme\Modelo\Treino;
-    use Developers\Acme\Controle\TreinoDAO;
+
+namespace Developers\Acme\Controle;
+use Developers\Acme\Persistencia\ConexaoBD;
+use Developers\Acme\Modelo\Treino;
+use Developers\Acme\Controle\TreinoDAO;
+
+	/*
+		- ARQUIVO DO CONTROLE phpCadastrarTreino.php:
+		O arquivo phpCadastrarTreino.php armazena as informações passadas via
+		formulário, através de variáveis. É então criado um objeto de Conexao, para
+		conectar o Banco de Dados, e também, é criado um objeto Treino.
+		Ao criar o objeto Treino, é passado como parâmetro os dados coletados.
+		Por fim, cria se um objetoTreinoDAO para chamar o método addTreino.
+		Caso alguma pessoa que não é instrutor, tente acessar a página, a mesma será
+		redirecionada para o menu.
+	*/
 
     include_once('../Persistencia/ConexaoBD.php');
 	include_once('../Modelo/Treino.php');
@@ -58,5 +60,4 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 						window.location.replace("../Visualizacao/menu.php");
 			  </SCRIPT>';
 	}
-
 ?>

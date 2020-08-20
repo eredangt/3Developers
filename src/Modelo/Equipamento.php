@@ -1,4 +1,5 @@
-<!--
+<?php
+/*
 ---------------------------------------------------------------------------------
 Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 ------------------------ Grupo 1 : 3Developers - GymLife ------------------------
@@ -11,15 +12,16 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 		-
 		-
 ---------------------------------------------------------------------------------
--->
-<?php
-/*
-	- ARQUIVO DA CLASSE Equipamento:
-	A classe Equipamento armazena atributos para possibilitar a recuperação
-	e inserção de equipamentos na tabela Equipamento do banco de dados.
 */
-	namespace Developers\Acme\Modelo;
-	// Modelo
+
+namespace Developers\Acme\Modelo;
+
+	/*
+		- ARQUIVO DA CLASSE Equipamento:
+		A classe Equipamento armazena atributos para possibilitar a recuperação
+		e inserção de equipamentos na tabela Equipamento do banco de dados.
+	*/
+	
 	class Equipamento{
 		private $nome;
 		private $quantidade;
@@ -48,7 +50,5 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 		public function getAno(){
 			return $this->ano;
 		}
-
-
 	}
 ?>

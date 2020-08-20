@@ -1,4 +1,5 @@
-<!--
+<?php
+/*
 ---------------------------------------------------------------------------------
 Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 ------------------------ Grupo 1 : 3Developers - GymLife ------------------------
@@ -11,22 +12,23 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 		-
 		-
 ---------------------------------------------------------------------------------
--->
-<?php
-/*
-	- ARQUIVO DO CONTROLE phpCadastrarPlano.php:
-	O arquivo phpCadastrarPlano.php armazena as informações passadas via
-	formulário, através de variáveis. É então criado um objeto de Conexao, para
-	conectar o Banco de Dados, e também, é criado um objeto Plano.
-	Ao criar o objeto Plano, é passado como parâmetro os dados coletados.
-	Por fim, cria se um objeto PlanoDAO para chamar o método addPlano.
-	Caso alguma pessoa que não é instrutor, tente acessar a página, a mesma será
-	redirecionada para o menu.
 */
-	namespace Developers\Acme\Controle;
-    use Developers\Acme\Persistencia\ConexaoBD;
-    use Developers\Acme\Modelo\Plano;
-    use Developers\Acme\Controle\PlanoDAO;
+
+namespace Developers\Acme\Controle;
+use Developers\Acme\Persistencia\ConexaoBD;
+use Developers\Acme\Modelo\Plano;
+use Developers\Acme\Controle\PlanoDAO;
+
+	/*
+		- ARQUIVO DO CONTROLE phpCadastrarPlano.php:
+		O arquivo phpCadastrarPlano.php armazena as informações passadas via
+		formulário, através de variáveis. É então criado um objeto de Conexao, para
+		conectar o Banco de Dados, e também, é criado um objeto Plano.
+		Ao criar o objeto Plano, é passado como parâmetro os dados coletados.
+		Por fim, cria se um objeto PlanoDAO para chamar o método addPlano.
+		Caso alguma pessoa que não é instrutor, tente acessar a página, a mesma será
+		redirecionada para o menu.
+	*/
 
 	include_once('../Persistencia/ConexaoBD.php');
 	include_once('../Modelo/Plano.php');
@@ -55,5 +57,4 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 						window.location.replace("../Visualizacao/menu.php");
 			  </SCRIPT>';
 	}
-
 ?>

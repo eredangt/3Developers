@@ -1,4 +1,5 @@
-<!--
+<?php
+/*
 ---------------------------------------------------------------------------------
 Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 ------------------------ Grupo 1 : 3Developers - GymLife ------------------------
@@ -11,18 +12,19 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 		-
 		-
 ---------------------------------------------------------------------------------
--->
-<?php
-/*
-    - ARQUIVO DO CONTROLE phpExcluirTreino.php:
-    O arquivo phpExcluirTreino.php é responsável por informar o código
-	do treino que será excluido.
-	Verifica se o cargo da sessão é de um instrutor.
 */
-	namespace Developers\Acme\Controle;
-    use Developers\Acme\Persistencia\ConexaoBD;
-    use Developers\Acme\Modelo\Treino;
-    use Developers\Acme\Controle\TreinoDAO;
+
+namespace Developers\Acme\Controle;
+use Developers\Acme\Persistencia\ConexaoBD;
+use Developers\Acme\Modelo\Treino;
+use Developers\Acme\Controle\TreinoDAO;
+
+	/*
+		- ARQUIVO DO CONTROLE phpExcluirTreino.php:
+		O arquivo phpExcluirTreino.php é responsável por informar o código
+		do treino que será excluido.
+		Verifica se o cargo da sessão é de um instrutor.
+	*/
 
 	include_once('../Persistencia/ConexaoBD.php');
 	include_once('../Modelo/Treino.php');
@@ -44,5 +46,4 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 						window.location.replace("../Visualizacao/menu.php");
 			  </SCRIPT>';
 	}
-
 ?>

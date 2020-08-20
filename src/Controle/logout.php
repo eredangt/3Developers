@@ -1,4 +1,5 @@
-<!--
+<?php
+/*
 ---------------------------------------------------------------------------------
 Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 ------------------------ Grupo 1 : 3Developers - GymLife ------------------------
@@ -11,14 +12,16 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 		-
 		-
 ---------------------------------------------------------------------------------
--->
-<?php
-/*
-    - ARQUIVO DO CONTROLE logout.php:
-    O arquivo logout.php incializa a sessão e já a destrói, encaminhando a Pessoa
-    para a Página Inicial(index.php).
 */
-    namespace Developers\Acme\Controle;
+
+namespace Developers\Acme\Controle;
+
+    /*
+        - ARQUIVO DO CONTROLE logout.php:
+        O arquivo logout.php incializa a sessão e já a destrói, encaminhando a Pessoa
+        para a Página Inicial(index.php).
+    */
+    
 	session_start();
 	session_destroy();
 	echo '<SCRIPT type="text/javascript"> //not showing me this

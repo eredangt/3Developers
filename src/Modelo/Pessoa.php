@@ -1,4 +1,5 @@
-<!--
+<?php
+/*
 ---------------------------------------------------------------------------------
 Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 ------------------------ Grupo 1 : 3Developers - GymLife ------------------------
@@ -11,15 +12,16 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 		-
 		-
 ---------------------------------------------------------------------------------
--->
-<?php
-/*
-	- ARQUIVO DA CLASSE Pessoa:
-	A classe Pessoa armazena atributos para possibilitar a recuperação
-	e inserção de pessoas na tabela Pessoa do banco de dados.
 */
-	namespace Developers\Acme\Modelo;
-	// Modelo
+
+namespace Developers\Acme\Modelo;
+
+	/*
+		- ARQUIVO DA CLASSE Pessoa:
+		A classe Pessoa armazena atributos para possibilitar a recuperação
+		e inserção de pessoas na tabela Pessoa do banco de dados.
+	*/
+	
 	class Pessoa{
 		private $cpf;
 		private $nome;

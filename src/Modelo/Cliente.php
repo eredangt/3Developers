@@ -1,4 +1,5 @@
-<!--
+<?php
+/*
 ---------------------------------------------------------------------------------
 Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 ------------------------ Grupo 1 : 3Developers - GymLife ------------------------
@@ -11,17 +12,18 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 		-
 		-
 ---------------------------------------------------------------------------------
--->
-<?php
-/*
-	- ARQUIVO DA CLASSE Cliente:
-	A classe Cliente armazena atributos para possibilitar a recuperação
-	e inserção de clientes na tabela Cliente do banco de dados.
 */
-	namespace Developers\Acme\Modelo;
-	use Developers\Acme\Modelo\Pessoa;
 
-	include_once ('Pessoa.php');
+namespace Developers\Acme\Modelo;
+use Developers\Acme\Modelo\Pessoa;
+
+	/*
+		- ARQUIVO DA CLASSE Cliente:
+		A classe Cliente armazena atributos para possibilitar a recuperação
+		e inserção de clientes na tabela Cliente do banco de dados.
+	*/
+
+	include_once('Pessoa.php');
 	class Cliente extends Pessoa {
 		private $idCliente;
 		private $plano;
@@ -39,7 +41,5 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 		public function getPlano(){
 			return $this->plano;
 		}
-
 	}
-
 ?>

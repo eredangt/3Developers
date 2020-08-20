@@ -1,4 +1,5 @@
-<!--
+<?php
+/*
 ---------------------------------------------------------------------------------
 Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 ------------------------ Grupo 1 : 3Developers - GymLife ------------------------
@@ -11,17 +12,18 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 		-
 		-
 ---------------------------------------------------------------------------------
--->
+*/
 
-<?php
+namespace Developers\Acme\Controle;
+use Developers\Acme\Modelo\Cliente;
+use Developers\Acme\Modelo\Pessoa;
+
 	/*
 		- ARQUIVO DA CLASSE ClienteDAO:
 		A classe ClienteDAO possui os métodos de adicionar Cliente, atualizar
 		Cliente.
 	*/
-	namespace Developers\Acme\Controle;
-    use Developers\Acme\Modelo\Cliente;
-    use Developers\Acme\Modelo\Pessoa;
+	
 	include_once('../Modelo/Cliente.php');
 	include_once('../Modelo/Pessoa.php');
 	class ClienteDAO{

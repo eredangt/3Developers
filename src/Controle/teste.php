@@ -1,4 +1,5 @@
-<!--
+<?php
+/*
 ---------------------------------------------------------------------------------
 Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 ------------------------ Grupo 1 : 3Developers - GymLife ------------------------
@@ -11,23 +12,22 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 		-
 		-
 ---------------------------------------------------------------------------------
--->
-<?php
+*/
 
-	namespace Developers\Acme\Controle;
-    use Developers\Acme\Persistencia\ConexaoBD;
-    use Developers\Acme\Modelo\Pessoa;
-    use Developers\Acme\Controle\PessoaDAO;
-    use Developers\Acme\Modelo\Cliente;
-    use Developers\Acme\Controle\ClienteDAO;
-    use Developers\Acme\Modelo\Instrutor;
-    use Developers\Acme\Controle\InstrutorDAO;
-    use Developers\Acme\Modelo\Plano;
-    use Developers\Acme\Controle\PlanoDAO;
-    use Developers\Acme\Modelo\Equipamento;
-    use Developers\Acme\Controle\EquipamentoDAO;
-    use Developers\Acme\Modelo\Treino;
-    use Developers\Acme\Controle\TreinoDAO;
+namespace Developers\Acme\Controle;
+use Developers\Acme\Persistencia\ConexaoBD;
+use Developers\Acme\Modelo\Pessoa;
+use Developers\Acme\Controle\PessoaDAO;
+use Developers\Acme\Modelo\Cliente;
+use Developers\Acme\Controle\ClienteDAO;
+use Developers\Acme\Modelo\Instrutor;
+use Developers\Acme\Controle\InstrutorDAO;
+use Developers\Acme\Modelo\Plano;
+use Developers\Acme\Controle\PlanoDAO;
+use Developers\Acme\Modelo\Equipamento;
+use Developers\Acme\Controle\EquipamentoDAO;
+use Developers\Acme\Modelo\Treino;
+use Developers\Acme\Controle\TreinoDAO;
 
 	include_once('../Persistencia/ConexaoBD.php');
 	include_once('../Modelo/Pessoa.php');
@@ -42,7 +42,6 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 	include_once('../Controle/EquipamentoDAO.php');
 	include_once('../Modelo/Treino.php');
 	include_once('../Controle/TreinoDAO.php');
-
 
 	$cpfC = '321456';
 	$nomeC = 'FabioPaes';
@@ -79,7 +78,6 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 	//$i1->addInstrutor($i,$conexao, $p->getCPF());
 	//$i1->atualizarInstrutor($salarioI, $cHI, $imagem, $codigo, $conexao);
 
-
 	$nomeP = 'SEMESTRAL';
 	$qtdP = '6';
 	$valorP = '79.99';
@@ -114,10 +112,8 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 	//$treinDAO->atualizarTreino($idPes, $idFunc, $idEquip, $tipo, $serie, $repeticoes, $peso, $codigo, $conexao);
 	$treinDAO->excluirTreino($codigo, $conexao);
 
-
 	/*
 	$cliente1 = new Cliente($cpfC, $nomeC, $telefoneC, $emailC, $dataNascC, $senhaC, $cargo, $plano);
 	$clienteDAO = new ClienteDAO();
 	$clienteDAO->addCliente($cliente1,$conexao);*/
-
 ?>
