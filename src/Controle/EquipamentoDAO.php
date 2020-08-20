@@ -17,6 +17,19 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 namespace Developers\Acme\Controle;
 use Developers\Acme\Modelo\Equipamento;
 
+	/*
+		- ARQUIVO DA CLASSE EquipamentoDAO:
+		A classe EquipamentoDAO possui métodos que realizam as operações a seguir:
+		  - Obter o nome do Equipamento;
+		  - Obter a quantidade do Equipamento;
+		  - Obter a marca do Equipamento;
+		  - Obter o ano do Equipamento;
+		  - Listar todos os Equipamentos do Banco de Dados;
+		  - Adicionar um Equipamento no Banco de Dados;
+		  - Atualizar um Equipamento do Banco de Dados;
+		  - Excluir um Equipamento do Banco de Dados.
+	*/
+
 	include_once('../Modelo/Equipamento.php');
 	class EquipamentoDAO{
 
