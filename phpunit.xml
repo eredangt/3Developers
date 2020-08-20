@@ -12,7 +12,9 @@
 	
 	<filter>
         <whitelist>
-            <directory suffix=".php">src/</directory>
+            <directory suffix=".php">src/Controle</directory>
+            <directory suffix=".php">src/Modelo</directory>
+            <directory suffix=".php">src/Persistencia</directory>
         </whitelist>
     </filter>
     
