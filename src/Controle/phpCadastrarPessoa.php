@@ -74,12 +74,15 @@ use Developers\Acme\Controle\InstrutorDAO;
 			$pessoa = new Pessoa($cpfC, $nomeC, $telefoneC, $emailC, $dataNascC, $senhaC, $cargo); // PARA CLIENTE
 
 			$pessoaDAO = new PessoaDAO();
-			$pessoaDAO->addPessoa($pessoa, $conexao);
+			$COD_Pessoa = $pessoaDAO->addPessoa($pessoa, $conexao);
 
-			$cliente = new Cliente($planoC);
+			if ($COD_Pessoa == '-1') {
+				echo 'ERRO';
+			}
+
+			$cliente = new Cliente($COD_Pessoa, $planoC);
 			$clienteAux = new ClienteDAO();
-			$clienteAux->addCliente($cliente, $conexao, $pessoa->getCPF());
-
+			$clienteAux->addCliente($cliente, $conexao/*, $pessoa->getCPF()*/);
 		}
 		if($cargo == 'I'){
 
@@ -100,7 +103,11 @@ use Developers\Acme\Controle\InstrutorDAO;
 			$pessoa = new Pessoa($cpfI, $nomeI, $telefoneI, $emailI, $dataNascI, $senhaI, $cargo); // INSTRUTOR
 
 			$pessoaDAO = new PessoaDAO();
-			$pessoaDAO->addPessoa($pessoa, $conexao);
+			$COD_Pessoa = $pessoaDAO->addPessoa($pessoa, $conexao);
+
+			if ($COD_Pessoa == '-1') {
+				echo 'ERRO';
+			}
 
 			$uploaddir = '../imgInstrutores/';
 			$uploadfile = $uploaddir . basename($imagemI['name']);
@@ -112,9 +119,9 @@ use Developers\Acme\Controle\InstrutorDAO;
 				print_r($_FILES);
 			}
 
-			$instrutor = new Instrutor($salarioI, $cargaHI, $uploadfile);
+			$instrutor = new Instrutor($COD_Pessoa, $salarioI, $cargaHI, $uploadfile);
 			$instrutorAux = new InstrutorDAO();
-			$instrutorAux->addInstrutor($instrutor, $conexao, $pessoa->getCPF());
+			$instrutorAux->addInstrutor($instrutor, $conexao);
 		}
 
 

@@ -186,7 +186,7 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 									<input type="hidden" name="selecao" value="C">
 
 									<span id="spanSpecial">CPF do Cliente</span>
-									<input type="text" name="txtCPFPessoaC" value="<?php echo $pessoaDAO->pegaCPF($conexao,$codigo); ?>"
+									<input type="text" name="txtCPFPessoaC" pattern="[0-9]{11}" title="Insira CPF utilizando apenas números" value="<?php echo $pessoaDAO->pegaCPF($conexao,$codigo); ?>"
 									placeholder="Digite o número do CPF do Cliente" required>
 
 									<span id="spanSpecial">Nome do Cliente</span>
@@ -229,7 +229,7 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 									<input type="hidden" name="selecao" value="I">
 
 									<span id="spanSpecial">CPF do Instrutor</span>
-									<input type="text" name="txtCPFPessoaI" value="<?php echo $pessoaDAO->pegaCPF($conexao,$codigo); ?>"
+									<input type="text" name="txtCPFPessoaI" pattern="[0-9]{11}" title="Insira CPF utilizando apenas números" value="<?php echo $pessoaDAO->pegaCPF($conexao,$codigo); ?>"
 									placeholder="Digite o número do CPF do Instrutor" required>
 
 									<span id="spanSpecial">Nome do Instrutor</span>

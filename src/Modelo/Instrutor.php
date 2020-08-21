@@ -30,9 +30,8 @@ use Developers\Acme\Modelo\Pessoa;
         private $cargaHoraria;
         private $imagemInstrutor;
 
-        public function __construct($umSalario, $umaCH, $umaImagem){
-            //parent::__construct($cpf, $nome, $telefone, $email, $dataNasc, $senha, $cargo);
-            //$this->idInstrutor = $umaId;
+        public function __construct($umaId, $umSalario, $umaCH, $umaImagem){
+            $this->idInstrutor = $umaId;
             $this->salario = $umSalario;
             $this->cargaHoraria = $umaCH;
             $this->imagemInstrutor = $umaImagem;

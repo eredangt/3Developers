@@ -23,14 +23,15 @@ use Developers\Acme\Modelo\Pessoa;
 		A classe ClienteDAO possui os métodos de adicionar Cliente, atualizar
 		Cliente.
 	*/
-	
+
 	include_once('../Modelo/Cliente.php');
 	include_once('../Modelo/Pessoa.php');
 	class ClienteDAO{
 
 		public function __construct(){}
 
-		public function addCliente($cliente, $conexao, $pegaCPF){
+		public function addCliente($cliente, $conexao){
+			/*
 			$sql = "SELECT idPessoa FROM PESSOA WHERE CPF = '".$pegaCPF."';";
 			$tabela = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
 
@@ -39,9 +40,11 @@ use Developers\Acme\Modelo\Pessoa;
 			while($linha = mysqli_fetch_row($tabela)){
 				$COD_Cliente = $linha[0];
 			}
-
 			$sql = "INSERT INTO Cliente(Pessoa_idPessoa,PLANO_idPlano)
 					VALUES('".$COD_Cliente."','".$cliente->getPlano()."');";
+			*/
+			$sql = "INSERT INTO Cliente(Pessoa_idPessoa,PLANO_idPlano)
+					VALUES('".$cliente->getIdCliente()."','".$cliente->getPlano()."');";
 
 			$resultado = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 			if($resultado == true){

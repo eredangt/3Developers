@@ -396,10 +396,28 @@ use Developers\Acme\Persistencia\ConexaoBD;
 			  VALUES('".$pessoa->getCPF()."','".$pessoa->getNome()."','".$pessoa->getTelefone()."','".$pessoa->getEmail()."','".$pessoa->getDataNascimento()."',
 			  '".$pessoa->getSenha()."','".$pessoa->getCargo()."');";
 
-			$resultado = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+			$resultado = mysqli_query($conexao,$sql);
+
+			$COD_Pessoa = '-1';
+
 			if($resultado == false){
-				echo 'Algo ocorreu: ' . mysqli_error($conexao);
+				echo '<SCRIPT type="text/javascript"> //not showing me this
+								alert("Já existe uma pessoa cadastrada com este CPF");
+								history.go(-1);
+						</SCRIPT>';
+
+				return $COD_Pessoa;
 			}
+
+
+			$sql = "SELECT idPessoa FROM PESSOA WHERE CPF = '".$pessoa->getCPF()."';";
+			$tabela = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+
+			while($linha = mysqli_fetch_row($tabela)){
+				$COD_Pessoa = $linha[0];
+			}
+
+			return $COD_Pessoa;
 		}
 
 		public function atualizarPessoa($conexao, $codigo, $cpf, $nome, $telefone, $email, $dataNasc, $senha, $cargo){
@@ -629,6 +647,5 @@ use Developers\Acme\Persistencia\ConexaoBD;
 
 			}
 			echo $mensagem;
-		//}
 	}}
 ?>

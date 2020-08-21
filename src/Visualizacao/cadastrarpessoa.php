@@ -184,7 +184,7 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 									<input type="hidden" name="selecao" value="C">
 
 									<span id="spanSpecial">CPF do Cliente</span>
-	                                <input type="text" name="txtCPFPessoaC" placeholder="Digite o número do CPF do Cliente" required>
+	                                <input type="text" name="txtCPFPessoaC" pattern="[0-9]{11}" title="Insira CPF utilizando apenas números" placeholder="Digite o número do CPF do Cliente" required>
 
 	                                <span id="spanSpecial">Nome do Cliente</span>
 	                                <input type="text" name="txtNomeC" placeholder="Digite o nome do Cliente a ser cadastrado" required>
@@ -215,7 +215,7 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 											$planoDAO-> listarPlanosCadastrados($conexao);
 	                                    ?>
 	                                </select>
-									
+
 	                                <button type="submit" id="botaoCadastrar">Cadastrar</button>
 	                            </div>
 							</form>
@@ -225,7 +225,7 @@ Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
 									<input type="hidden" name="selecao" value="I">
 
 									<span id="spanSpecial">CPF do Instrutor</span>
-	                                <input type="text" name="txtCPFPessoaI" placeholder="Digite o número do CPF do Instrutor" required>
+	                                <input type="text" name="txtCPFPessoaI" pattern="[0-9]{11}" title="Insira CPF utilizando apenas números" placeholder="Digite o número do CPF do Instrutor" required>
 
 	                                <span id="spanSpecial">Nome do Instrutor</span>
 	                                <input type="text" name="txtNomeI" placeholder="Digite o nome do Instrutor a ser cadastrado" required>

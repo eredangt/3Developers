@@ -28,9 +28,8 @@ use Developers\Acme\Modelo\Pessoa;
 		private $idCliente;
 		private $plano;
 
-		public function __construct($umPlano){
-			//parent::__construct($cpf, $nome, $telefone, $email, $dataNasc, $senha, $cargo);
-			//$this->idCliente = $umaIdC;
+		public function __construct($idCliente, $umPlano){
+			$this->idCliente = $idCliente;
 			$this->plano = $umPlano;
 		}
 

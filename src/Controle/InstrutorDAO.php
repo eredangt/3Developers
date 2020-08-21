@@ -30,7 +30,8 @@ use Developers\Acme\Modelo\Pessoa;
 
 		public function __construct(){}
 
-        public function addInstrutor($instrutor, $conexao, $pegaCPF){
+        public function addInstrutor($instrutor, $conexao/*, $pegaCPF*/){
+			/*
             $sql = "SELECT idPessoa FROM PESSOA WHERE CPF = '".$pegaCPF."';";
             $tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
@@ -39,6 +40,10 @@ use Developers\Acme\Modelo\Pessoa;
             }
             $sql = "INSERT INTO Instrutor(Pessoa_idPessoa, salario, Carga_horaria, imagem)
                     VALUES('".$COD_Instrutor."','".$instrutor->getSalario()."',
+					'".$instrutor->getCH()."','".$instrutor->getImagem()."');";
+			*/
+            $sql = "INSERT INTO Instrutor(Pessoa_idPessoa, salario, Carga_horaria, imagem)
+                    VALUES('".$instrutor->getIdInstrutor()."','".$instrutor->getSalario()."',
 					'".$instrutor->getCH()."','".$instrutor->getImagem()."');";
 
             $resultado = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
