@@ -24,6 +24,7 @@ Os tipos de usuário do sistema são clientes e instrutores.<br />
     phpMyAdmin - Versão: 5.0.2
 ## Servidor 
     Apache - Versão: 2.4.43
+## [Testes](TESTES.md)
 
 # REGRAS E PADRÕES DE USO DO GIT
 ## Commits:
