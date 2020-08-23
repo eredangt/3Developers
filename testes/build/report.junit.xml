@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="blog" tests="3" assertions="14" errors="0" warnings="0" failures="0" skipped="0" time="0.007361">
-    <testsuite name="TesteEquipamento" file="C:\xampp\htdocs\3Developers\testes\Modelo\TesteEquipamento.php" tests="1" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.002725">
-      <testcase name="teste__construct" class="TesteEquipamento" classname="TesteEquipamento" file="C:\xampp\htdocs\3Developers\testes\Modelo\TesteEquipamento.php" line="9" assertions="4" time="0.002725"/>
+  <testsuite name="blog" tests="5" assertions="20" errors="0" warnings="0" failures="0" skipped="0" time="0.011970">
+    <testsuite name="TesteCliente" file="C:\xampp\htdocs\3Developers\testes\Modelo\TesteCliente.php" tests="1" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.003037">
+      <testcase name="teste__construct" class="TesteCliente" classname="TesteCliente" file="C:\xampp\htdocs\3Developers\testes\Modelo\TesteCliente.php" line="29" assertions="2" time="0.003037"/>
     </testsuite>
-    <testsuite name="TestePessoa" file="C:\xampp\htdocs\3Developers\testes\Modelo\TestePessoa.php" tests="1" assertions="7" errors="0" warnings="0" failures="0" skipped="0" time="0.002526">
-      <testcase name="teste__construct" class="TestePessoa" classname="TestePessoa" file="C:\xampp\htdocs\3Developers\testes\Modelo\TestePessoa.php" line="9" assertions="7" time="0.002526"/>
+    <testsuite name="TesteEquipamento" file="C:\xampp\htdocs\3Developers\testes\Modelo\TesteEquipamento.php" tests="1" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.002385">
+      <testcase name="teste__construct" class="TesteEquipamento" classname="TesteEquipamento" file="C:\xampp\htdocs\3Developers\testes\Modelo\TesteEquipamento.php" line="29" assertions="4" time="0.002385"/>
     </testsuite>
-    <testsuite name="TestePlano" file="C:\xampp\htdocs\3Developers\testes\Modelo\TestePlano.php" tests="1" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.002110">
-      <testcase name="teste__construct" class="TestePlano" classname="TestePlano" file="C:\xampp\htdocs\3Developers\testes\Modelo\TestePlano.php" line="9" assertions="3" time="0.002110"/>
+    <testsuite name="TesteInstrutor" file="C:\xampp\htdocs\3Developers\testes\Modelo\TesteInstrutor.php" tests="1" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.002333">
+      <testcase name="teste__construct" class="TesteInstrutor" classname="TesteInstrutor" file="C:\xampp\htdocs\3Developers\testes\Modelo\TesteInstrutor.php" line="29" assertions="4" time="0.002333"/>
+    </testsuite>
+    <testsuite name="TestePessoa" file="C:\xampp\htdocs\3Developers\testes\Modelo\TestePessoa.php" tests="1" assertions="7" errors="0" warnings="0" failures="0" skipped="0" time="0.002090">
+      <testcase name="teste__construct" class="TestePessoa" classname="TestePessoa" file="C:\xampp\htdocs\3Developers\testes\Modelo\TestePessoa.php" line="29" assertions="7" time="0.002090"/>
+    </testsuite>
+    <testsuite name="TestePlano" file="C:\xampp\htdocs\3Developers\testes\Modelo\TestePlano.php" tests="1" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.002125">
+      <testcase name="teste__construct" class="TestePlano" classname="TestePlano" file="C:\xampp\htdocs\3Developers\testes\Modelo\TestePlano.php" line="29" assertions="3" time="0.002125"/>
     </testsuite>
   </testsuite>
 </testsuites>

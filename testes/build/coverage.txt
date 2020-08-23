@@ -1,14 +1,18 @@
 
 
 Code Coverage Report:      
-  2020-08-20 14:15:36      
+  2020-08-23 03:57:21      
                            
  Summary:                  
-  Classes: 23.08% (3/13)   
-  Methods: 18.09% (17/94)  
-  Lines:    2.15% (31/1442)
+  Classes: 38.46% (5/13)   
+  Methods: 26.60% (25/94)  
+  Lines:    3.25% (47/1444)
 
+\Developers\Acme\Modelo::Developers\Acme\Modelo\Cliente
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% (  5/  5)
 \Developers\Acme\Modelo::Developers\Acme\Modelo\Equipamento
+  Methods: 100.00% ( 5/ 5)   Lines: 100.00% (  9/  9)
+\Developers\Acme\Modelo::Developers\Acme\Modelo\Instrutor
   Methods: 100.00% ( 5/ 5)   Lines: 100.00% (  9/  9)
 \Developers\Acme\Modelo::Developers\Acme\Modelo\Pessoa
   Methods: 100.00% ( 8/ 8)   Lines: 100.00% ( 15/ 15)
