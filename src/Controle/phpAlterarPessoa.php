@@ -1,14 +1,39 @@
 <?php
+/*
+---------------------------------------------------------------------------------
+Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
+------------------------ Grupo 1 : 3Developers - GymLife ------------------------
+    Integrantes:
+        Caio de Oliveira (10A - 201820267),
+        Ismael Martins Silva (10A - 201820281),
+        Layse Cristina Silva Garcia (10A - 201811177).
+	Data de Entrega: 25/08/2020.
+	*Alterações(autor/data):
+		-
+		-
+---------------------------------------------------------------------------------
+*/
 
-	namespace Developers\Acme\Controle;
-    use Developers\Acme\Persistencia\ConexaoBD;
-    use Developers\Acme\Modelo\Pessoa;
-    use Developers\Acme\Controle\PessoaDAO;
-    use Developers\Acme\Modelo\Cliente;
-    use Developers\Acme\Controle\ClienteDAO;
-    use Developers\Acme\Modelo\Instrutor;
-    use Developers\Acme\Controle\InstrutorDAO;
-	
+namespace Developers\Acme\Controle;
+use Developers\Acme\Persistencia\ConexaoBD;
+use Developers\Acme\Modelo\Pessoa;
+use Developers\Acme\Controle\PessoaDAO;
+use Developers\Acme\Modelo\Cliente;
+use Developers\Acme\Controle\ClienteDAO;
+use Developers\Acme\Modelo\Instrutor;
+use Developers\Acme\Controle\InstrutorDAO;
+
+	/*
+		- ARQUIVO DO CONTROLE phpAlterarPessoa.php:
+		O arquivo phpAlterarPessoa.php armazena as informações  modificadas via
+		formulário, através de variáveis. É então criado um objeto de Conexao, para
+		conectar o Banco de Dados.
+		Logo, é criado um objeto PessoaDAO para chamar o método atualizarPessoa, passando
+		os dados modificados como parâmetro e o código da pessoa selecionada.
+		Caso alguma pessoa que não é instrutor, tente acessar a página, a mesma será
+		redirecionada para o menu.
+	*/
+
 	include_once('../Persistencia/ConexaoBD.php');
 	include_once('../Modelo/Pessoa.php');
 	include_once('PessoaDAO.php');
@@ -23,10 +48,7 @@
 	$codigo = $_POST['hddCodigo'];
 
 	if($_SESSION['cargo'] == 'instrutor'){
-
-
-
-	// Variaveis de consulta
+		// Variaveis de consulta
 		$resultadoC = '';
 		$resultadoI = '';
 
@@ -54,7 +76,7 @@
 		$salarioI = $_POST['txtSalarioI']; // Salario
 		$cargaHI = $_POST['txtHorariaI']; // Carga Horaria
 		$imagemI = $_FILES['image']; // Imagem Instrutor
-*/
+		*/
 		if($cargo == 'C'){
 
 			$cpfC = $_POST['txtCPFPessoaC']; // CPF
@@ -125,8 +147,6 @@
 			$i1->atualizarInstrutor($conexao, $codigo, $salarioI, $cargaHI, $auxImagem);
 
 		}
-
-
 	}else{
 		echo '<SCRIPT type="text/javascript"> //not showing me this
 						alert("Você não tem permissão para entrar aqui.");

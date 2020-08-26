@@ -1,8 +1,35 @@
 <?php
+/*
+---------------------------------------------------------------------------------
+Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
+------------------------ Grupo 1 : 3Developers - GymLife ------------------------
+    Integrantes:
+        Caio de Oliveira (10A - 201820267),
+        Ismael Martins Silva (10A - 201820281),
+        Layse Cristina Silva Garcia (10A - 201811177).
+	Data de Entrega: 25/08/2020.
+	*Alterações(autor/data):
+		-
+		-
+---------------------------------------------------------------------------------
+*/
 
-	namespace Developers\Acme\Controle;
-    use Developers\Acme\Modelo\Equipamento;
-	// Persistence
+namespace Developers\Acme\Controle;
+use Developers\Acme\Modelo\Equipamento;
+
+	/*
+		- ARQUIVO DA CLASSE EquipamentoDAO:
+		A classe EquipamentoDAO possui métodos que realizam as operações a seguir:
+		  - Obter o nome do Equipamento;
+		  - Obter a quantidade do Equipamento;
+		  - Obter a marca do Equipamento;
+		  - Obter o ano do Equipamento;
+		  - Listar todos os Equipamentos do Banco de Dados;
+		  - Adicionar um Equipamento no Banco de Dados;
+		  - Atualizar um Equipamento do Banco de Dados;
+		  - Excluir um Equipamento do Banco de Dados.
+	*/
+
 	include_once('../Modelo/Equipamento.php');
 	class EquipamentoDAO{
 
@@ -137,6 +164,5 @@
 				echo '<a href="../Visualizacao/menu.php"> MENU </a>';
 			}
 		}
-
 	}
 ?>

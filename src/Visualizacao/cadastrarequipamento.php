@@ -1,3 +1,17 @@
+<!--
+---------------------------------------------------------------------------------
+Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
+------------------------ Grupo 1 : 3Developers - GymLife ------------------------
+    Integrantes:
+        Caio de Oliveira (10A - 201820267),
+        Ismael Martins Silva (10A - 201820281),
+        Layse Cristina Silva Garcia (10A - 201811177).
+	Data de Entrega: 25/08/2020.
+	*Alterações(autor/data):
+		-
+		-
+---------------------------------------------------------------------------------
+-->
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -7,11 +21,11 @@
         use Developers\Acme\Controle\PessoaDAO;
 		$pagina = 'cadastrar';
         session_start();
-        
+
 		include_once('../Persistencia/ConexaoBD.php');
 		include_once('../Modelo/Pessoa.php');
         include_once('../Controle/PessoaDAO.php');
-        
+
 		$conexao = new ConexaoBD();
 		$conexao = $conexao->abreConexao();
 		$pessoaDAO = new PessoaDAO();
@@ -152,15 +166,19 @@
 
                 <div class="col-lg-6">
                     <div class="leave-comment">
-                        <form action="../Controle/phpCadastrarEquipamento.php" method="post" name="frmLoginEquip">
+                        <form action="../Controle/phpCadastrarEquipamento.php" method="post" name="frmLoginEquip" autocomplete="off">
                             <span id="spanSpecial">Nome do Equipamento</span>
                             <input type="text" name="txtEquipe" placeholder="Digite o nome do equipamento">
+
                             <span id="spanSpecial">Quantidade do Equipamento</span>
                             <input type="number" name="txtQuant" placeholder="Digite a quantidade em estoque">
+
                             <span id="spanSpecial">Marca do Equipamento</span>
                             <input type="text" name="txtMarca" placeholder="Digite o nome da marca do equipamento">
+
                             <span id="spanSpecial">Ano do Equipamento</span>
                             <input type="number" name="txtData" min="2000">
+							
                             <button type="submit">Cadastrar</button>
                         </form>
                     </div>

@@ -1,16 +1,37 @@
 <?php
+/*
+---------------------------------------------------------------------------------
+Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
+------------------------ Grupo 1 : 3Developers - GymLife ------------------------
+    Integrantes:
+        Caio de Oliveira (10A - 201820267),
+        Ismael Martins Silva (10A - 201820281),
+        Layse Cristina Silva Garcia (10A - 201811177).
+	Data de Entrega: 25/08/2020.
+	*Alterações(autor/data):
+		-
+		-
+---------------------------------------------------------------------------------
+*/
 
-	namespace Developers\Acme\Controle;
-    use Developers\Acme\Modelo\Instrutor;
-    use Developers\Acme\Modelo\Pessoa;
-	// Persistence
+namespace Developers\Acme\Controle;
+use Developers\Acme\Modelo\Instrutor;
+use Developers\Acme\Modelo\Pessoa;
+
+	/*
+		- ARQUIVO DA CLASSE InstrutorDAO:
+		A classe InstrutorDAO possui os métodos de adicionar e atualizar
+		um instrutor.
+	*/
+
 	include_once('../Modelo/Instrutor.php');
 	include_once('../Modelo/Pessoa.php');
 	class InstrutorDAO{
 
 		public function __construct(){}
 
-        public function addInstrutor($instrutor, $conexao, $pegaCPF){
+        public function addInstrutor($instrutor, $conexao/*, $pegaCPF*/){
+			/*
             $sql = "SELECT idPessoa FROM PESSOA WHERE CPF = '".$pegaCPF."';";
             $tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
@@ -19,6 +40,10 @@
             }
             $sql = "INSERT INTO Instrutor(Pessoa_idPessoa, salario, Carga_horaria, imagem)
                     VALUES('".$COD_Instrutor."','".$instrutor->getSalario()."',
+					'".$instrutor->getCH()."','".$instrutor->getImagem()."');";
+			*/
+            $sql = "INSERT INTO Instrutor(Pessoa_idPessoa, salario, Carga_horaria, imagem)
+                    VALUES('".$instrutor->getIdInstrutor()."','".$instrutor->getSalario()."',
 					'".$instrutor->getCH()."','".$instrutor->getImagem()."');";
 
             $resultado = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
@@ -52,6 +77,5 @@
 				echo '<a href="../Visualizacao/menu.php"> VOLTAR </a>';
 			}
 		}
-
 	}
 ?>

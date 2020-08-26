@@ -1,14 +1,41 @@
 <?php
+/*
+---------------------------------------------------------------------------------
+Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
+------------------------ Grupo 1 : 3Developers - GymLife ------------------------
+    Integrantes:
+        Caio de Oliveira (10A - 201820267),
+        Ismael Martins Silva (10A - 201820281),
+        Layse Cristina Silva Garcia (10A - 201811177).
+	Data de Entrega: 25/08/2020.
+	*Alterações(autor/data):
+		-
+		-
+---------------------------------------------------------------------------------
+*/
 
-	namespace Developers\Acme\Controle;
-    use Developers\Acme\Persistencia\ConexaoBD;
-    use Developers\Acme\Modelo\Pessoa;
-    use Developers\Acme\Controle\PessoaDAO;
-    use Developers\Acme\Modelo\Cliente;
-    use Developers\Acme\Controle\ClienteDAO;
-    use Developers\Acme\Modelo\Instrutor;
-    use Developers\Acme\Controle\InstrutorDAO;
-	
+namespace Developers\Acme\Controle;
+use Developers\Acme\Persistencia\ConexaoBD;
+use Developers\Acme\Modelo\Pessoa;
+use Developers\Acme\Controle\PessoaDAO;
+use Developers\Acme\Modelo\Cliente;
+use Developers\Acme\Controle\ClienteDAO;
+use Developers\Acme\Modelo\Instrutor;
+use Developers\Acme\Controle\InstrutorDAO;
+
+	/*
+		- ARQUIVO DO CONTROLE phpCadastrarPessoa.php:
+		O arquivo phpCadastrarPessoa.php armazena as informações passadas via
+		formulário, através de variáveis. É então criado um objeto de Conexao, para
+		conectar o Banco de Dados, e também, é criado um objeto Pessoa.
+		Ao criar o objeto Pessoa, é passado como parâmetro os dados coletados.
+		Por fim, cria se um objeto PessoaDAO para chamar o método addPessoa.
+		Em seguida, caso um Cliente ou Instrutor seja criado, um objeto do mesmo tipo
+		é inserido no código e esse "tipo"DAO chama o método de add"tipo".
+		Caso alguma pessoa que não é instrutor, tente acessar a página, a mesma será
+		redirecionada para o menu.
+	*/
+
 	include_once('../Persistencia/ConexaoBD.php');
 	include_once('../Modelo/Pessoa.php');
 	include_once('PessoaDAO.php');
@@ -47,12 +74,15 @@
 			$pessoa = new Pessoa($cpfC, $nomeC, $telefoneC, $emailC, $dataNascC, $senhaC, $cargo); // PARA CLIENTE
 
 			$pessoaDAO = new PessoaDAO();
-			$pessoaDAO->addPessoa($pessoa, $conexao);
+			$COD_Pessoa = $pessoaDAO->addPessoa($pessoa, $conexao);
 
-			$cliente = new Cliente($planoC);
+			if ($COD_Pessoa == '-1') {
+				echo 'ERRO';
+			}
+
+			$cliente = new Cliente($COD_Pessoa, $planoC);
 			$clienteAux = new ClienteDAO();
-			$clienteAux->addCliente($cliente, $conexao, $pessoa->getCPF());
-
+			$clienteAux->addCliente($cliente, $conexao/*, $pessoa->getCPF()*/);
 		}
 		if($cargo == 'I'){
 
@@ -73,7 +103,11 @@
 			$pessoa = new Pessoa($cpfI, $nomeI, $telefoneI, $emailI, $dataNascI, $senhaI, $cargo); // INSTRUTOR
 
 			$pessoaDAO = new PessoaDAO();
-			$pessoaDAO->addPessoa($pessoa, $conexao);
+			$COD_Pessoa = $pessoaDAO->addPessoa($pessoa, $conexao);
+
+			if ($COD_Pessoa == '-1') {
+				echo 'ERRO';
+			}
 
 			$uploaddir = '../imgInstrutores/';
 			$uploadfile = $uploaddir . basename($imagemI['name']);
@@ -85,9 +119,9 @@
 				print_r($_FILES);
 			}
 
-			$instrutor = new Instrutor($salarioI, $cargaHI, $uploadfile);
+			$instrutor = new Instrutor($COD_Pessoa, $salarioI, $cargaHI, $uploadfile);
 			$instrutorAux = new InstrutorDAO();
-			$instrutorAux->addInstrutor($instrutor, $conexao, $pessoa->getCPF());
+			$instrutorAux->addInstrutor($instrutor, $conexao);
 		}
 
 

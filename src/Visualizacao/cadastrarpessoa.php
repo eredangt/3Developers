@@ -1,3 +1,17 @@
+<!--
+---------------------------------------------------------------------------------
+Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
+------------------------ Grupo 1 : 3Developers - GymLife ------------------------
+    Integrantes:
+        Caio de Oliveira (10A - 201820267),
+        Ismael Martins Silva (10A - 201820281),
+        Layse Cristina Silva Garcia (10A - 201811177).
+	Data de Entrega: 25/08/2020.
+	*Alterações(autor/data):
+		-
+		-
+---------------------------------------------------------------------------------
+-->
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -5,17 +19,22 @@
         use Developers\Acme\Persistencia\ConexaoBD;
         use Developers\Acme\Modelo\Pessoa;
         use Developers\Acme\Controle\PessoaDAO;
-		$pagina = 'cadastrar';
+        use Developers\Acme\Controle\PlanoDAO;
+
         session_start();
-        
+
 		include_once('../Persistencia/ConexaoBD.php');
 		include_once('../Modelo/Pessoa.php');
         include_once('../Controle/PessoaDAO.php');
-        
+		include_once('../Controle/PlanoDAO.php');
+
+		$pagina = 'cadastrar';
+
 		$conexao = new ConexaoBD();
 		$conexao = $conexao->abreConexao();
 		$pessoaDAO = new PessoaDAO();
 		$pessoaDAO->implementaRestricao();
+		$planoDAO = new PlanoDAO();
 	?>
     <meta charset="UTF-8">
     <meta name="description" content="Gym Template">
@@ -67,7 +86,9 @@
         </nav>
         <div id="mobile-menu-wrap"></div>
         <div class="canvas-social">
-			<a href="../Controle/logout.php">Log Out</a>
+			<?php
+			   $pessoaDAO->implementaLogOut($pagina);
+			?>
             <a href="#"><i class="fa fa-facebook"></i></a>
             <a href="#"><i class="fa fa-twitter"></i></a>
             <a href="#"><i class="fa fa-youtube-play"></i></a>
@@ -161,64 +182,84 @@
 							<form action="../Controle/phpCadastrarPessoa.php" method="POST" name="frmLogin" enctype="multipart/form-data" autocomplete="off">
 	                            <div class="Cliente_Selecionado" id="ClienteSel" style="display:none">
 									<input type="hidden" name="selecao" value="C">
+
 									<span id="spanSpecial">CPF do Cliente</span>
-	                                <input type="text" name="txtCPFPessoaC" placeholder="Digite o número do CPF do Cliente" required>
+	                                <input type="text" name="txtCPFPessoaC" pattern="[0-9]{11}" title="Insira CPF utilizando apenas números" placeholder="Digite o número do CPF do Cliente" required>
+
 	                                <span id="spanSpecial">Nome do Cliente</span>
 	                                <input type="text" name="txtNomeC" placeholder="Digite o nome do Cliente a ser cadastrado" required>
+
 	                                <span id="spanSpecial">Número de Telefone</span>
-	                                <input type="text" name="txtTelC" placeholder="Digite um número de telefone para contato" required>
+	                                <input type="text" name="txtTelC" placeholder = "+99 (99) 99999-9999"
+									title="O formato correto: +99 (99) 99999-9999 ou +99 (99) 9999-9999"
+									pattern="(\+)[0-9]{2} (\()[0-9]{2}(\)) [0-9]{4,5}-[0-9]{4}" required>
+
 	                                <span id="spanSpecial">Data de Nascimento</span>
 	                                <input type="date" name="txtDataC" required>
-	                                <span id="spanSpecial">Endereço Eletrônico</span>
-	                                <br>
+
+	                                <span id="spanSpecial">Endereço Eletrônico</span><br>
 	                                <small class="smallCadastro">O E-mail deverá também ser utilizado como login.</small>
-	                                <input type="email" name="txtEmailC" placeholder="Digite um e-mail válido para contato" required>
+	                                <input type="email" name="txtEmailC" placeholder="Digite um e-mail válido para contato"
+									pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+
 	                                <span id="spanSpecial">Senha do Cliente</span>
-	                                <input type="password" name="senhaPessoaC" placeholder="Digite a senha do Cliente a ser cadastrado" required>
+	                                <input type="password" name="senhaPessoaC"
+									title="A senha deve conter pelo menos 6 caracteres, podendo ser letras minúsculas, maiúsculas, números e símbolos(. _ @ + -)"
+									placeholder="Digite a senha do Cliente a ser cadastrado"
+									pattern="[a-zA-Z0-9._@+-]{6,}$" required>
+
 	                                <span id="spanSpecial">Plano a ser contratado pelo Cliente</span>
 	                                <select name="selecaoPlanoC" id="selecaoPlano" class="meuSelect" required>
 	                                    <option value="" selected>ESCOLHA UM PLANO</option>
 	                                    <?php
-											require('../Persistencia/phpConexaoBD.php');
-
-											$sql='SELECT * FROM plano';
-											$tabela=mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
-
-											while($linha=mysqli_fetch_row($tabela)){
-												echo '<option value="'.htmlentities($linha[0]).'">'.htmlentities($linha[1]).'</option>';
-											}
+											$planoDAO-> listarPlanosCadastrados($conexao);
 	                                    ?>
 	                                </select>
-	                                <button type="submit">Cadastrar</button>
+
+	                                <button type="submit" id="botaoCadastrar">Cadastrar</button>
 	                            </div>
 							</form>
 
 							<form action="../Controle/phpCadastrarPessoa.php" method="POST" name="frmLogin2" enctype="multipart/form-data" autocomplete="off">
 	                            <div class="Instrutor_Selecionado" id="InstrutorSel" style="display:none">
 									<input type="hidden" name="selecao" value="I">
+
 									<span id="spanSpecial">CPF do Instrutor</span>
-	                                <input type="text" name="txtCPFPessoaI" placeholder="Digite o número do CPF do Instrutor" required>
+	                                <input type="text" name="txtCPFPessoaI" pattern="[0-9]{11}" title="Insira CPF utilizando apenas números" placeholder="Digite o número do CPF do Instrutor" required>
+
 	                                <span id="spanSpecial">Nome do Instrutor</span>
 	                                <input type="text" name="txtNomeI" placeholder="Digite o nome do Instrutor a ser cadastrado" required>
+
 	                                <span id="spanSpecial">Número de Telefone</span>
-	                                <input type="text" name="txtTelI" placeholder="Digite um número de telefone para contato" required>
+	                                <input type="text" name="txtTelI" placeholder = "+99 (99) 99999-9999"
+									title="O formato correto: +99 (99) 99999-9999 ou +99 (99) 9999-9999"
+									pattern="(\+)[0-9]{2} (\()[0-9]{2}(\)) [0-9]{4,5}-[0-9]{4}" required>
+
 	                                <span id="spanSpecial">Data de Nascimento</span>
 	                                <input type="date" name="txtDataI" required>
-	                                <span id="spanSpecial">Endereço Eletrônico</span>
-	                                <br>
+
+	                                <span id="spanSpecial">Endereço Eletrônico</span><br>
 	                                <small class="smallCadastro">O E-mail deverá também ser utilizado como login.</small>
-	                                <input type="email" name="txtEmailI" placeholder="Digite um e-mail válido para contato" required>
+	                                <input type="email" name="txtEmailI" placeholder="Digite um e-mail válido para contato"
+									pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+
 	                                <span id="spanSpecial">Senha do Instrutor</span>
-	                                <input type="password" name="senhaPessoaI" placeholder="Digite a senha do Instrutor a ser cadastrado" required>
+	                                <input type="password" name="senhaPessoaI"
+									title="A senha deve conter pelo menos 6 caracteres, podendo ser letras minúsculas, maiúsculas, números e símbolos(. _ @ + -)"
+									placeholder="Digite a senha do Instrutor a ser cadastrado"
+									pattern="[a-zA-Z0-9._@+-]{6,}$" required>
+
 	                                <span id="spanSpecial">Salário do Instrutor</span>
 	                                <input type="number" name="txtSalarioI" placeholder="Digite o valor do salário do Instrutor a ser cadastrado" required>
-	                                <span id="spanSpecial">Carga Horária do Instrutor</span>
-	                                <br>
+
+	                                <span id="spanSpecial">Carga Horária do Instrutor</span><br>
 	                                <small class="smallCadastro">A Carga Horária deverá ser um valor inteiro representando as horas.</small>
 	                                <input type="number" name="txtHorariaI" placeholder="Digite a carga horária do Instrutor a ser cadastrado" required>
+
 	                                <span id="spanSpecial">Imagem Instrutor</span>
 	                                <input type="file" name="image" accept="image/png, image/jpeg, image/jpg" required/>
-	                                <button type="submit">Cadastrar</button>
+
+	                                <button type="submit"´ id="botaoCadastrar">Cadastrar</button>
 	                            </div>
 							</form>
 

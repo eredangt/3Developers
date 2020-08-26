@@ -1,8 +1,35 @@
 <?php
+/*
+---------------------------------------------------------------------------------
+Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
+------------------------ Grupo 1 : 3Developers - GymLife ------------------------
+    Integrantes:
+        Caio de Oliveira (10A - 201820267),
+        Ismael Martins Silva (10A - 201820281),
+        Layse Cristina Silva Garcia (10A - 201811177).
+	Data de Entrega: 25/08/2020.
+	*Alterações(autor/data):
+		-
+		-
+---------------------------------------------------------------------------------
+*/
 
-	namespace Developers\Acme\Controle;
-	use Developers\Acme\Persistencia\ConexaoBD;
-	
+namespace Developers\Acme\Controle;
+use Developers\Acme\Persistencia\ConexaoBD;
+
+	/*
+		- ARQUIVO DA CLASSE PessoaDAO:
+		A classe PessoaDAO possui os métodos de adicionar Pessoa, atualizar
+		Pessoa, excluir Pessoa(extendendo para Cliente e Instrutor) e listar as Pessoas
+		do banco de dados de acordo com a tabela. Outros métodos também são utilizados
+		para se obter valores de atributos da Classe. Também é a classe responsável
+		por ter os métodos de restrição de Login(pessoas não logadas, clientes entrando
+		em páginas não permitidas, funcionalidades do menu...). Possui o método que
+		diferencia a Página Inicial(menu) de um Instrutor e de um Aluno. O Cliente
+		consegue ver seus treinos e o Instrutor consegue inserir, cadastrar, listar
+		e excluir.
+	*/
+
 	include_once('../Persistencia/ConexaoBD.php');
 	class PessoaDAO{
 
@@ -201,8 +228,8 @@
 						<td class="dark-bg hover-dp ts-meta"><h5>'.htmlentities($linha[3]).'</h5></td>
 						<td class="hover-dp ts-meta"><h5>'.htmlentities($linha[4]).'</h5></td>
 						<td class="dark-bg hover-dp ts-meta"><h5>'.htmlentities($linha[5]).'</h5></td>
-						<td class="hover-dp ts-meta"><h5><center><a href="alterarpessoa.php?codigo='.$linha[0].'"><b>&#9997;</b></a></h5></td>
-						<td class="dark-bg hover-dp ts-meta"><h5><center><a href="../Controle/phpExcluirPessoa.php?codigo='.$linha[0].'" onclick="return confirm('.$mensagem.')"><b>&#10006;</b></a></h5></td>
+						<td class="hover-dp ts-meta"><h5><center><a id="alterarPessoaCOD" href="alterarpessoa.php?codigo='.$linha[0].'"><b>&#9997;</b></a></h5></td>
+						<td class="dark-bg hover-dp ts-meta"><h5><center><a  id="excluirPessoaCOD" href="../Controle/phpExcluirPessoa.php?codigo='.$linha[0].'" onclick="return confirm('.$mensagem.')"><b>&#10006;</b></a></h5></td>
 					</tr>';
 			}
 		}
@@ -369,10 +396,28 @@
 			  VALUES('".$pessoa->getCPF()."','".$pessoa->getNome()."','".$pessoa->getTelefone()."','".$pessoa->getEmail()."','".$pessoa->getDataNascimento()."',
 			  '".$pessoa->getSenha()."','".$pessoa->getCargo()."');";
 
-			$resultado = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+			$resultado = mysqli_query($conexao,$sql);
+
+			$COD_Pessoa = '-1';
+
 			if($resultado == false){
-				echo 'Algo ocorreu: ' . mysqli_error($conexao);
+				echo '<SCRIPT type="text/javascript"> //not showing me this
+								alert("Já existe uma pessoa cadastrada com este CPF");
+								history.go(-1);
+						</SCRIPT>';
+
+				return $COD_Pessoa;
 			}
+
+
+			$sql = "SELECT idPessoa FROM PESSOA WHERE CPF = '".$pessoa->getCPF()."';";
+			$tabela = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+
+			while($linha = mysqli_fetch_row($tabela)){
+				$COD_Pessoa = $linha[0];
+			}
+
+			return $COD_Pessoa;
 		}
 
 		public function atualizarPessoa($conexao, $codigo, $cpf, $nome, $telefone, $email, $dataNasc, $senha, $cargo){
@@ -558,7 +603,7 @@
 											<p>Cadastrar Treino</p></a>
 										</div>
 										<div class="cw-text">
-											<a href="../Visualizacao/cadastrarpessoa.php"><i class="fa fa-user-plus"></i>
+											<a id="cadastrarpessoa" href="../Visualizacao/cadastrarpessoa.php"><i class="fa fa-user-plus"></i>
 											<p>Cadastrar Pessoa</p></a>
 										</div>
 										<div class="cw-text">
@@ -580,7 +625,7 @@
 											<p>Listar Treinos</p></a>
 										</div>
 										<div class="cw-text">
-											<a href="../Visualizacao/listarpessoas.php"><i class="fa fa-user-plus"></i>
+											<a href="../Visualizacao/listarpessoas.php" id="listarPessoas"><i class="fa fa-user-plus"></i>
 											<p>Listar Pessoas</p></a>
 										</div>
 										<div class="cw-text">
@@ -602,6 +647,5 @@
 
 			}
 			echo $mensagem;
-		//}
 	}}
 ?>

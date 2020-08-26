@@ -1,16 +1,37 @@
 <?php
+/*
+---------------------------------------------------------------------------------
+Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
+------------------------ Grupo 1 : 3Developers - GymLife ------------------------
+    Integrantes:
+        Caio de Oliveira (10A - 201820267),
+        Ismael Martins Silva (10A - 201820281),
+        Layse Cristina Silva Garcia (10A - 201811177).
+	Data de Entrega: 25/08/2020.
+	*Alterações(autor/data):
+		-
+		-
+---------------------------------------------------------------------------------
+*/
 
-	namespace Developers\Acme\Controle;
-    use Developers\Acme\Modelo\Cliente;
-    use Developers\Acme\Modelo\Pessoa;
-	// Persistence
+namespace Developers\Acme\Controle;
+use Developers\Acme\Modelo\Cliente;
+use Developers\Acme\Modelo\Pessoa;
+
+	/*
+		- ARQUIVO DA CLASSE ClienteDAO:
+		A classe ClienteDAO possui os métodos de adicionar Cliente, atualizar
+		Cliente.
+	*/
+
 	include_once('../Modelo/Cliente.php');
 	include_once('../Modelo/Pessoa.php');
 	class ClienteDAO{
 
 		public function __construct(){}
 
-		public function addCliente($cliente, $conexao, $pegaCPF){
+		public function addCliente($cliente, $conexao){
+			/*
 			$sql = "SELECT idPessoa FROM PESSOA WHERE CPF = '".$pegaCPF."';";
 			$tabela = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
 
@@ -19,9 +40,11 @@
 			while($linha = mysqli_fetch_row($tabela)){
 				$COD_Cliente = $linha[0];
 			}
-
 			$sql = "INSERT INTO Cliente(Pessoa_idPessoa,PLANO_idPlano)
 					VALUES('".$COD_Cliente."','".$cliente->getPlano()."');";
+			*/
+			$sql = "INSERT INTO Cliente(Pessoa_idPessoa,PLANO_idPlano)
+					VALUES('".$cliente->getIdCliente()."','".$cliente->getPlano()."');";
 
 			$resultado = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 			if($resultado == true){

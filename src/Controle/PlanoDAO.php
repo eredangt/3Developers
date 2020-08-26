@@ -1,12 +1,44 @@
 <?php
+/*
+---------------------------------------------------------------------------------
+Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
+------------------------ Grupo 1 : 3Developers - GymLife ------------------------
+    Integrantes:
+        Caio de Oliveira (10A - 201820267),
+        Ismael Martins Silva (10A - 201820281),
+        Layse Cristina Silva Garcia (10A - 201811177).
+	Data de Entrega: 25/08/2020.
+	*Alterações(autor/data):
+		-
+		-
+---------------------------------------------------------------------------------
+*/
 
-	namespace Developers\Acme\Controle;
-    use Developers\Acme\Modelo\Plano;
-	// Persistence
+namespace Developers\Acme\Controle;
+use Developers\Acme\Modelo\Plano;
+
+	/*
+		- ARQUIVO DA CLASSE TreinoDAO:
+		A classe PlanoDAO possui os métodos de adicionar Plano, atualizar Plano,
+		excluir Plano e listar os Planos do banco de dados de acordo com a tabela.
+		Outros métodos também são utilizados para se obter valores de atributos da
+		Classe. Também é a classe responsável por ter o método que cria a caixa de
+		preços na Visualizacao/index.php com suas vantagens.
+	*/
+	
 	include_once('../Modelo/Plano.php');
 	class PlanoDAO{
 
 		public function __construct(){}
+
+		public function listarPlanosCadastrados($conexao){
+			$sql='SELECT * FROM plano';
+			$tabela=mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+
+			while($linha=mysqli_fetch_row($tabela)){
+				echo '<option value="'.htmlentities($linha[0]).'">'.htmlentities($linha[1]).'</option>';
+			}
+		}
 
 		public function imprimePlanos($conexao){
 			$sql = 'SELECT * FROM Plano ORDER BY numMeses';
@@ -177,6 +209,5 @@
 				echo '<a href="../Visualizacao/menu.php"> MENU </a>';
 			}
 		}
-
 	}
 ?>

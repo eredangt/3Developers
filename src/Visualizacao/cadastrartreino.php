@@ -1,3 +1,17 @@
+<!--
+---------------------------------------------------------------------------------
+Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
+------------------------ Grupo 1 : 3Developers - GymLife ------------------------
+    Integrantes:
+        Caio de Oliveira (10A - 201820267),
+        Ismael Martins Silva (10A - 201820281),
+        Layse Cristina Silva Garcia (10A - 201811177).
+	Data de Entrega: 25/08/2020.
+	*Alterações(autor/data):
+		-
+		-
+---------------------------------------------------------------------------------
+-->
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -9,13 +23,13 @@
         use Developers\Acme\Controle\TreinoDAO;
 		$pagina = 'cadastrar';
         session_start();
-        
+
 		include_once('../Persistencia/ConexaoBD.php');
 		include_once('../Modelo/Pessoa.php');
 		include_once('../Controle/PessoaDAO.php');
 		include_once('../Modelo/Treino.php');
         include_once('../Controle/TreinoDAO.php');
-        
+
 		$conexao = new ConexaoBD();
 		$conexao = $conexao->abreConexao();
 		$pessoaDAO = new PessoaDAO();
@@ -157,37 +171,44 @@
 
                 <div class="col-lg-6">
                     <div class="leave-comment">
-                        <form action="../Controle/phpCadastrarTreino.php" method="post" name="frmLoginCadTreino">
+                        <form action="../Controle/phpCadastrarTreino.php" method="post" name="frmLoginCadTreino" autocomplete="off">
                             <span id="spanSpecial">Tipo de Treino</span>
                             <select name="selecao" id="selectCadastroTreino" class="meuSelect">
 			                    <option value="A" id="optionCadastro">Treino A</option>
 			                    <option value="B" id="optionCadastro">Treino B</option>
                                 <option value="C" id="optionCadastro">Treino C</option>
 		                    </select>
+
                             <span id="spanSpecial">CPF e Nome do Cliente</span>
 							<select name="idCliente" id="idCliente" class="meuSelect" required>
 								<?php
 									$treinoDAO->selecionarIdPessoa($conexao, "Cliente");
 								?>
 							</select>
+
                             <span id="spanSpecial">CPF e Nome do Funcionário</span>
 							<select name="idFunc" id="idFunc" class="meuSelect" required>
 								<?php
 									$treinoDAO->selecionarIdPessoa($conexao, "Instrutor");
 								?>
 							</select>
+
                             <span id="spanSpecial">Identificador do Equipamento | Nome</span>
 							<select name="idEquipamento" id="idEquipamento" class="meuSelect" required>
 								<?php
 									$treinoDAO->selecionarIdEquipamento($conexao);
 								?>
 							</select>
+
                             <span id="spanSpecial">Quantidade de Séries</span>
                             <input type="number" name="txtSerie" placeholder="Digite o número de séries">
+
                             <span id="spanSpecial">Quantidade de Repetições</span>
                             <input type="number" name="txtRep" placeholder="Digite o número de repetições">
+
                             <span id="spanSpecial">Peso</span>
                             <input type="number" name="txtPeso" placeholder="Digite o peso sugerido">
+							
                             <button type="submit">Cadastrar</button>
                         </form>
                     </div>

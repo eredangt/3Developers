@@ -1,18 +1,37 @@
 <?php
+/*
+---------------------------------------------------------------------------------
+Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
+------------------------ Grupo 1 : 3Developers - GymLife ------------------------
+    Integrantes:
+        Caio de Oliveira (10A - 201820267),
+        Ismael Martins Silva (10A - 201820281),
+        Layse Cristina Silva Garcia (10A - 201811177).
+	Data de Entrega: 25/08/2020.
+	*Alterações(autor/data):
+		-
+		-
+---------------------------------------------------------------------------------
+*/
 
-    namespace Developers\Acme\Modelo;
-    use Developers\Acme\Modelo\Pessoa;
-    
-	include_once ('Pessoa.php');
+namespace Developers\Acme\Modelo;
+use Developers\Acme\Modelo\Pessoa;
+
+    /*
+        - ARQUIVO DA CLASSE Instrutor:
+        A classe Instrutor armazena atributos para possibilitar a recuperação
+        e inserção de instrutores na tabela Instrutor do banco de dados.
+    */
+
+	include_once('Pessoa.php');
     class Instrutor extends Pessoa {
         private $idInstrutor;
         private $salario;
         private $cargaHoraria;
         private $imagemInstrutor;
 
-        public function __construct($umSalario, $umaCH, $umaImagem){
-            //parent::__construct($cpf, $nome, $telefone, $email, $dataNasc, $senha, $cargo);
-            //$this->idInstrutor = $umaId;
+        public function __construct($umaId, $umSalario, $umaCH, $umaImagem){
+            $this->idInstrutor = $umaId;
             $this->salario = $umSalario;
             $this->cargaHoraria = $umaCH;
             $this->imagemInstrutor = $umaImagem;
@@ -33,6 +52,5 @@
         public function getImagem(){
             return $this->imagemInstrutor;
         }
-
     }
 ?>

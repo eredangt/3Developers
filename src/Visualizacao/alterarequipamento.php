@@ -1,3 +1,17 @@
+<!--
+---------------------------------------------------------------------------------
+Trabalho Prático - Engenharia de Software - GCC188 - 2020/01
+------------------------ Grupo 1 : 3Developers - GymLife ------------------------
+    Integrantes:
+        Caio de Oliveira (10A - 201820267),
+        Ismael Martins Silva (10A - 201820281),
+        Layse Cristina Silva Garcia (10A - 201811177).
+	Data de Entrega: 25/08/2020.
+	*Alterações(autor/data):
+		-
+		-
+---------------------------------------------------------------------------------
+-->
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -9,14 +23,14 @@
         use Developers\Acme\Controle\EquipamentoDAO;
 		$pagina = 'listar';
         session_start();
-        
+
 		include_once('../Persistencia/ConexaoBD.php');
 		include_once('../Modelo/Pessoa.php');
         include_once('../Controle/PessoaDAO.php');
-        
+
 		include_once('../Modelo/Equipamento.php');
         include_once('../Controle/EquipamentoDAO.php');
-        
+
 		$conexao = new ConexaoBD();
 		$conexao = $conexao->abreConexao();
 		$pessoaDAO = new PessoaDAO();
@@ -160,16 +174,21 @@
 
                 <div class="col-lg-6">
                     <div class="leave-comment">
-                        <form action="../Controle/phpAlterarEquipamento.php" method="post" name="frmLoginEquipAltera">
+                        <form action="../Controle/phpAlterarEquipamento.php" method="post" name="frmLoginEquipAltera" autocomplete="off">
 							<input type="hidden" name="hddCodigo" value="<?php echo $codigo; ?>">
+
                             <span id="spanSpecial">Nome do Equipamento</span>
                             <input type="text" name="txtEquipe" value="<?php echo $equipamentoDAO->pegaNomeEquip($conexao, $codigo); ?>" >
+
                             <span id="spanSpecial">Quantidade do Equipamento</span>
                             <input type="number" name="txtQuant" value="<?php echo $equipamentoDAO->pegaQtdEquip($conexao, $codigo); ?>" >
+
                             <span id="spanSpecial">Marca do Equipamento</span>
                             <input type="text" name="txtMarca" value="<?php echo $equipamentoDAO->pegaMarca($conexao, $codigo); ?>" >
+
                             <span id="spanSpecial">Ano do Equipamento</span>
                             <input type="number" name="txtData" min="2000" value="<?php echo $equipamentoDAO->pegaAno($conexao, $codigo); ?>">
+							
                             <button type="submit">Alterar</button>
                         </form>
                     </div>
